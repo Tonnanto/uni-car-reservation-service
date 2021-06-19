@@ -2,7 +2,13 @@ package structure;
 
 public class BookingFile extends File {
 
-    public BookingFile(String name) {
+    private static int bookingCount;
+
+    public BookingFile (String name) {
         super(name);
+    }
+    public BookingFile() {
+        // TODO: Store Booking object in this file
+        super("Booking_" + ++bookingCount);
     }
 }
