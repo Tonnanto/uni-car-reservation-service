@@ -8,7 +8,7 @@ class BookingTest {
     private BookingDirector bookingDirector;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
 
     }
 
@@ -16,6 +16,9 @@ class BookingTest {
     void canBookingBeCreated() {
         bookingDirector = new BookingDirector();
         bookingDirector.setBookingBuilder(new GermanBookingBuilder());
+        Assertions.assertTrue(bookingDirector.createBooking());
+
+        bookingDirector.setBookingBuilder(new EnglishBookingBuilder());
         Assertions.assertTrue(bookingDirector.createBooking());
     }
 }
