@@ -3,16 +3,16 @@ package behaviour;
 public class EnglishBookingBuilder extends BookingBuilder{
     @Override
     public String buildHeader() {
-        return null;
+        return "Hello Costumer, Thank you for your reservation.";
     }
 
     @Override
     public String buildBody() {
-        return null;
+        return "Your reserved the following car:";
     }
 
     @Override
     public String buildFooter() {
-        return null;
+        return "If you need further assistance, fell free to contact us. With best regards, Your CarReservationTeam ";
     }
 }
