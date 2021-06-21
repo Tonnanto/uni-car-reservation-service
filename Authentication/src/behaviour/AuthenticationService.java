@@ -1,6 +1,7 @@
 package behaviour;
 
 import structure.Credential;
+import structure.Subject;
 
 public class AuthenticationService {
 
@@ -14,7 +15,7 @@ public class AuthenticationService {
         this.credential = credential;
     }
 
-    public boolean authenticateSubject (Subject subject) {
-        return false;
+    public boolean authenticateSubject(Subject subject) {
+        return credential.authenticate(subject);
     }
 }

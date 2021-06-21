@@ -1,5 +1,5 @@
 package structure;
 
 public interface Credential {
-    public boolean authenticate (Subject subject);
+    boolean authenticate(Subject subject);
 }
