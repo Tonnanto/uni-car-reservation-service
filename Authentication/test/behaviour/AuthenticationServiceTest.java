@@ -3,13 +3,13 @@ package behaviour;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import structure.Credential;
+import structure.EyeScanStrategy;
+import structure.FingerPrintStrategy;
 import structure.Subject;
 import structure.UserNamePasswordStrategy;
 
 public class AuthenticationServiceTest {
     Subject subject;
-    private Credential credential;
     private AuthenticationService authenticationService;
 
     @BeforeEach
@@ -17,15 +17,17 @@ public class AuthenticationServiceTest {
         authenticationService = new AuthenticationService();
 
         subject = new Subject();
-
-
-        credential = new UserNamePasswordStrategy();
-
     }
 
     @Test
     void canCredentialBeCreated() {
-        authenticationService.setCredential(credential);
+        authenticationService.setCredential(new EyeScanStrategy());
+        Assertions.assertTrue(authenticationService.authenticateSubject(subject));
+
+        authenticationService.setCredential(new UserNamePasswordStrategy());
+        Assertions.assertTrue(authenticationService.authenticateSubject(subject));
+
+        authenticationService.setCredential(new FingerPrintStrategy());
         Assertions.assertTrue(authenticationService.authenticateSubject(subject));
     }
 
