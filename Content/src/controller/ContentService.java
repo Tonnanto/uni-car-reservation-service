@@ -1,7 +1,7 @@
-package behaviour;
+package controller;
 
-import structure.Content;
-import structure.Folder;
+import model.Content;
+import model.Folder;
 
 import java.text.DateFormatSymbols;
 import java.time.LocalDate;

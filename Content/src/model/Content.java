@@ -1,4 +1,4 @@
-package structure;
+package model;
 
 public abstract class Content {
     private final String name;

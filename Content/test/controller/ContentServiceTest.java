@@ -1,12 +1,12 @@
-package behaviour;
+package controller;
 
+import model.BookingFile;
+import model.Content;
+import model.Folder;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import structure.BookingFile;
-import structure.Content;
-import structure.Folder;
 
 import java.time.LocalDate;
 import java.util.Map;
@@ -51,16 +51,16 @@ public class ContentServiceTest {
     }
 
     @Test
-    protected void areSummaryFilesBeingCreated () {
+    protected void areSummaryFilesBeingCreated() {
         Folder root = contentService.getRoot();
         Assertions.assertNotNull(root.getContent(root.getName() + "_Summary"));
 
-        for (Map.Entry<String, Content> yearEntry: root.getContents().entrySet()) {
+        for (Map.Entry<String, Content> yearEntry : root.getContents().entrySet()) {
             if (yearEntry.getValue() instanceof Folder) {
                 Folder yearFolder = (Folder) yearEntry.getValue();
                 Assertions.assertNotNull(yearFolder.getContent(yearFolder.getName() + "_Summary"));
 
-                for (Map.Entry<String, Content> monthEntry: root.getContents().entrySet()) {
+                for (Map.Entry<String, Content> monthEntry : yearFolder.getContents().entrySet()) {
                     if (monthEntry.getValue() instanceof Folder) {
                         Folder monthFolder = (Folder) monthEntry.getValue();
                         Assertions.assertNotNull(monthFolder.getContent(monthFolder.getName() + "_Summary"));

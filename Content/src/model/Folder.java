@@ -1,4 +1,4 @@
-package structure;
+package model;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -81,6 +81,7 @@ public class Folder extends Content {
 
 
     /**
+     * TODO: This belongs in the view package
      * @return a visual string-representation of the content hierarchy within this Folder
      */
     @Override

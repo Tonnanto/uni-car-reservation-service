@@ -1,4 +1,4 @@
-package structure;
+package model;
 
 public abstract class File extends Content {
     public File(String name) {
