@@ -12,7 +12,7 @@ public class EnglishBookingBuilder extends BookingBuilder{
     }
 
     @Override
-    public String buildFooter() {
-        return "If you need further assistance, fell free to contact us. With best regards, Your CarReservationTeam ";
+    public void buildFooter() {
+        booking.setFooter("If you need further assistance, fell free to contact us. With best regards, Your CarReservationTeam ");
     }
 }

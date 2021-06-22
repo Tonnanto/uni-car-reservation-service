@@ -18,4 +18,16 @@ public class Booking {
     public void setFooter(String footer) {
         this.footer = footer;
     }
+
+    public String getHeader() {
+        return header;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public String getFooter() {
+        return footer;
+    }
 }

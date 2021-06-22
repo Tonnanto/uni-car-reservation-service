@@ -8,14 +8,15 @@ public class BookingDirector {
     public void setBookingBuilder(BookingBuilder bookingBuilder) {
         this.bookingBuilder = bookingBuilder;
     }
-//todo Enum? oder wird es vom Controller angelegt?
 
     public Booking getBooking(){
         return null;
         //TODO warum brauchen wir die methode??
     }
 
-    public boolean createBooking() {    //Todo Ressource & Payment einfügen und übergeben && boolean to booking
-        return bookingBuilder.createNewBooking() != null;
+    public void createBooking() {    //Todo Ressource & Payment einfügen und übergeben
+        bookingBuilder.buildHeader();
+        bookingBuilder.buildBody();
+        bookingBuilder.buildFooter();
     }
 }
