@@ -6,13 +6,20 @@ public class PaymentService {
 
     public boolean payAmount(CurrencyAmount amount) {
 
+        if (amount.getAmount() <= 0) {
+            // TODO: Show appropriate Error Message
+            return false;
+        }
+
         PaymentType paymentType = null;
         Payment payment = null;
 
         // TODO: Prompt customer to choose PaymentType
 
-        if (paymentType == null)
+        if (paymentType == null) {
+            // TODO: Show appropriate Error Message
             return false;
+        }
 
         // create payment
         payment = switch (paymentType) {
@@ -40,7 +47,7 @@ public class PaymentService {
 
         // TODO: Show confirmation to customer
 
-        return true;
+        return isAmountPayed;
     }
 
     private Account getReceiverAccount() {
