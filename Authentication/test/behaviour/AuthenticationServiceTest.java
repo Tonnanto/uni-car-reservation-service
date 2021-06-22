@@ -16,11 +16,14 @@ public class AuthenticationServiceTest {
     void setUp() {
         authenticationService = new AuthenticationService();
 
-        subject = new Subject();
+
     }
 
     @Test
-    void canCredentialBeCreated() {
+    void canSubjectBeAuthenticated() {
+
+        subject = new Subject();
+
         authenticationService.setCredential(new EyeScanStrategy());
         Assertions.assertTrue(authenticationService.authenticateSubject(subject));
 
