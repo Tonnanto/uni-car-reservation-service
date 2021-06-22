@@ -2,13 +2,13 @@ package behaviour;
 
 public class EnglishBookingBuilder extends BookingBuilder{
     @Override
-    public String buildHeader() {
-        return "Hello Costumer, Thank you for your reservation.";
+    public void buildHeader() {
+        booking.setHeader("Hello Costumer, Thank you for your reservation.");
     }
 
     @Override
-    public String buildBody() {
-        return "Your reserved the following car:";
+    public void buildBody() {
+        booking.setBody("Your reserved the following car:");
     }
 
     @Override

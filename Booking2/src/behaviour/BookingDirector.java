@@ -5,13 +5,12 @@ import structure.Booking;
 public class BookingDirector {
     private BookingBuilder bookingBuilder;
 
-    public void setBookingBuilder(BookingBuilder bookingBuilder) {
+    public BookingDirector(BookingBuilder bookingBuilder) {
         this.bookingBuilder = bookingBuilder;
     }
 
     public Booking getBooking(){
-        return null;
-        //TODO warum brauchen wir die methode??
+        return bookingBuilder.getBooking();
     }
 
     public void createBooking() {    //Todo Ressource & Payment einfügen und übergeben

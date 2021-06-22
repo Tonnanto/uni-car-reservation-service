@@ -15,7 +15,6 @@ public abstract class BookingBuilder {
 
     public abstract void buildFooter();
 
-//    todo wird nicht benötigt?
     public Booking getBooking() {
         return booking;
     }

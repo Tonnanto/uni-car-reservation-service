@@ -1,15 +1,16 @@
 package behaviour;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import structure.Booking;
 
 class BookingServiceTest {
     static private BookingService bookingService;
 
-    @BeforeEach
-    void setUp() {
-
+    @BeforeAll
+    static void setUp() {
+        bookingService = new BookingService();
     }
 
     @Test
