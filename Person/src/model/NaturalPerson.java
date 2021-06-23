@@ -1,6 +1,8 @@
 package model;
 
-public class NaturalPerson implements Person {
+import structure.Subject;
+
+public class NaturalPerson implements Person, Subject {
 
     private String name;
     private int id;

@@ -1,5 +1,6 @@
 package behaviour;
 
+import model.NaturalPerson;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,7 @@ public class AuthenticationServiceTest {
     @Test
     void canSubjectBeAuthenticated() {
 
-        subject = new Subject();
+        subject = new NaturalPerson("John", 69420);
 
         authenticationService.setCredential(new EyeScanStrategy());
         Assertions.assertTrue(authenticationService.authenticateSubject(subject));
