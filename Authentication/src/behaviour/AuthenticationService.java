@@ -15,6 +15,12 @@ public class AuthenticationService {
         this.credential = credential;
     }
 
+    /**
+     * Authenticate a person or system with the credential they choose
+     * @param subject Person or system that wants to authenticate
+     * @return successful or unsuccessful authentication
+     */
+
     public boolean authenticateSubject(Subject subject) {
         return credential.authenticate(subject);
     }
