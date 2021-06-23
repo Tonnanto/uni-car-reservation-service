@@ -8,6 +8,6 @@ public class GoogleWalletPayment extends Payment {
 
     @Override
     public boolean payAmount() {
-        return false;
+        return true;
     }
 }

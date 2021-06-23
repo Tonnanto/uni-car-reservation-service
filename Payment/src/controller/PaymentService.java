@@ -4,6 +4,18 @@ import model.*;
 
 public class PaymentService {
 
+    /**
+     * UseCase: "payAmount"
+     * Handles the payment procedure between a customer and the Car Reservation Service GmbH.
+     * After selecting a payment type of choice the payment procedure consists of 3 main steps:
+     *
+     * 1. authenticate customer with payment provider
+     * 2. make the transfer from the customer's to the company's account
+     * 3. create a payment confirmation and show it to the user
+     *
+     * @param amount the CurrencyAmount that is being payed
+     * @return whether the payment was successful
+     */
     public boolean payAmount(CurrencyAmount amount) {
 
         if (amount.getAmount() <= 0) {
@@ -50,6 +62,10 @@ public class PaymentService {
         return isAmountPayed;
     }
 
+    /**
+     * Gets the account of the Car Reservation Service GmbH.
+     * @return the default receiver account
+     */
     private Account getReceiverAccount() {
         String ownerName = "Car Reservation Service GmbH";
         String address = "carreservation@service.de";

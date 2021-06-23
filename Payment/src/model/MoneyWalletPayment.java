@@ -8,6 +8,6 @@ public class MoneyWalletPayment extends Payment {
 
     @Override
     public boolean payAmount() {
-        return false;
+        return true;
     }
 }
