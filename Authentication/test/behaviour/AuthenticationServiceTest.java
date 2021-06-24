@@ -1,5 +1,8 @@
 package behaviour;
 
+import controller.PersonService;
+import model.NaturalPerson;
+import model.PersonType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,7 +25,8 @@ public class AuthenticationServiceTest {
     @Test
     void canSubjectBeAuthenticated() {
 
-        subject = new Subject();
+        PersonService personService = new PersonService();
+        subject = (Subject) personService.createPerson(PersonType.NATURAL_PERSON);
 
         authenticationService.setCredential(new EyeScanStrategy());
         Assertions.assertTrue(authenticationService.authenticateSubject(subject));

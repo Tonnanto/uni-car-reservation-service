@@ -1,5 +1,5 @@
 package structure;
 
-public class Subject {
+public interface Subject {
 //    todo class is temporary
 }
