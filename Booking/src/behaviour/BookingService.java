@@ -4,6 +4,11 @@ import structure.Booking;
 
 public class BookingService {
 
+    /**
+     * Create a new Booking in german or english with a text, resource and a Payment
+     * @return new booking
+     */
+
     public Booking createBooking() { //todo Payment && Resource
 
         BookingBuilder bookingBuilder = new GermanBookingBuilder();
