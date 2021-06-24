@@ -23,7 +23,7 @@ public abstract class Payment {
 
         if (authorized) {
             //TODO: Use details from customer
-            this.senderAccount = new Account("Customer", "customer address");
+            this.senderAccount = new Account(username, username + "@gibmirgeld.de");
         }
 
         return authorized;

@@ -9,6 +9,7 @@ public class PaymentService {
      * Handles the payment procedure between a customer and the Car Reservation Service GmbH.
      * After selecting a payment type of choice the payment procedure consists of 3 main steps:
      *
+     * // TODO: separate these steps into individual methods
      * 1. authenticate customer with payment provider
      * 2. make the transfer from the customer's to the company's account
      * 3. create a payment confirmation and show it to the user
