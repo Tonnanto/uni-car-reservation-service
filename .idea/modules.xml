@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Authentication/Authentication.iml" filepath="$PROJECT_DIR$/Authentication/Authentication.iml" />
       <module fileurl="file://$PROJECT_DIR$/Booking/Booking.iml" filepath="$PROJECT_DIR$/Booking/Booking.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Booking2/Booking2.iml" filepath="$PROJECT_DIR$/Booking2/Booking2.iml" />
       <module fileurl="file://$PROJECT_DIR$/CarReservationService.iml" filepath="$PROJECT_DIR$/CarReservationService.iml" />
       <module fileurl="file://$PROJECT_DIR$/Content/Content.iml" filepath="$PROJECT_DIR$/Content/Content.iml" />
       <module fileurl="file://$PROJECT_DIR$/Payment/Payment.iml" filepath="$PROJECT_DIR$/Payment/Payment.iml" />
