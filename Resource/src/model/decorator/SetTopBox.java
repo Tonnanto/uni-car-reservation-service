@@ -13,7 +13,7 @@ public class SetTopBox extends CarDecorator {
     }
 
     @Override
-    public String getDescription() {
-        return this.resource.getDescription() + "\n+ Set-Top-Box";
+    public String getName() {
+        return "Set-Top-Box";
     }
 }

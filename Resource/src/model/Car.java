@@ -1,6 +1,6 @@
 package model;
 
-public class Car implements Resource {
+public class Car extends Resource {
 
     private final String name;
     private final double price;
