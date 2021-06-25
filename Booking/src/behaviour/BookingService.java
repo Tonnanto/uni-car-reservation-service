@@ -1,5 +1,7 @@
 package behaviour;
 
+import model.PaymentType;
+import model.Resource;
 import structure.Booking;
 
 public class BookingService {
@@ -9,9 +11,9 @@ public class BookingService {
      * @return new booking
      */
 
-    public Booking createBooking() { //todo Payment && Resource
+    public Booking createBooking(Resource resource, PaymentType paymentType) {
 
-        BookingBuilder bookingBuilder = new GermanBookingBuilder();
+        BookingBuilder bookingBuilder = new GermanBookingBuilder(resource,paymentType);
         // TODO: Prompt user to select language
 
         BookingDirector bookingDirector = new BookingDirector(bookingBuilder);

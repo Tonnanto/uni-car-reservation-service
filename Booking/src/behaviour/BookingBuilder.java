@@ -1,12 +1,14 @@
 package behaviour;
 
+import model.PaymentType;
+import model.Resource;
 import structure.Booking;
 
 public abstract class BookingBuilder {
     protected Booking booking;
 
-    public BookingBuilder() {   //Todo Ressource & Payment einfügen und übergeben
-        booking = new Booking();
+    public BookingBuilder(Resource resource, PaymentType paymentType) {
+        booking = new Booking(resource, paymentType);
     }
 
     public abstract void buildHeader();

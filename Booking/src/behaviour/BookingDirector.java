@@ -17,7 +17,7 @@ public class BookingDirector {
      * create a new Booking with a text
      */
 
-    public void createBooking() {    //Todo Ressource & Payment einfügen und übergeben
+    public void createBooking() {
         bookingBuilder.buildHeader();
         bookingBuilder.buildBody();
         bookingBuilder.buildFooter();
