@@ -2,7 +2,7 @@ package controller;
 
 import model.Car;
 import model.Resource;
-import view.SelectActionView;
+import view.AddCarDecoratorView;
 import view.SelectCarView;
 import view.ShowSelectedResourceView;
 
@@ -27,9 +27,7 @@ public class ResourceService implements Observer {
 
     // TODO: temporary method
     public static void main(String[] args) {
-
         ResourceService resourceService = new ResourceService();
-
         resourceService.getSelectedResource();
     }
 
@@ -43,8 +41,11 @@ public class ResourceService implements Observer {
             if (resource == null) {
                 // select a car
                 new SelectCarView(this).display();
-            }
 
+            } else {
+                // add decorator
+                new AddCarDecoratorView(this).display();
+            }
         }
 
         return resource;
@@ -53,7 +54,6 @@ public class ResourceService implements Observer {
     @Override
     public void update(Object object) {
         new ShowSelectedResourceView(this).display();
-        new SelectActionView(this).display();
     }
 
     public List<Car> getAvailableCars() {
@@ -64,20 +64,24 @@ public class ResourceService implements Observer {
         return resource;
     }
 
+    public void setResource(Resource resource) {
+        this.resource = resource;
+
+        if (resource == null) return;
+        resource.setChanged();
+    }
+
     public void selectCar(Car car) {
         car.addObserver(this);
         this.resource = car;
         car.setChanged();
     }
 
-    public void addDecorator() {
-
-    }
-
     /**
-     * This method is being called, when the user decides to remove the selection.
+     * This method is being called, when the user decides to finish the selection.
      */
-    public void removeSelection() {
-        resource = null;
+    public void finishSelection() {
+        if (resource == null) return;
+        isResourceSelected = true;
     }
 }
