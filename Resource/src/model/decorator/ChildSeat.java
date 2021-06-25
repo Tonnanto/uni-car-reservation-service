@@ -14,6 +14,6 @@ public class ChildSeat extends CarDecorator {
 
     @Override
     public String getName() {
-        return "Child Seat";
+        return CarDecoratorType.CHILD_SEAT.getName();
     }
 }

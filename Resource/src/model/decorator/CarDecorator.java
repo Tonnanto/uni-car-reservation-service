@@ -9,7 +9,6 @@ public abstract class CarDecorator extends Resource {
     public CarDecorator(Resource resource) {
         this.resource = resource;
         this.addObservers(resource.getObservers());
-        this.setChanged();
     }
 
     @Override

@@ -14,6 +14,6 @@ public class SetTopBox extends CarDecorator {
 
     @Override
     public String getName() {
-        return "Set-Top-Box";
+        return CarDecoratorType.SET_TOP_BOX.getName();
     }
 }
