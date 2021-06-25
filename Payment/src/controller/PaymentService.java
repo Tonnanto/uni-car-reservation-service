@@ -4,6 +4,8 @@ import model.*;
 
 public class PaymentService {
 
+    private PaymentType paymentType;  //Added for Booking! TODO we need to store this in Payment and return the Payment to get the PaymentType for the Booking
+
     /**
      * UseCase: "payAmount"
      * Handles the payment procedure between a customer and the Car Reservation Service GmbH.
@@ -33,6 +35,7 @@ public class PaymentService {
             // TODO: Show appropriate Error Message
             return false;
         }
+        this.paymentType = paymentType;  //Added for Booking! TODO we need to store this in Payment and return the Payment to get the PaymentType for the Booking
 
         // create payment
         payment = switch (paymentType) {
@@ -73,4 +76,7 @@ public class PaymentService {
         return new Account(ownerName, address);
     }
 
+    public PaymentType getPaymentType() {   //Added for Booking! TODO we need to store this in Payment and return the Payment to get the PaymentType for the Booking
+        return paymentType;
+    }
 }
