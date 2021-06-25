@@ -1,15 +1,22 @@
 package controller.commands;
 
-import controller.ResourceService;
+import model.Car;
 
 public class SelectCarCommand extends ResourceServiceCommand {
 
-    public SelectCarCommand(ResourceService receiver) {
-        super(receiver);
+    private final Car car;
+
+    public SelectCarCommand(Car car) {
+        this.car = car;
     }
 
     @Override
-    public void execute(int i) {
-        receiver.selectCar(receiver.getAvailableCars().get(i - 1));
+    public void execute() {
+        receiver.selectCar(car);
+    }
+
+    @Override
+    public String getDescription() {
+        return car.getDescription();
     }
 }
