@@ -2,16 +2,12 @@ package view;
 
 import controller.Command;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public abstract class SelectionView extends View {
 
-
-    protected List<String> getSelectionOptions() {
-        return new ArrayList<>();
-    }
+    protected abstract List<String> getSelectionOptions();
 
     /**
      * This method displays the view, reads the user input, and executes the given command.
@@ -79,5 +75,4 @@ public abstract class SelectionView extends View {
         // this return statement should never be reached. -1 indicates an error
         return -1;
     }
-
 }

@@ -17,7 +17,4 @@ public abstract class View {
         System.out.println(getMessage());
         System.out.println();
     }
-
-
-
 }

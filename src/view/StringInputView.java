@@ -77,5 +77,4 @@ public abstract class StringInputView extends View {
     protected String getValidationMessage() {
         return "Please enter a valid String.";
     }
-
 }
