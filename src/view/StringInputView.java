@@ -4,6 +4,10 @@ import controller.Command;
 
 import java.util.Scanner;
 
+/**
+ * This View allows the user to enter a String.
+ * The entered String can be validated and will be handed to a command.
+ */
 public abstract class StringInputView extends View {
 
     /**
@@ -55,8 +59,8 @@ public abstract class StringInputView extends View {
             return enteredString;
         }
 
-        // this return statement should never be reached. null indicates an error
-        return null;
+        // this return statement should never be reached. An empty String indicates an error
+        return "";
     }
 
     /**

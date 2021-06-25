@@ -5,8 +5,18 @@ import controller.Command;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * This View allows the user to select between multiple options.
+ * A message and multiple selection options will be displayed.
+ * The user can select one of the options by entering the desired number into the console.
+ * The selected number can be handed to a command.
+ */
 public abstract class SelectionView extends View {
 
+    /**
+     * Override this method to define the selection options that the user can choose from.
+     * @return a list of available selection options
+     */
     protected abstract List<String> getSelectionOptions();
 
     /**
