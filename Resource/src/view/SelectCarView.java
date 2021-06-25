@@ -1,12 +1,12 @@
 package view;
 
-import controller.Command;
-import controller.ResourceService;
+import controller.*;
+import controller.commands.ResetSelectionCommand;
 import controller.commands.SelectCarCommand;
 import model.Car;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class SelectCarView extends SelectionView {
 
@@ -17,17 +17,22 @@ public class SelectCarView extends SelectionView {
     }
 
     @Override
-    protected List<String> getSelectionOptions() {
-        return resourceService.getAvailableCars().stream().map(Car::getDescription).collect(Collectors.toList());
-    }
-
-    @Override
-    protected Command getCommand() {
-        return new SelectCarCommand(resourceService);
-    }
-
-    @Override
     protected String getMessage() {
         return "Please select a car:";
+    }
+
+    @Override
+    protected List<Command> getCommands() {
+        List<Command> commands = new ArrayList<>();
+        ResetSelectionCommand command;
+
+        // Add an AddDecoratorCommand for each CarDecoratorType
+        for (Car car: resourceService.getAvailableCars()) {
+            SelectCarCommand selectCarCommand = new SelectCarCommand(car);
+            selectCarCommand.setReceiver(resourceService);
+            commands.add(selectCarCommand);
+        }
+
+        return commands;
     }
 }

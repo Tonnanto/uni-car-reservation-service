@@ -14,12 +14,6 @@ import java.util.Scanner;
 public abstract class SelectionView extends View {
 
     /**
-     * Override this method to define the selection options that the user can choose from.
-     * @return a list of available selection options
-     */
-    protected abstract List<String> getSelectionOptions();
-
-    /**
      * This method displays the view, reads the user input, and executes the given command.
      */
     @Override
@@ -27,26 +21,21 @@ public abstract class SelectionView extends View {
         // display view
         super.display();
 
-        List<String> selectionOptions = getSelectionOptions();
-
-        for (int i = 0; i < selectionOptions.size(); i++) {
-            System.out.printf("[%s] %s\n", i + 1, selectionOptions.get(i));
+        for (int i = 0; i < getCommands().size(); i++) {
+            System.out.printf("[%s] %s\n", i + 1, getCommands().get(i).getDescription());
         }
 
         // read user input
         int inputInteger = readIntInput();
 
-        Command command = getCommand();
-        if (command == null) return;
-
         // execute command
-        command.execute(inputInteger);
+        getCommands().get(inputInteger - 1).execute();
     }
 
     /**
-     * @return the command that should be executed on user input
+     * @return the commands the user can choose from
      */
-    protected abstract Command getCommand();
+    protected abstract List<Command> getCommands();
 
     /**
      * Reads an integer from the console.
@@ -58,7 +47,7 @@ public abstract class SelectionView extends View {
 
         System.out.print(inputPrefix);
         Scanner scanner = new Scanner(System.in);
-        int optionCount = getSelectionOptions().size();
+        int optionCount = getCommands().size();
 
         while(scanner.hasNext()) {
             if(!scanner.hasNextInt()) {

@@ -26,7 +26,7 @@ public abstract class StringInputView extends View {
         Command command = getCommand();
         if (command == null) return;
 
-        command.execute(inputString);
+        command.execute();
     }
 
     /**
