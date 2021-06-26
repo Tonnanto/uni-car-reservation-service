@@ -18,7 +18,7 @@ import java.util.List;
 public class ResourceService implements Observer {
 
     private final List<Car> availableCars;
-    private boolean isResourceSelected;
+    private boolean resourceSelected;
     private Resource resource;
 
     public ResourceService() {
@@ -40,7 +40,7 @@ public class ResourceService implements Observer {
      */
     public Resource getSelectedResource() {
 
-        while (!isResourceSelected) {
+        while (!resourceSelected) {
             if (resource == null) {
                 // select a car
                 new SelectCarView(this).display();
@@ -67,6 +67,10 @@ public class ResourceService implements Observer {
         return resource;
     }
 
+    public boolean isResourceSelected() {
+        return resourceSelected;
+    }
+
     public void selectCar(Car car) {
         car.addObserver(this);
         this.resource = car;
@@ -78,7 +82,7 @@ public class ResourceService implements Observer {
      */
     public void finishSelection() {
         if (resource == null) return;
-        isResourceSelected = true;
+        resourceSelected = true;
     }
 
     public void addDecorator(CarDecoratorType decoratorType) {
