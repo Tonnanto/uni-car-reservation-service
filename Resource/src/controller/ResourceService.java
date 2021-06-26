@@ -2,6 +2,9 @@ package controller;
 
 import model.Car;
 import model.Resource;
+import model.decorator.CarDecoratorType;
+import model.decorator.ChildSeat;
+import model.decorator.SetTopBox;
 import view.AddCarDecoratorView;
 import view.SelectCarView;
 import view.ShowSelectedResourceView;
@@ -64,17 +67,10 @@ public class ResourceService implements Observer {
         return resource;
     }
 
-    public void setResource(Resource resource) {
-        this.resource = resource;
-
-        if (resource == null) return;
-        resource.setChanged();
-    }
-
     public void selectCar(Car car) {
         car.addObserver(this);
         this.resource = car;
-        car.setChanged();
+        resource.setChanged();
     }
 
     /**
@@ -83,5 +79,20 @@ public class ResourceService implements Observer {
     public void finishSelection() {
         if (resource == null) return;
         isResourceSelected = true;
+    }
+
+    public void addDecorator(CarDecoratorType decoratorType) {
+        if (resource == null) return;
+
+        resource = switch (decoratorType) {
+            case CHILD_SEAT -> new ChildSeat(resource);
+            case SET_TOP_BOX -> new SetTopBox(resource);
+        };
+
+        resource.setChanged();
+    }
+
+    public void resetSelection() {
+        resource = null;
     }
 }

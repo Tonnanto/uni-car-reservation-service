@@ -3,7 +3,7 @@ package controller.commands;
 public class ResetSelectionCommand extends ResourceServiceCommand {
     @Override
     public void execute() {
-        receiver.setResource(null);
+        receiver.resetSelection();
     }
 
     @Override
