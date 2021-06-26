@@ -1,5 +1,7 @@
 package behaviour;
 
+import model.PaymentType;
+import model.Resource;
 import structure.Booking;
 
 public class BookingDirector {
@@ -17,7 +19,8 @@ public class BookingDirector {
      * create a new Booking with a text
      */
 
-    public void createBooking() {
+    public void createBooking(Resource resource, PaymentType paymentType) {
+        bookingBuilder.createNewBooking(resource, paymentType);
         bookingBuilder.buildHeader();
         bookingBuilder.buildBody();
         bookingBuilder.buildFooter();

@@ -13,11 +13,11 @@ public class BookingService {
 
     public Booking createBooking(Resource resource, PaymentType paymentType) {
 
-        BookingBuilder bookingBuilder = new GermanBookingBuilder(resource,paymentType);
+        BookingBuilder bookingBuilder = new GermanBookingBuilder();
         // TODO: Prompt user to select language
 
         BookingDirector bookingDirector = new BookingDirector(bookingBuilder);
-        bookingDirector.createBooking();
+        bookingDirector.createBooking(resource,paymentType);
         return bookingDirector.getBooking();
     }
 }

@@ -1,12 +1,6 @@
 package behaviour;
 
-import model.PaymentType;
-import model.Resource;
-
 public class GermanBookingBuilder extends BookingBuilder {
-    public GermanBookingBuilder(Resource resource, PaymentType paymentType) {
-        super(resource, paymentType);
-    }
 
     @Override
     public void buildHeader() {

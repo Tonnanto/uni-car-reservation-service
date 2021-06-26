@@ -7,7 +7,7 @@ import structure.Booking;
 public abstract class BookingBuilder {
     protected Booking booking;
 
-    public BookingBuilder(Resource resource, PaymentType paymentType) {
+    public void createNewBooking(Resource resource, PaymentType paymentType) {
         booking = new Booking(resource, paymentType);
     }
 
