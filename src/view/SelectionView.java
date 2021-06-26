@@ -2,8 +2,11 @@ package view;
 
 import controller.Command;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * This View allows the user to select between multiple options.
@@ -19,9 +22,13 @@ public abstract class SelectionView extends View {
     @Override
     public void display() {
         // display view
-        super.display();
+        System.out.println(separator);
+        System.out.println(getMessage());
 
         for (int i = 0; i < getCommands().size(); i++) {
+            if (i != 0 && i == getSelectionOptions().size())
+                System.out.println();
+
             System.out.printf("[%s] %s\n", i + 1, getCommands().get(i).getDescription());
         }
 
@@ -33,9 +40,26 @@ public abstract class SelectionView extends View {
     }
 
     /**
-     * @return the commands the user can choose from
+     * @return the selection options the user can choose from
      */
-    protected abstract List<Command> getCommands();
+    protected List<Command> getSelectionOptions() {
+        return new ArrayList<>();
+    }
+
+    /**
+     * @return the actions the user can choose from
+     */
+    protected List<Command> getActions() {
+        return new ArrayList<>();
+    }
+
+    /**
+     * Concatenates selection options and actions
+     * @return all commands available to the user.
+     */
+    protected List<Command> getCommands() {
+        return Stream.concat(getSelectionOptions().stream(), getActions().stream()).collect(Collectors.toList());
+    }
 
     /**
      * Reads an integer from the console.

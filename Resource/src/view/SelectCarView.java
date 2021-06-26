@@ -22,7 +22,7 @@ public class SelectCarView extends SelectionView {
     }
 
     @Override
-    protected List<Command> getCommands() {
+    protected List<Command> getSelectionOptions() {
         List<Command> commands = new ArrayList<>();
         ResetSelectionCommand command;
 
