@@ -10,20 +10,25 @@ import java.util.Scanner;
  */
 public abstract class StringInputView extends View {
 
+    private final static Character cancelCharacter = 'X';
+
     /**
      * This method displays the view, reads the user input, and executes the given command.
      */
     @Override
     public void display() {
         // display view
-        super.display();
+        System.out.println(separator);
+        if (getCancelCommand()!= null)
+            System.out.printf("[%s] %s\n", cancelCharacter, getCancelCommand().getDescription());
+        System.out.println(getMessage());
 
         // read user input
         String inputString = readStringInput();
+        if (inputString == null) return;
 
-        System.out.println("String entered: " + inputString);
         // execute command
-        Command command = getCommand();
+        Command command = getCommand(inputString);
         if (command == null) return;
 
         command.execute();
@@ -32,7 +37,15 @@ public abstract class StringInputView extends View {
     /**
      * @return the command that should be executed on user input
      */
-    protected abstract Command getCommand();
+    protected abstract Command getCommand(String inputString);
+
+    /**
+     * Override this method to decide if the user should have the option to cancel the input.
+     * @return the command that should be executed when the user cancels
+     */
+    protected Command getCancelCommand() {
+        return null;
+    }
 
     /**
      * Reads a String from the console.
@@ -48,6 +61,12 @@ public abstract class StringInputView extends View {
 
             String enteredString = scanner.nextLine();
 
+            // Cancel
+            if (getCancelCommand() != null && enteredString.equalsIgnoreCase(cancelCharacter.toString()))  {
+                getCancelCommand().execute();
+                break;
+            }
+
             if (enteredString.isEmpty() || !isValidString(enteredString)) {
                 // input String is not valid
                 System.out.println(getValidationMessage());
@@ -55,12 +74,12 @@ public abstract class StringInputView extends View {
                 continue;
             }
 
-            // input number is valid
+            // input String is valid
             return enteredString;
         }
 
-        // this return statement should never be reached. An empty String indicates an error
-        return "";
+        // this return statement should never be reached. null indicates an error
+        return null;
     }
 
     /**
