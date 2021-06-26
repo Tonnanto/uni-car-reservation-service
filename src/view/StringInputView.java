@@ -53,7 +53,7 @@ public abstract class StringInputView extends View {
      *
      * @return the selected integer value
      */
-    protected String readStringInput() {
+    private String readStringInput() {
         System.out.print(inputPrefix);
         Scanner scanner = new Scanner(System.in);
 

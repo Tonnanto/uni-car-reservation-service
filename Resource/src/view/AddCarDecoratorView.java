@@ -25,8 +25,9 @@ public class AddCarDecoratorView extends SelectionView {
     }
 
     @Override
-    protected List<Command> getSelectionOptions() {
+    protected List<Command> getCommands() {
         List<Command> commands = new ArrayList<>();
+        ResourceServiceCommand command;
 
         // Add an AddDecoratorCommand for each CarDecoratorType
         for (CarDecoratorType decoratorType: CarDecoratorType.values()) {
@@ -34,13 +35,8 @@ public class AddCarDecoratorView extends SelectionView {
             commands.add(decoratorCommand);
         }
 
-        return commands;
-    }
-
-    @Override
-    protected List<Command> getActions() {
-        List<Command> commands = new ArrayList<>();
-        ResourceServiceCommand command;
+        // Add empty line
+        commands.add(null);
 
         // Reset Selection Command
         command = new ResetSelectionCommand(resourceService);

@@ -22,7 +22,7 @@ public class SelectCarView extends SelectionView {
     }
 
     @Override
-    protected List<Command> getSelectionOptions() {
+    protected List<Command> getCommands() {
         List<Command> commands = new ArrayList<>();
 
         // Add an AddDecoratorCommand for each CarDecoratorType

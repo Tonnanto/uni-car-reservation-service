@@ -7,7 +7,7 @@ package view;
  */
 public abstract class View {
 
-    protected final static String separator = "----------------------------------------------------";
+    protected final static String separator = "\n----------------------------------------------------";
     protected final static String inputPrefix = ">>> ";
 
     /**
@@ -21,6 +21,5 @@ public abstract class View {
     public void display() {
         System.out.println(separator);
         System.out.println(getMessage());
-        System.out.println();
     }
 }
