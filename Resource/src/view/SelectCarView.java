@@ -1,7 +1,7 @@
 package view;
 
-import controller.*;
-import controller.commands.ResetSelectionCommand;
+import controller.Command;
+import controller.ResourceService;
 import controller.commands.SelectCarCommand;
 import model.Car;
 
@@ -24,12 +24,10 @@ public class SelectCarView extends SelectionView {
     @Override
     protected List<Command> getSelectionOptions() {
         List<Command> commands = new ArrayList<>();
-        ResetSelectionCommand command;
 
         // Add an AddDecoratorCommand for each CarDecoratorType
         for (Car car: resourceService.getAvailableCars()) {
-            SelectCarCommand selectCarCommand = new SelectCarCommand(car);
-            selectCarCommand.setReceiver(resourceService);
+            SelectCarCommand selectCarCommand = new SelectCarCommand(resourceService, car);
             commands.add(selectCarCommand);
         }
 

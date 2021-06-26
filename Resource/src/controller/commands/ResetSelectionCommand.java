@@ -1,6 +1,12 @@
 package controller.commands;
 
+import controller.ResourceService;
+
 public class ResetSelectionCommand extends ResourceServiceCommand {
+    public ResetSelectionCommand(ResourceService receiver) {
+        super(receiver);
+    }
+
     @Override
     public void execute() {
         receiver.resetSelection();

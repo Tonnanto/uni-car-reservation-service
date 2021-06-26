@@ -7,7 +7,7 @@ public abstract class ResourceServiceCommand implements Command {
 
     protected ResourceService receiver;
 
-    public void setReceiver(ResourceService receiver) {
+    public ResourceServiceCommand(ResourceService receiver) {
         this.receiver = receiver;
     }
 }

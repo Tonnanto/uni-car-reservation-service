@@ -1,6 +1,7 @@
 package view;
 
-import controller.*;
+import controller.Command;
+import controller.ResourceService;
 import controller.commands.AddDecoratorCommand;
 import controller.commands.FinishSelectionCommand;
 import controller.commands.ResetSelectionCommand;
@@ -29,8 +30,7 @@ public class AddCarDecoratorView extends SelectionView {
 
         // Add an AddDecoratorCommand for each CarDecoratorType
         for (CarDecoratorType decoratorType: CarDecoratorType.values()) {
-            AddDecoratorCommand decoratorCommand = new AddDecoratorCommand(decoratorType);
-            decoratorCommand.setReceiver(resourceService);
+            AddDecoratorCommand decoratorCommand = new AddDecoratorCommand(resourceService, decoratorType);
             commands.add(decoratorCommand);
         }
 
@@ -43,13 +43,11 @@ public class AddCarDecoratorView extends SelectionView {
         ResourceServiceCommand command;
 
         // Reset Selection Command
-        command = new ResetSelectionCommand();
-        command.setReceiver(resourceService);
+        command = new ResetSelectionCommand(resourceService);
         commands.add(command);
 
         // Finish Selection Command
-        command = new FinishSelectionCommand();
-        command.setReceiver(resourceService);
+        command = new FinishSelectionCommand(resourceService);
         commands.add(command);
 
         return commands;
