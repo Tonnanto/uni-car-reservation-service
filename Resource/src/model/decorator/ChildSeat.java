@@ -13,7 +13,7 @@ public class ChildSeat extends CarDecorator {
     }
 
     @Override
-    public String getDescription() {
-        return this.resource.getDescription() + "\n+ Child Seat";
+    public String getName() {
+        return CarDecoratorType.CHILD_SEAT.getName();
     }
 }

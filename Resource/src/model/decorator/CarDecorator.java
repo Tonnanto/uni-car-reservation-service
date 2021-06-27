@@ -2,17 +2,22 @@ package model.decorator;
 
 import model.Resource;
 
-public abstract class CarDecorator implements Resource {
+public abstract class CarDecorator extends Resource {
 
     protected final Resource resource;
 
     public CarDecorator(Resource resource) {
         this.resource = resource;
+        this.addObservers(resource.getObservers());
     }
 
     @Override
     public abstract double getPrice();
 
     @Override
-    public abstract String getDescription();
+    public String getDescription() {
+        return this.resource.getDescription() + "\n+ " + this.getName();
+    }
+
+    public abstract String getName();
 }

@@ -1,12 +1,13 @@
 package controller;
 
+import controller.commands.AddDecoratorCommand;
+import controller.commands.FinishSelectionCommand;
+import controller.commands.ResetSelectionCommand;
+import controller.commands.SelectCarCommand;
 import model.Car;
 import model.Resource;
-import model.decorator.ChildSeat;
-import model.decorator.SetTopBox;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import model.decorator.CarDecoratorType;
+import org.junit.jupiter.api.*;
 
 public class ResourceServiceTest {
 
@@ -19,26 +20,54 @@ public class ResourceServiceTest {
 
     @Test
     protected void canResourceBeSelected() {
+        // Selection and reset
+        canCarBeSelected();
+        canDecoratorsBeAdded();
+        canSelectionBeReset();
 
-        //TODO: adjust this test when the selection procedure is implemented (view)
-        Resource selectedResource = resourceService.getSelectedResource();
-        Assertions.assertEquals(50010.0, selectedResource.getPrice());
+        // Selection can not be finished, if no resource is selected.
+        canSelectionBeFinished();
+
+        // Standard selection procedure
+        canCarBeSelected();
+        canDecoratorsBeAdded();
+        canSelectionBeFinished();
     }
 
-    @Test
-    protected void canResourceBeCreated() {
-        Car car1 = new Car("Mercedes", 50000);
-        Assertions.assertEquals(50000, car1.getPrice());
-        Assertions.assertEquals(50030, new ChildSeat(car1).getPrice());
-        Assertions.assertEquals(50080, new SetTopBox(car1).getPrice());
-        Assertions.assertEquals(50110, new ChildSeat(new SetTopBox(car1)).getPrice());
-        Assertions.assertEquals(50270, new SetTopBox(new SetTopBox(new ChildSeat(new SetTopBox(car1)))).getPrice());
+    protected void canCarBeSelected() {
+        Car car = new Car("Audi", 35000);
+        new SelectCarCommand(resourceService, car).execute();
 
-        Car car2 = new Car("Opel", -500);
-        Assertions.assertEquals(-500, car2.getPrice());
-        Assertions.assertEquals(-470, new ChildSeat(car2).getPrice());
-        Assertions.assertEquals(-420, new SetTopBox(car2).getPrice());
-        Assertions.assertEquals(-390, new ChildSeat(new SetTopBox(car2)).getPrice());
-        Assertions.assertEquals(-230, new SetTopBox(new SetTopBox(new ChildSeat(new SetTopBox(car2)))).getPrice());
+        Resource selectedResource = resourceService.getResource();
+        Assertions.assertNotNull(selectedResource);
+        Assertions.assertEquals(selectedResource, car);
+    }
+
+    protected void canDecoratorsBeAdded() {
+        new AddDecoratorCommand(resourceService, CarDecoratorType.CHILD_SEAT).execute();
+        new AddDecoratorCommand(resourceService, CarDecoratorType.CHILD_SEAT).execute();
+        new AddDecoratorCommand(resourceService, CarDecoratorType.SET_TOP_BOX).execute();
+
+        Resource selectedResource = resourceService.getResource();
+        Assertions.assertNotNull(selectedResource);
+        Assertions.assertEquals(35140.0, selectedResource.getPrice());
+    }
+
+    protected void canSelectionBeReset() {
+        Assertions.assertNotNull(resourceService.getResource());
+        new ResetSelectionCommand(resourceService).execute();
+        Assertions.assertNull(resourceService.getResource());
+    }
+
+    protected void canSelectionBeFinished() {
+        Assertions.assertFalse(resourceService.isResourceSelected());
+
+        new FinishSelectionCommand(resourceService).execute();
+
+        if (resourceService.getResource() != null) {
+            Assertions.assertTrue(resourceService.isResourceSelected());
+        } else {
+            Assertions.assertFalse(resourceService.isResourceSelected());
+        }
     }
 }

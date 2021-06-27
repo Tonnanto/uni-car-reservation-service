@@ -1,6 +1,8 @@
 package model;
 
-public interface Resource {
-    double getPrice();
-    String getDescription();
+import controller.Observable;
+
+public abstract class Resource extends Observable {
+    public abstract double getPrice();
+    public abstract String getDescription();
 }

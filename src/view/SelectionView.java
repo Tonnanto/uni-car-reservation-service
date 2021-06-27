@@ -3,21 +3,16 @@ package view;
 import controller.Command;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 /**
- * This View allows the user to select between multiple options.
- * A message and multiple selection options will be displayed.
- * The user can select one of the options by entering the desired number into the console.
- * The selected number can be handed to a command.
+ * This View allows the user to select between multiple commands.
+ * A message and multiple commands will be displayed.
+ * The user can execute one of the commands by entering the desired number into the console.
  */
 public abstract class SelectionView extends View {
-
-    /**
-     * Override this method to define the selection options that the user can choose from.
-     * @return a list of available selection options
-     */
-    protected abstract List<String> getSelectionOptions();
 
     /**
      * This method displays the view, reads the user input, and executes the given command.
@@ -25,28 +20,33 @@ public abstract class SelectionView extends View {
     @Override
     public void display() {
         // display view
-        super.display();
+        System.out.println(separator);
+        System.out.println(getMessage());
 
-        List<String> selectionOptions = getSelectionOptions();
+        int commandNumber = 1;
+        for (Command command: getCommands()) {
+            if (command == null) {
+                System.out.println();
+                continue;
+            }
 
-        for (int i = 0; i < selectionOptions.size(); i++) {
-            System.out.printf("[%s] %s\n", i + 1, selectionOptions.get(i));
+            System.out.printf("[%s] %s\n", commandNumber++, command.getDescription());
         }
 
         // read user input
         int inputInteger = readIntInput();
 
-        Command command = getCommand();
-        if (command == null) return;
-
         // execute command
-        command.execute(inputInteger);
+        getFilteredCommands().get(inputInteger - 1).execute();
     }
 
     /**
-     * @return the command that should be executed on user input
+     * Override this method to decide which commands should be available to the user when this view gets displayed.
+     * Add null to the list to add an empty line between commands.
+     *
+     * @return the list of commands that the view will display
      */
-    protected abstract Command getCommand();
+    protected abstract List<Command> getCommands();
 
     /**
      * Reads an integer from the console.
@@ -54,11 +54,11 @@ public abstract class SelectionView extends View {
      *
      * @return the selected integer value
      */
-    protected int readIntInput() {
+    private int readIntInput() {
 
         System.out.print(inputPrefix);
         Scanner scanner = new Scanner(System.in);
-        int optionCount = getSelectionOptions().size();
+        long optionCount = getFilteredCommands().size();
 
         while(scanner.hasNext()) {
             if(!scanner.hasNextInt()) {
@@ -84,5 +84,12 @@ public abstract class SelectionView extends View {
 
         // this return statement should never be reached. -1 indicates an error
         return -1;
+    }
+
+    /**
+     * Filters null Objects from getCommands()
+     */
+    private List<Command> getFilteredCommands() {
+        return getCommands().stream().filter(Objects::nonNull).collect(Collectors.toList());
     }
 }
