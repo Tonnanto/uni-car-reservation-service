@@ -28,14 +28,9 @@ public class ResourceService implements Observer {
         );
     }
 
-    // TODO: temporary method
-    public static void main(String[] args) {
-        ResourceService resourceService = new ResourceService();
-        resourceService.getSelectedResource();
-    }
-
     /**
      * Creates and returns a resource according to the selections of a user.
+     * Different Views are being displayed in order to receive user input.
      * @return the selected resource
      */
     public Resource getSelectedResource() {
@@ -54,10 +49,18 @@ public class ResourceService implements Observer {
         return resource;
     }
 
+    /**
+     * Is being called whenever the associated Observables call .setChanged()
+     * @param object the object that changed
+     */
     @Override
     public void update(Object object) {
         new ShowSelectedResourceView(this).display();
     }
+
+    //================================================================================
+    // Accessors
+    //================================================================================
 
     public List<Car> getAvailableCars() {
         return availableCars;
@@ -71,18 +74,17 @@ public class ResourceService implements Observer {
         return resourceSelected;
     }
 
-    public void selectCar(Car car) {
-        car.addObserver(this);
-        this.resource = car;
-        resource.setChanged();
-    }
+    //================================================================================
+    // The following methods are being called by their corresponding commands.
+    //================================================================================
 
-    /**
-     * This method is being called, when the user decides to finish the selection.
-     */
-    public void finishSelection() {
-        if (resource == null) return;
-        resourceSelected = true;
+    public void selectCar(Car car) {
+        this.resource = car;
+
+        if (car != null) {
+            resource.addObserver(this);
+            resource.setChanged();
+        }
     }
 
     public void addDecorator(CarDecoratorType decoratorType) {
@@ -98,5 +100,10 @@ public class ResourceService implements Observer {
 
     public void resetSelection() {
         resource = null;
+    }
+
+    public void finishSelection() {
+        if (resource == null) return;
+        resourceSelected = true;
     }
 }

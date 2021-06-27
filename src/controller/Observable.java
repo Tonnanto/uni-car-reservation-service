@@ -18,6 +18,9 @@ public class Observable {
         return this.observers;
     }
 
+    /**
+     * should be called to notify observers
+     */
     public void setChanged() {
         this.notifyObservers();
     }
