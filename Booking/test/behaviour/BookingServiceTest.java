@@ -20,10 +20,9 @@ class BookingServiceTest {
     void canBookingBeCreated() {
 
         Resource resource = new Car("Benz", 200);
-        PaymentService paymentService = new PaymentService();
-        paymentService.payAmount(new CurrencyAmount(500, Currency.EURO));
+        Payment payment = new PayPalPayment(new CurrencyAmount(200, Currency.EURO));
 
-        Booking booking = bookingService.createBooking(resource, paymentService.getPaymentType());
+        Booking booking = bookingService.createBooking(resource, payment);
 
         Assertions.assertNotNull(booking);
         Assertions.assertNotNull(booking.getHeader());

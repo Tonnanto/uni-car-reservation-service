@@ -1,6 +1,6 @@
 package structure;
 
-import model.PaymentType;
+import model.Payment;
 import model.Resource;
 
 public class Booking {
@@ -8,11 +8,11 @@ public class Booking {
     private String body;
     private String footer;
     private Resource resource;
-    private PaymentType paymentType;
+    private Payment payment;
 
-    public Booking(Resource resource, PaymentType paymentType) {
+    public Booking(Resource resource, Payment payment) {
         this.resource = resource;
-        this.paymentType = paymentType;
+        this.payment = payment;
     }
 
     public void setHeader(String buildHeader) {
@@ -47,11 +47,11 @@ public class Booking {
         this.resource = resource;
     }
 
-    public PaymentType getPaymentType() {
-        return paymentType;
+    public Payment getPayment() {
+        return payment;
     }
 
-    public void setPaymentType(PaymentType paymentType) {
-        this.paymentType = paymentType;
+    public void setPayment(Payment payment) {
+        this.payment = payment;
     }
 }
