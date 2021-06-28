@@ -1,27 +1,83 @@
 package controller;
 
-import model.LegalPerson;
-import model.NaturalPerson;
 import model.Person;
 import model.PersonType;
+import view.ConfirmSelectionView;
+import view.EnterEmailView;
+import view.EnterNameView;
+import view.SelectPersonTypeView;
 
-public class PersonService {
+import java.util.List;
 
-    private static int personCount = 0;
+/**
+ * Manages the selection process and the creation of a resource (car).
+ */
+public class PersonService implements Observer {
 
-    public Person createPerson(PersonType personType) {
 
-        String name = "Name";
-        //TODO prompt user to enter name
+    private boolean personCreated;
+    private Person person;
 
-        return switch (personType) {
-            case NATURAL_PERSON -> new NaturalPerson(name, ++personCount);
-            case LEGAL_PERSON -> new LegalPerson(name, ++personCount);
-        };
+
+    public static void main(String[] args) {
+        new PersonService().createPerson();
+    }
+
+    /**
+     * Creates and returns a resource according to the selections of a user.
+     * Different Views are being displayed in order to receive user input.
+     *
+     * @return the selected resource
+     */
+
+    public Person createPerson() {
+
+        while (!personCreated) {
+//TODO Comments
+            if (person == null) {
+                new SelectPersonTypeView(this).display();
+                continue;
+            }
+            if (person.getName() == null || person.getName().isEmpty()) {
+                new EnterNameView(this).display();
+                continue;
+            }
+            if (person.getEmail() == null || person.getEmail().isEmpty()) {
+                new EnterEmailView(this).display();
+                continue;
+            }
+
+            new ConfirmSelectionView(this).display();
+
+        }
+
+        return person;
+    }
+
+    /**
+     * Is being called whenever the associated Observables call .setChanged()
+     *
+     * @param object the object that changed
+     */
+    @Override
+    public void update(Object object) {
 
     }
 
-    public static int getPersonCount() {
-        return personCount;
+
+
+    //================================================================================
+    // Accessors
+    //================================================================================
+
+
+    //================================================================================
+    // The following methods are being called by their corresponding commands.
+    //================================================================================
+
+    public void setName(String name) {
+    }
+
+    public void selectPersonType(PersonType personType) {
     }
 }
