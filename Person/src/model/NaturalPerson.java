@@ -8,8 +8,7 @@ public class NaturalPerson implements Person, Subject {
     private int id;
     private String email;
 
-    public NaturalPerson(String name, int id) {
-        this.name = name;
+    public NaturalPerson(int id) {
         this.id = id;
     }
 

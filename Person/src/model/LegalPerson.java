@@ -6,8 +6,7 @@ public class LegalPerson implements Person {
     private int id;
     private String email;
 
-    public LegalPerson(String name, int id) {
-        this.name = name;
+    public LegalPerson(int id) {
         this.id = id;
     }
 

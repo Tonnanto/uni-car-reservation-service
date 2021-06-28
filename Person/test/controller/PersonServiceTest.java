@@ -22,5 +22,4 @@ public class PersonServiceTest {
 
         Assertions.assertEquals(2, PersonFactory.getPersonCount());
     }
-
 }
