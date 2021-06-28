@@ -1,7 +1,5 @@
 package model;
 
-import structure.Subject;
-
 public class NaturalPerson implements Person, Subject {
 
     private String name;
