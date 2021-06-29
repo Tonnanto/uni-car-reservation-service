@@ -10,4 +10,9 @@ public class GoogleWalletPayment extends Payment {
     public boolean payAmount() {
         return true;
     }
+
+    @Override
+    public PaymentType getPaymentType() {
+        return PaymentType.GOOGLE_WALLET;
+    }
 }

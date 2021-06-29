@@ -11,4 +11,8 @@ public class Account {
         this.ownerName = ownerName;
         this.address = address;
     }
+
+    public String getAddress() {
+        return address;
+    }
 }
