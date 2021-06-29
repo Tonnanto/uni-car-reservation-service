@@ -26,7 +26,7 @@ public class PaymentServiceTest {
 
         CurrencyAmount amount = new CurrencyAmount(300, Currency.EURO);
 
-        Assertions.assertTrue(paymentService.payAmount(amount));
+        Assertions.assertNotNull(paymentService.payAmount(amount));
 
     }
 
@@ -35,10 +35,10 @@ public class PaymentServiceTest {
         CurrencyAmount amount;
 
         amount = new CurrencyAmount(-300, Currency.EURO);
-        Assertions.assertFalse(paymentService.payAmount(amount));
+        Assertions.assertNull(paymentService.payAmount(amount));
 
         amount = new CurrencyAmount(0, Currency.EURO);
-        Assertions.assertFalse(paymentService.payAmount(amount));
+        Assertions.assertNull(paymentService.payAmount(amount));
     }
 
 

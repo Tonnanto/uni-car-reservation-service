@@ -1,8 +1,23 @@
 package controller;
 
 import model.*;
+import view.ConfirmPaymentView;
+import view.EnterPasswordView;
+import view.EnterUsernameView;
+import view.SelectPaymentTypeView;
 
-public class PaymentService {
+public class PaymentService implements Observer {
+
+    private Payment payment;
+    private String username;
+    private String password;
+    private CurrencyAmount currencyAmount;
+    private boolean userAuthenticated;
+    private boolean amountPayed;
+
+    public static void main(String[] args) {
+        new PaymentService().payAmount(new CurrencyAmount(100, Currency.EURO));
+    }
 
     /**
      * UseCase: "payAmount"
@@ -17,51 +32,52 @@ public class PaymentService {
      * @param amount the CurrencyAmount that is being payed
      * @return whether the payment was successful
      */
-    public boolean payAmount(CurrencyAmount amount) {
+    public Payment payAmount(CurrencyAmount amount) {
+        this.currencyAmount = amount;
 
         if (amount.getAmount() <= 0) {
             // TODO: Show appropriate Error Message
-            return false;
+            return null;
         }
 
-        PaymentType paymentType = null;
-        Payment payment = null;
+        while (!amountPayed || payment == null) {
+            if (payment == null) {
+                new SelectPaymentTypeView().display();
+                continue;
+            }
 
-        // TODO: Prompt customer to choose PaymentType
+            // PaymentType is selected
+            if (!userAuthenticated) {
+                if (username == null || username.isEmpty()) {
+                    new EnterUsernameView().display();
+                    continue;
+                }
+                if (password == null || password.isEmpty()) {
+                    new EnterPasswordView().display();
+                    continue;
+                }
+            }
 
-        if (paymentType == null) {
-            // TODO: Show appropriate Error Message
-            return false;
+            // User is authenticated to the payment provider
+            new ConfirmPaymentView().display();
         }
 
-        // create payment
-        payment = switch (paymentType) {
-            case PAYPAL -> new PayPalPayment(amount);
-            case GOOGLE_WALLET -> new GoogleWalletPayment(amount);
-            case MONEY_WALLET -> new MoneyWalletPayment(amount);
-        };
-        payment.setReceiverAccount(getReceiverAccount());
-
-        // TODO: Prompt customer to enter credentials for PaymentType
-        String userName = "";
-        String password = "";
-
-        // 1. authorize customer
-        boolean isUserAuthorized = payment.authorizeCustomer(userName, password);
-
-        // TODO: Show user authorization status
-        // TODO: (maybe) prompt final payment confirmation from user
-
-        // 2. pay amount
-        boolean isAmountPayed = payment.payAmount();
-
-        // 3. create confirmation
-        String confirmation = payment.createConfirmation(isAmountPayed);
-
-        // TODO: Show confirmation to customer
-
-        return isAmountPayed;
+        return payment;
     }
+
+    /**
+     * This method being called whenever the associated Observables call .setChanged()
+     * @param object the object that changed
+     */
+    @Override
+    public void update(Object object) {
+
+    }
+
+
+    //================================================================================
+    // Accessors
+    //================================================================================
 
     /**
      * Gets the account of the Car Reservation Service GmbH.
@@ -73,4 +89,41 @@ public class PaymentService {
         return new Account(ownerName, address);
     }
 
+    //================================================================================
+    // The following methods are being called by their corresponding commands.
+    //================================================================================
+
+    public void selectPaymentType(PaymentType paymentType) {
+        switch (paymentType) {
+            case PAYPAL -> this.payment = new PayPalPayment(currencyAmount);
+            case GOOGLE_WALLET -> this.payment = new GoogleWalletPayment(currencyAmount);
+            case MONEY_WALLET -> this.payment = new MoneyWalletPayment(currencyAmount);
+        }
+
+        // TODO add Observer to payment
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+
+        // TODO: Trigger authentication
+    }
+
+    public void confirmPayment() {
+        if (payment == null || !userAuthenticated) return;
+        amountPayed = payment.payAmount();
+
+        // TODO: Notify Observers
+    }
+
+    public void cancelPayment() {
+        payment = null;
+        username = null;
+        password = null;
+        userAuthenticated = false;
+    }
 }
