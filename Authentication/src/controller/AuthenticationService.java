@@ -5,9 +5,11 @@ import view.EnterPasswordView;
 import view.EnterUserNameView;
 import view.SelectCredentialView;
 
-public class AuthenticationService {
+public class AuthenticationService implements Observer{
 
     private Credential credential;
+
+    private boolean isSubjectAuthenticated;
 
     public Credential getCredential() {
         return credential;
@@ -39,5 +41,10 @@ public class AuthenticationService {
         new SelectCredentialView(this).display();
 
         return credential.authenticate(subject);
+    }
+
+    @Override
+    public void update(Object object) {
+
     }
 }

@@ -1,6 +1,6 @@
 package model;
 
-public class UserNamePasswordStrategy implements Credential{
+public class UserNamePasswordStrategy extends Credential{
 
     private String username;
     private String password;

@@ -1,5 +1,7 @@
 package model;
 
-public interface Credential {
-    boolean authenticate(Subject subject);
+import controller.Observable;
+
+public abstract class Credential extends Observable {
+   public abstract boolean authenticate(Subject subject);
 }
