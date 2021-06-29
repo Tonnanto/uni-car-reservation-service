@@ -9,11 +9,11 @@ public class ConfirmPaymentCommand extends PaymentServiceCommand {
 
     @Override
     public void execute() {
-
+        receiver.confirmPayment();
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return "Confirm Payment";
     }
 }

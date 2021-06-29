@@ -9,11 +9,11 @@ public class CancelPaymentCommand extends PaymentServiceCommand {
 
     @Override
     public void execute() {
-
+        receiver.cancelPayment();
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return "Cancel Payment";
     }
 }

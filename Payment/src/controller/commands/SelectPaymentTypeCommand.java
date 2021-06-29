@@ -1,19 +1,23 @@
 package controller.commands;
 
 import controller.PaymentService;
+import model.PaymentType;
 
 public class SelectPaymentTypeCommand extends PaymentServiceCommand {
-    public SelectPaymentTypeCommand(PaymentService receiver) {
+    private final PaymentType paymentType;
+
+    public SelectPaymentTypeCommand(PaymentService receiver, PaymentType paymentType) {
         super(receiver);
+        this.paymentType = paymentType;
     }
 
     @Override
     public void execute() {
-
+        receiver.selectPaymentType(paymentType);
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return paymentType.toString();
     }
 }
