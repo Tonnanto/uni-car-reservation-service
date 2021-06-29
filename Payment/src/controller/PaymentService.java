@@ -1,10 +1,7 @@
 package controller;
 
 import model.*;
-import view.ConfirmPaymentView;
-import view.EnterPasswordView;
-import view.EnterUsernameView;
-import view.SelectPaymentTypeView;
+import view.*;
 
 public class PaymentService implements Observer {
 
@@ -15,6 +12,7 @@ public class PaymentService implements Observer {
     private boolean userAuthenticated;
     private boolean amountPayed;
 
+    // TODO: temporary method
     public static void main(String[] args) {
         new PaymentService().payAmount(new CurrencyAmount(100, Currency.EURO));
     }
@@ -40,27 +38,32 @@ public class PaymentService implements Observer {
             return null;
         }
 
+        new ShowPaymentDetailsView(this).display();
+
         while (!amountPayed || payment == null) {
             if (payment == null) {
-                new SelectPaymentTypeView().display();
+                new SelectPaymentTypeView(this).display();
                 continue;
             }
 
             // PaymentType is selected
             if (!userAuthenticated) {
                 if (username == null || username.isEmpty()) {
-                    new EnterUsernameView().display();
+                    new EnterUsernameView(this).display();
                     continue;
                 }
                 if (password == null || password.isEmpty()) {
-                    new EnterPasswordView().display();
+                    new EnterPasswordView(this).display();
                     continue;
                 }
+                password = null; // if this line is being reached the user should be prompted to re-enter his password next
             }
 
             // User is authenticated to the payment provider
-            new ConfirmPaymentView().display();
+            new ConfirmPaymentView(this).display();
         }
+
+        new ShowConfirmationView(this).display();
 
         return payment;
     }
@@ -71,7 +74,7 @@ public class PaymentService implements Observer {
      */
     @Override
     public void update(Object object) {
-
+        new ShowPaymentDetailsView(this).display();
     }
 
 
@@ -89,6 +92,26 @@ public class PaymentService implements Observer {
         return new Account(ownerName, address);
     }
 
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public CurrencyAmount getCurrencyAmount() {
+        return currencyAmount;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public boolean isUserAuthenticated() {
+        return userAuthenticated;
+    }
+
+    public boolean isAmountPayed() {
+        return amountPayed;
+    }
+
     //================================================================================
     // The following methods are being called by their corresponding commands.
     //================================================================================
@@ -100,7 +123,9 @@ public class PaymentService implements Observer {
             case MONEY_WALLET -> this.payment = new MoneyWalletPayment(currencyAmount);
         }
 
-        // TODO add Observer to payment
+        payment.setReceiverAccount(getReceiverAccount());
+        payment.addObserver(this);
+        payment.setChanged();
     }
 
     public void setUsername(String username) {
@@ -108,16 +133,22 @@ public class PaymentService implements Observer {
     }
 
     public void setPassword(String password) {
-        this.password = password;
 
-        // TODO: Trigger authentication
+        userAuthenticated = this.payment.authenticateCustomer(username, password);
+
+        new ShowAuthenticationStatusView(this).display();
+
+        if (userAuthenticated) {
+            this.password = password;
+            payment.setChanged();
+        }
     }
 
     public void confirmPayment() {
         if (payment == null || !userAuthenticated) return;
         amountPayed = payment.payAmount();
 
-        // TODO: Notify Observers
+        payment.setChanged();
     }
 
     public void cancelPayment() {
