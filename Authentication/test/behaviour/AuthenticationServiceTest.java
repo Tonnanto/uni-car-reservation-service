@@ -17,7 +17,7 @@ public class AuthenticationServiceTest {
 
     @BeforeEach
     void setUp() {
-        authenticationService = new AuthenticationService();
+
 
 
     }
@@ -27,8 +27,8 @@ public class AuthenticationServiceTest {
 
         PersonService personService = new PersonService();
         subject = (Subject) personService.createPerson(PersonType.NATURAL_PERSON);
-
-        authenticationService.authenticateSubject(subject);
+        authenticationService = new AuthenticationService(subject);
+        authenticationService.authenticateSubject();
     }
 
 }

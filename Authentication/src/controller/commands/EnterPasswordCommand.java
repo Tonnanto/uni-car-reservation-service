@@ -15,10 +15,11 @@ public class EnterPasswordCommand extends AuthenticationServiceCommand{
     @Override
     public void execute() {
         receiver.setPassword(password);
+        receiver.authenticateSubject();
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return password;
     }
 }

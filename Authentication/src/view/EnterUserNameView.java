@@ -8,11 +8,9 @@ import model.UserNamePasswordStrategy;
 public class EnterUserNameView extends StringInputView{
 
     private final AuthenticationService authenticationService;
-    private final UserNamePasswordStrategy credential;
 
-    public EnterUserNameView(AuthenticationService authenticationService, UserNamePasswordStrategy credential) {
+    public EnterUserNameView(AuthenticationService authenticationService) {
         this.authenticationService = authenticationService;
-        this.credential = credential;
     }
 
     @Override

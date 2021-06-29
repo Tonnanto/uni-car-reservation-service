@@ -2,6 +2,7 @@ package view;
 
 import controller.AuthenticationService;
 import controller.Command;
+import controller.commands.EnterFingerCommand;
 
 public class EnterFingerView extends StringInputView {
 
@@ -13,7 +14,7 @@ public class EnterFingerView extends StringInputView {
 
     @Override
     protected Command getCommand(String inputString) {
-        return null;
+        return new EnterFingerCommand(authenticationService);
     }
 
     @Override

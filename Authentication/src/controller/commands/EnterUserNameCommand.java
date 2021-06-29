@@ -1,7 +1,6 @@
 package controller.commands;
 
 import controller.AuthenticationService;
-import model.UserNamePasswordStrategy;
 
 public class EnterUserNameCommand extends AuthenticationServiceCommand {
 
@@ -19,6 +18,6 @@ public class EnterUserNameCommand extends AuthenticationServiceCommand {
 
     @Override
     public String getDescription() {
-        return null;
+        return username;
     }
 }

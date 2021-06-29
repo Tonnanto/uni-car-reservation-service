@@ -2,6 +2,7 @@ package view;
 
 import controller.AuthenticationService;
 import controller.Command;
+import controller.commands.EnterEyeCommand;
 
 public class EnterEyeView extends StringInputView{
 
@@ -13,7 +14,7 @@ public class EnterEyeView extends StringInputView{
 
     @Override
     protected Command getCommand(String inputString) {
-        return null;
+        return new EnterEyeCommand(authenticationService);
     }
 
     @Override
