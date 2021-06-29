@@ -17,7 +17,7 @@ public class EnterUserNameView extends StringInputView{
 
     @Override
     protected Command getCommand(String inputString) {
-        return new EnterUserNameCommand(authenticationService, inputString, credential);
+        return new EnterUserNameCommand(authenticationService, inputString);
     }
 
     @Override

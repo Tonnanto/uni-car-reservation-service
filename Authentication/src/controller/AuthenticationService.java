@@ -5,7 +5,7 @@ import view.EnterPasswordView;
 import view.EnterUserNameView;
 import view.SelectCredentialView;
 
-public class AuthenticationService implements Observer{
+public class AuthenticationService implements Observer {
 
     private Credential credential;
 
@@ -41,6 +41,18 @@ public class AuthenticationService implements Observer{
         new SelectCredentialView(this).display();
 
         return credential.authenticate(subject);
+    }
+
+    public void setUsername(String username) {
+        if (credential instanceof UserNamePasswordStrategy) {
+            ((UserNamePasswordStrategy) credential).setUsername(username);
+        }
+    }
+
+    public void setPassword(String password) {
+        if (credential instanceof UserNamePasswordStrategy) {
+            ((UserNamePasswordStrategy) credential).setPassword(password);
+        }
     }
 
     @Override

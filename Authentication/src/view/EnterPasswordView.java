@@ -17,7 +17,7 @@ public class EnterPasswordView extends StringInputView{
 
     @Override
     protected Command getCommand(String inputString) {
-        return new EnterPasswordCommand(authenticationService, inputString, credential);
+        return new EnterPasswordCommand(authenticationService, inputString);
     }
 
     @Override

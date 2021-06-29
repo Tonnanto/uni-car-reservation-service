@@ -6,21 +6,19 @@ import model.UserNamePasswordStrategy;
 public class EnterPasswordCommand extends AuthenticationServiceCommand{
 
     private final String password;
-    private final UserNamePasswordStrategy credential;
 
-    public EnterPasswordCommand(AuthenticationService authenticationService, String password, UserNamePasswordStrategy credential) {
+    public EnterPasswordCommand(AuthenticationService authenticationService, String password) {
         super(authenticationService);
         this.password = password;
-        this.credential = credential;
     }
 
     @Override
     public void execute() {
-        credential.setPassword(password);
+        receiver.setPassword(password);
     }
 
     @Override
     public String getDescription() {
-        return credential.getPassword();
+        return null;
     }
 }
