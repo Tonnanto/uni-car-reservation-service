@@ -9,7 +9,7 @@ public class AuthenticationService implements Observer {
     private Subject subject;
     private boolean isSubjectAuthenticated = false;
 
-    public AuthenticationService(Subject subject){
+    public AuthenticationService(Subject subject) {
         this.subject = subject;
     }
 
@@ -51,21 +51,29 @@ public class AuthenticationService implements Observer {
 
     @Override
     public void update(Object object) {
-        credential = (Credential) object;
+
+        if (object instanceof Credential)
+            credential = (Credential) object;
+
+        if (!isSubjectAuthenticated) return;
         if (credential == null) {
             new SelectCredentialView(this).display();
         }
         if (credential instanceof UserNamePasswordStrategy && ((UserNamePasswordStrategy) credential).getUsername() == null) {
             new EnterUserNameView(this).display();
+            return;
         }
         if (credential instanceof UserNamePasswordStrategy && ((UserNamePasswordStrategy) credential).getPassword() == null) {
             new EnterPasswordView(this).display();
+            return;
         }
-        if (credential instanceof FingerPrintStrategy && !isSubjectAuthenticated) {
+        if (credential instanceof FingerPrintStrategy) {
             new EnterFingerView(this).display();
+            return;
         }
-        if (credential instanceof EyeScanStrategy && !isSubjectAuthenticated) {
+        if (credential instanceof EyeScanStrategy) {
             new EnterEyeView(this).display();
+            return;
         }
     }
 
