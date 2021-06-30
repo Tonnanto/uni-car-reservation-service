@@ -29,12 +29,12 @@ public class AuthenticationService implements Observer {
 
     /**
      * Authenticate a person or system with the credential they choose
-     *
-     * @return successful or unsuccessful authentication
      */
 
-    public boolean authenticateSubject() {
-        return isSubjectAuthenticated = credential.authenticate(subject);
+    public void authenticateSubject() {
+        update(credential);
+        new ShowLoginStatusView(this).display();
+        new AuthenticationServiceView(this).display();
     }
 
     public void setUsername(String username) {
@@ -55,9 +55,13 @@ public class AuthenticationService implements Observer {
         if (object instanceof Credential)
             credential = (Credential) object;
 
-        if (!isSubjectAuthenticated) return;
+        if (isSubjectAuthenticated) {
+            new ShowLoginStatusView(this).display();
+            return;
+        }
         if (credential == null) {
             new SelectCredentialView(this).display();
+            return;
         }
         if (credential instanceof UserNamePasswordStrategy && ((UserNamePasswordStrategy) credential).getUsername() == null) {
             new EnterUserNameView(this).display();
@@ -73,11 +77,21 @@ public class AuthenticationService implements Observer {
         }
         if (credential instanceof EyeScanStrategy) {
             new EnterEyeView(this).display();
-            return;
         }
     }
 
-    public boolean isSubjectAuthenticated() {  //Todo temporär zum testen
+    public boolean isSubjectAuthenticated() {
         return isSubjectAuthenticated;
+    }
+
+    public void logout(){
+        credential = null;
+        isSubjectAuthenticated = false;
+        new LogOutView().display();
+        new AuthenticationServiceView(this).display();
+    }
+
+    public void setSubjectAuthenticated() {
+        isSubjectAuthenticated = credential.authenticate(subject);
     }
 }

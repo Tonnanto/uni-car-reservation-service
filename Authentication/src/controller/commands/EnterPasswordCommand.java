@@ -15,7 +15,7 @@ public class EnterPasswordCommand extends AuthenticationServiceCommand{
     @Override
     public void execute() {
         receiver.setPassword(password);
-        receiver.authenticateSubject();
+        receiver.setSubjectAuthenticated();
     }
 
     @Override

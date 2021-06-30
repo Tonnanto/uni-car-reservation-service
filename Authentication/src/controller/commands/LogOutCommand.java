@@ -2,19 +2,19 @@ package controller.commands;
 
 import controller.AuthenticationService;
 
-public class EnterFingerCommand extends AuthenticationServiceCommand{
+public class LogOutCommand extends AuthenticationServiceCommand {
 
-    public EnterFingerCommand(AuthenticationService authenticationService) {
+    public LogOutCommand(AuthenticationService authenticationService) {
         super(authenticationService);
     }
 
     @Override
     public void execute() {
-        receiver.setSubjectAuthenticated();
+        receiver.logout();
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return "Logout";
     }
 }

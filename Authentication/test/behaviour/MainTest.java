@@ -4,6 +4,7 @@ import controller.AuthenticationService;
 import controller.PersonService;
 import model.PersonType;
 import model.Subject;
+import view.AuthenticationServiceView;
 
 public class MainTest {
 
@@ -14,10 +15,6 @@ public class MainTest {
 
         AuthenticationService authenticationService = new AuthenticationService(subject);
 
-        authenticationService.update(null);
-
-        if (authenticationService.isSubjectAuthenticated()){
-            System.out.println("Erfolgreicher Login");
-        }
+        new AuthenticationServiceView(authenticationService).display();
     }
 }
