@@ -67,7 +67,7 @@ public abstract class StringInputView extends View {
                 break;
             }
 
-            if (enteredString.isEmpty() || !isValidString(enteredString)) {
+            if (!isValidString(enteredString)) {
                 // input String is not valid
                 System.out.println(getValidationMessage());
                 System.out.print(inputPrefix);
@@ -90,7 +90,7 @@ public abstract class StringInputView extends View {
      * @return whether the String is valid
      */
     protected boolean isValidString(String s) {
-        return true;
+        return !s.isEmpty();
     }
 
     /**
