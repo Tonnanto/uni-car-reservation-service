@@ -1,11 +1,19 @@
 package structure;
 
+import model.Payment;
+import model.Resource;
+
 public class Booking {
     private String header;
     private String body;
     private String footer;
-//    private Resource resource;    TODO implement Recourse & Payment
-//    private PaymentType paymentType;
+    private Resource resource;
+    private Payment payment;
+
+    public Booking(Resource resource, Payment payment) {
+        this.resource = resource;
+        this.payment = payment;
+    }
 
     public void setHeader(String buildHeader) {
         this.header = buildHeader;
@@ -29,5 +37,21 @@ public class Booking {
 
     public String getFooter() {
         return footer;
+    }
+
+    public Resource getResource() {
+        return resource;
+    }
+
+    public void setResource(Resource resource) {
+        this.resource = resource;
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
     }
 }

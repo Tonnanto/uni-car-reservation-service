@@ -1,5 +1,8 @@
 package behaviour;
 
+import controller.PaymentService;
+import controller.ResourceService;
+import model.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -16,7 +19,10 @@ class BookingServiceTest {
     @Test
     void canBookingBeCreated() {
 
-        Booking booking = bookingService.createBooking();
+        Resource resource = new Car("Benz", 200);
+        Payment payment = new PayPalPayment(new CurrencyAmount(200, Currency.EURO));
+
+        Booking booking = bookingService.createBooking(resource, payment);
 
         Assertions.assertNotNull(booking);
         Assertions.assertNotNull(booking.getHeader());
