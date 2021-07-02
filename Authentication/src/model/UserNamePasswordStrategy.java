@@ -2,7 +2,7 @@ package model;
 
 import controller.AuthenticationService;
 
-public class UserNamePasswordStrategy extends Credential{
+public class UserNamePasswordStrategy extends Credential {
 
     private String username;
     private String password;

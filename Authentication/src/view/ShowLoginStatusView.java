@@ -2,7 +2,7 @@ package view;
 
 import controller.AuthenticationService;
 
-public class ShowLoginStatusView extends View{
+public class ShowLoginStatusView extends View {
 
     public final AuthenticationService authenticationService;
 
@@ -13,7 +13,7 @@ public class ShowLoginStatusView extends View{
     @Override
     protected String getMessage() {
         if (authenticationService.isSubjectAuthenticated())
-        return "You are successfully logged in!";
+            return "You are successfully logged in!";
         else return "You are not logged in!";
     }
 }

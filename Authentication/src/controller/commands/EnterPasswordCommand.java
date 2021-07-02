@@ -1,9 +1,8 @@
 package controller.commands;
 
 import controller.AuthenticationService;
-import model.UserNamePasswordStrategy;
 
-public class EnterPasswordCommand extends AuthenticationServiceCommand{
+public class EnterPasswordCommand extends AuthenticationServiceCommand {
 
     private final String password;
 

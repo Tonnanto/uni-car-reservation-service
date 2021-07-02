@@ -6,7 +6,7 @@ import view.*;
 public class AuthenticationService implements Observer {
 
     private Credential credential;
-    private Subject subject;
+    private final Subject subject;
     private boolean isSubjectAuthenticated = false;
 
     public AuthenticationService(Subject subject) {
@@ -84,7 +84,7 @@ public class AuthenticationService implements Observer {
         return isSubjectAuthenticated;
     }
 
-    public void logout(){
+    public void logout() {
         credential = null;
         isSubjectAuthenticated = false;
         new LogOutView().display();

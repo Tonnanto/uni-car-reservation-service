@@ -2,7 +2,7 @@ package model;
 
 import controller.AuthenticationService;
 
-public class FingerPrintStrategy extends Credential{
+public class FingerPrintStrategy extends Credential {
     public FingerPrintStrategy(AuthenticationService authenticationService) {
         super(authenticationService);
     }

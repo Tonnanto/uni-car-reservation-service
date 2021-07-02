@@ -1,7 +1,6 @@
 package controller.commands;
 
 import controller.AuthenticationService;
-import controller.Command;
 
 public class EnterEyeCommand extends AuthenticationServiceCommand {
 

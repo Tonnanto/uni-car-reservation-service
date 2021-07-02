@@ -2,7 +2,7 @@ package controller.commands;
 
 import controller.AuthenticationService;
 
-public class LogInCommand extends AuthenticationServiceCommand{
+public class LogInCommand extends AuthenticationServiceCommand {
 
     public LogInCommand(AuthenticationService authenticationService) {
         super(authenticationService);

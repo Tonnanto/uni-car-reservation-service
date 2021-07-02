@@ -4,7 +4,7 @@ import controller.AuthenticationService;
 import controller.Command;
 import controller.commands.EnterEyeCommand;
 
-public class EnterEyeView extends StringInputView{
+public class EnterEyeView extends StringInputView {
 
     private final AuthenticationService authenticationService;
 

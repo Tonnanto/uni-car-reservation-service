@@ -7,7 +7,7 @@ public abstract class AuthenticationServiceCommand implements Command {
 
     protected AuthenticationService receiver;
 
-    public AuthenticationServiceCommand(AuthenticationService authenticationService){
+    public AuthenticationServiceCommand(AuthenticationService authenticationService) {
         this.receiver = authenticationService;
     }
 }

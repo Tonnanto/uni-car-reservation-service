@@ -1,9 +1,8 @@
 package controller.commands;
 
 import controller.AuthenticationService;
-import model.Credential;
 
-public class SelectCredentialsCommand extends AuthenticationServiceCommand{
+public class SelectCredentialsCommand extends AuthenticationServiceCommand {
     private final String credential;
 
     public SelectCredentialsCommand(AuthenticationService authenticationService, String credential) {

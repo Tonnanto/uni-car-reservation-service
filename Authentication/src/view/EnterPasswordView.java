@@ -3,9 +3,8 @@ package view;
 import controller.AuthenticationService;
 import controller.Command;
 import controller.commands.EnterPasswordCommand;
-import model.UserNamePasswordStrategy;
 
-public class EnterPasswordView extends StringInputView{
+public class EnterPasswordView extends StringInputView {
 
     private final AuthenticationService authenticationService;
 
