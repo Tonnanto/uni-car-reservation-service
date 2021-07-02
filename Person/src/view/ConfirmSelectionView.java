@@ -2,20 +2,27 @@ package view;
 
 import controller.Command;
 import controller.PersonService;
+import controller.commands.FinishSelectionCommand;
+import controller.commands.ResetSelectionCommand;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ConfirmSelectionView extends SelectionView {
-    public ConfirmSelectionView(PersonService personService) {
-    }
+    private PersonService personService;
+
+    public ConfirmSelectionView(PersonService personService) { this.personService = personService; }
 
     @Override
     protected List<Command> getCommands() {
-        return null;
+        List<Command> commands = new ArrayList<>();
+        commands.add(new ResetSelectionCommand(personService));
+        commands.add(new FinishSelectionCommand(personService));
+        return commands;
     }
 
     @Override
     protected String getMessage() {
-        return null;
+        return "Do you want to reset or finish your selection?";
     }
 }

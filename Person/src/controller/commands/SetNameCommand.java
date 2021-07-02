@@ -16,10 +16,12 @@ public class SetNameCommand extends PersonServiceCommand {
     public void execute() {
         receiver.setName(name);
     }
+
 //TODO "braucht" man wirklich eine getDescription?
+
     @Override
     public String getDescription() {
-        return "hallo";
+        return "getDescription of Name :D";
     }
 }
 
