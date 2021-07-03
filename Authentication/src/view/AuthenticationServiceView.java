@@ -5,6 +5,7 @@ import controller.Command;
 import controller.commands.LogInCommand;
 import controller.commands.LogOutCommand;
 import controller.commands.StatusCommand;
+import controller.commands.continueCommand;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,8 @@ public class AuthenticationServiceView extends SelectionView {
         commands.add(new LogInCommand(authenticationService));
         commands.add(new LogOutCommand(authenticationService));
         commands.add(new StatusCommand(authenticationService));
+        if (authenticationService.isSubjectAuthenticated())
+            commands.add(new continueCommand(authenticationService));
         return commands;
     }
 
