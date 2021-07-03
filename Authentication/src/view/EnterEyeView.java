@@ -21,4 +21,14 @@ public class EnterEyeView extends StringInputView {
     protected String getMessage() {
         return "Look in the camera and hit ENTER!";
     }
+
+    @Override
+    protected boolean isValidString(String s) {
+        return s.isEmpty();
+    }
+
+    @Override
+    protected String getValidationMessage() {
+        return "Look in the camera and hit ENTER!";
+    }
 }

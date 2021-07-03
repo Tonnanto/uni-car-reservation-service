@@ -19,6 +19,16 @@ public class EnterFingerView extends StringInputView {
 
     @Override
     protected String getMessage() {
-        return "Bitte halten Sie ihren Finger auf die ENTER Taste!";
+        return "Please put your Finger on ENTER!";
+    }
+
+    @Override
+    protected boolean isValidString(String s) {
+        return s.isEmpty();
+    }
+
+    @Override
+    protected String getValidationMessage() {
+        return "Please put your Finger on ENTER!";
     }
 }
