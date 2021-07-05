@@ -3,6 +3,7 @@ package view;
 import controller.AuthenticationService;
 import controller.Command;
 import controller.commands.EnterFingerCommand;
+import controller.commands.ResetCredentialCommand;
 
 public class EnterFingerView extends StringInputView {
 
@@ -19,7 +20,7 @@ public class EnterFingerView extends StringInputView {
 
     @Override
     protected String getMessage() {
-        return "Please put your Finger on ENTER!";
+        return "Please put your Finger on ENTER or type 'X' to cancel";
     }
 
     @Override
@@ -29,6 +30,11 @@ public class EnterFingerView extends StringInputView {
 
     @Override
     protected String getValidationMessage() {
-        return "Please put your Finger on ENTER!";
+        return "Please put your Finger on ENTER or type 'X' to cancel";
+    }
+
+    @Override
+    protected Command getCancelCommand() {
+        return new ResetCredentialCommand(authenticationService);
     }
 }

@@ -3,6 +3,7 @@ package view;
 import controller.AuthenticationService;
 import controller.Command;
 import controller.commands.EnterUserNameCommand;
+import controller.commands.ResetCredentialCommand;
 
 public class EnterUserNameView extends StringInputView {
 
@@ -19,6 +20,11 @@ public class EnterUserNameView extends StringInputView {
 
     @Override
     protected String getMessage() {
-        return "Please enter your username: ";
+        return "Please enter your username ('X' to cancel): ";
+    }
+
+    @Override
+    protected Command getCancelCommand() {
+        return new ResetCredentialCommand(authenticationService);
     }
 }

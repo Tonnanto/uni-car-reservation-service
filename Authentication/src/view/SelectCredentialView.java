@@ -22,6 +22,7 @@ public class SelectCredentialView extends SelectionView {
         commands.add(new SelectCredentialsCommand(authenticationService, "Username and Password"));
         commands.add(new SelectCredentialsCommand(authenticationService, "Fingerprint"));
         commands.add(new SelectCredentialsCommand(authenticationService, "Eyescan"));
+        commands.add(new SelectCredentialsCommand(authenticationService, "Go back"));
         return commands;
     }
 

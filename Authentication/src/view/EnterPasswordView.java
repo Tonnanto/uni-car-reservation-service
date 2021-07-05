@@ -3,6 +3,7 @@ package view;
 import controller.AuthenticationService;
 import controller.Command;
 import controller.commands.EnterPasswordCommand;
+import controller.commands.ResetUserNameCommand;
 
 public class EnterPasswordView extends StringInputView {
 
@@ -20,5 +21,10 @@ public class EnterPasswordView extends StringInputView {
     @Override
     protected String getMessage() {
         return "Please enter your password: ";
+    }
+
+    @Override
+    protected Command getCancelCommand() {
+        return new ResetUserNameCommand(authenticationService);
     }
 }

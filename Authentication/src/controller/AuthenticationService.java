@@ -20,9 +20,13 @@ public class AuthenticationService implements Observer {
     public void setCredential(String strategy) {
 
         switch (strategy) {
-            case "Username and Password" -> this.credential = new UserNamePasswordStrategy(this);
-            case "Fingerprint" -> this.credential = new FingerPrintStrategy(this);
-            case "Eyescan" -> this.credential = new EyeScanStrategy(this);
+            case "Username and Password" -> new UserNamePasswordStrategy(this);
+            case "Fingerprint" -> new FingerPrintStrategy(this);
+            case "Eyescan" -> new EyeScanStrategy(this);
+            case "Go back" -> {
+                credential = null;
+                new AuthenticationServiceView(this);
+            }
         }
 
     }
@@ -33,7 +37,6 @@ public class AuthenticationService implements Observer {
 
     public void authenticateSubject() {
         update(credential);
-        new ShowLoginStatusView(this).display();
         new AuthenticationServiceView(this).display();
     }
 
@@ -56,7 +59,7 @@ public class AuthenticationService implements Observer {
             credential = (Credential) object;
 
         if (isSubjectAuthenticated) {
-            //new ShowLoginStatusView(this).display();
+            new ShowLoginStatusView(this).display();
             return;
         }
         if (credential == null) {
@@ -93,5 +96,18 @@ public class AuthenticationService implements Observer {
 
     public void setSubjectAuthenticated() {
         isSubjectAuthenticated = credential.authenticate(subject);
+        update(credential);
+    }
+
+    public void resetCredential() {
+        credential = null;
+        new SelectCredentialView(this).display();
+    }
+
+    public void resetUsername() {
+        if (credential instanceof UserNamePasswordStrategy) {
+            ((UserNamePasswordStrategy) credential).setUsername(null);
+            new EnterUserNameView(this);
+        }
     }
 }

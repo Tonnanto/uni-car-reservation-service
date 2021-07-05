@@ -2,19 +2,19 @@ package controller.commands;
 
 import controller.AuthenticationService;
 
-public class continueCommand extends AuthenticationServiceCommand {
+public class ResetCredentialCommand extends AuthenticationServiceCommand {
 
-    public continueCommand(AuthenticationService authenticationService) {
+    public ResetCredentialCommand(AuthenticationService authenticationService) {
         super(authenticationService);
     }
 
     @Override
     public void execute() {
-
+        receiver.resetCredential();
     }
 
     @Override
     public String getDescription() {
-        return "Continue";
+        return "to go back";
     }
 }
