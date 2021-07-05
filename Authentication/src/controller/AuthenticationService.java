@@ -56,7 +56,7 @@ public class AuthenticationService implements Observer {
             credential = (Credential) object;
 
         if (isSubjectAuthenticated) {
-            new ShowLoginStatusView(this).display();
+            //new ShowLoginStatusView(this).display();
             return;
         }
         if (credential == null) {
