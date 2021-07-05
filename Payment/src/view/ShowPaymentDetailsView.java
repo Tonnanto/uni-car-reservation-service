@@ -19,10 +19,10 @@ public class ShowPaymentDetailsView extends View {
             message += String.format("\nmethod: %s", paymentService.getPayment().getPaymentType());
 
             if (paymentService.getPayment().getSender() != null)
-                message += String.format("\nsender: %s", paymentService.getPayment().getSender().getAddress());
+                message += String.format("\nsender: %s", paymentService.getPayment().getSender().getEmail());
 
             if (paymentService.getPayment().getReceiver() != null)
-                message += String.format("\nreceiver: %s", paymentService.getPayment().getReceiver().getAddress());
+                message += String.format("\nreceiver: %s", paymentService.getPayment().getReceiver().getEmail());
         }
 
         return message;

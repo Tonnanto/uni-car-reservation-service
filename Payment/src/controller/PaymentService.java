@@ -6,7 +6,7 @@ import view.*;
 public class PaymentService implements Observer {
 
     private Payment payment;
-    private String username;
+    private String email;
     private String password;
     private CurrencyAmount currencyAmount;
     private boolean userAuthenticated;
@@ -22,7 +22,6 @@ public class PaymentService implements Observer {
      * Handles the payment procedure between a customer and the Car Reservation Service GmbH.
      * After selecting a payment type of choice the payment procedure consists of 3 main steps:
      *
-     * // TODO: separate these steps into individual methods
      * 1. authenticate customer with payment provider
      * 2. make the transfer from the customer's to the company's account
      * 3. create a payment confirmation and show it to the user
@@ -38,7 +37,11 @@ public class PaymentService implements Observer {
             return null;
         }
 
-        new ShowPaymentDetailsView(this).display();
+        // TODO: wie kann hier ohne while loop sicher gestellt werden, dass die methode nicht returned, ohne dass der UseCase abgeschlossen ist, und die Bezahlung stattgefunden hat?
+        // TODO: Der Fakt, dass wir statt des Loops jetzt "setChanged()" und "update()" calls überall im controller und model verteilt haben, stört mich :D
+
+        // initial call of update
+        update(null);
 
         while (!amountPayed || payment == null) {
             if (payment == null) {
@@ -48,8 +51,8 @@ public class PaymentService implements Observer {
 
             // PaymentType is selected
             if (!userAuthenticated) {
-                if (username == null || username.isEmpty()) {
-                    new EnterUsernameView(this).display();
+                if (email == null || email.isEmpty()) {
+                    new EnterEmailView(this).display();
                     continue;
                 }
                 if (password == null || password.isEmpty()) {
@@ -87,9 +90,8 @@ public class PaymentService implements Observer {
      * @return the default receiver account
      */
     private Account getReceiverAccount() {
-        String ownerName = "Car Reservation Service GmbH";
         String address = "carreservation@service.de";
-        return new Account(ownerName, address);
+        return new Account(address);
     }
 
     public Payment getPayment() {
@@ -98,10 +100,6 @@ public class PaymentService implements Observer {
 
     public CurrencyAmount getCurrencyAmount() {
         return currencyAmount;
-    }
-
-    public String getUsername() {
-        return username;
     }
 
     public boolean isUserAuthenticated() {
@@ -128,13 +126,14 @@ public class PaymentService implements Observer {
         payment.setChanged();
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
+        update(payment);
     }
 
     public void setPassword(String password) {
 
-        userAuthenticated = this.payment.authenticateCustomer(username, password);
+        userAuthenticated = this.payment.authenticateCustomer(email, password);
 
         new ShowAuthenticationStatusView(this).display();
 
@@ -153,7 +152,7 @@ public class PaymentService implements Observer {
 
     public void cancelPayment() {
         payment = null;
-        username = null;
+        email = null;
         password = null;
         userAuthenticated = false;
     }

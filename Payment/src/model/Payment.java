@@ -16,16 +16,16 @@ public abstract class Payment extends Observable {
      * Simulates the authorization at an arbitrary payment provider.
      * Succeeds all the time. Credentials don't actually matter.
      *
-     * @param username the username entered by the customer
+     * @param email the email entered by the customer
      * @param password the password entered by the customer
      * @return whether the authorization was successfully simulated (true)
      */
-    public boolean authenticateCustomer(String username, String password) {
-        boolean authenticated = !username.equals(password); // Purpose: Being able to simulate an unsuccessful authentication
+    public boolean authenticateCustomer(String email, String password) {
+        boolean authenticated = !email.equals(password); // Purpose: Being able to simulate an unsuccessful authentication
 
         if (authenticated) {
             //TODO: Use details from customer
-            this.senderAccount = new Account(username, username + "@mail.com");
+            this.senderAccount = new Account(email);
         }
 
         return authenticated;
@@ -36,7 +36,7 @@ public abstract class Payment extends Observable {
     public String createConfirmation(boolean success) {
         if (success) {
             String message = getPaymentType() + " Payment successful!";
-            message += String.format("\n%s has been transferred from %s to %s.", currencyAmount, senderAccount.getAddress(), receiverAccount.getAddress());
+            message += String.format("\n%s has been transferred from %s to %s.", currencyAmount, senderAccount.getEmail(), receiverAccount.getEmail());
             return message;
         }
         else
