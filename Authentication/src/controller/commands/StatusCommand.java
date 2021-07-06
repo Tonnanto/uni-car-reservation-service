@@ -1,7 +1,7 @@
 package controller.commands;
 
 import controller.AuthenticationService;
-import view.AuthenticationServiceView;
+import view.SelectAuthenticationServiceView;
 import view.ShowLoginStatusView;
 
 public class StatusCommand extends AuthenticationServiceCommand {
@@ -13,7 +13,7 @@ public class StatusCommand extends AuthenticationServiceCommand {
     @Override
     public void execute() {
         new ShowLoginStatusView(receiver).display();
-        new AuthenticationServiceView(receiver).display();
+        new SelectAuthenticationServiceView(receiver).display();
     }
 
     @Override

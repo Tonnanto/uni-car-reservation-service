@@ -4,7 +4,7 @@ import controller.AuthenticationService;
 import controller.PersonService;
 import model.PersonType;
 import model.Subject;
-import view.AuthenticationServiceView;
+import view.SelectAuthenticationServiceView;
 
 public class MainTest {
 
@@ -15,6 +15,6 @@ public class MainTest {
 
         AuthenticationService authenticationService = new AuthenticationService(subject);
 
-        new AuthenticationServiceView(authenticationService).display();
+        new SelectAuthenticationServiceView(authenticationService).display();
     }
 }

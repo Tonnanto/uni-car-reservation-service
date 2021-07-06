@@ -25,7 +25,7 @@ public class AuthenticationService implements Observer {
             case "Eyescan" -> new EyeScanStrategy(this);
             case "Go back" -> {
                 credential = null;
-                new AuthenticationServiceView(this);
+                new SelectAuthenticationServiceView(this);
             }
         }
 
@@ -37,7 +37,7 @@ public class AuthenticationService implements Observer {
 
     public void authenticateSubject() {
         update(credential);
-        new AuthenticationServiceView(this).display();
+        new SelectAuthenticationServiceView(this).display();
     }
 
     public void setUsername(String username) {
@@ -90,8 +90,8 @@ public class AuthenticationService implements Observer {
     public void logout() {
         credential = null;
         isSubjectAuthenticated = false;
-        new LogOutView().display();
-        new AuthenticationServiceView(this).display();
+        new ShowLogOutView().display();
+        new SelectAuthenticationServiceView(this).display();
     }
 
     public void setSubjectAuthenticated() {
