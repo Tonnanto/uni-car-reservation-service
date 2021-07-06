@@ -15,29 +15,30 @@ public class PersonService implements Observer {
     private boolean personCreated;
     private Person person;
 
-//TODO Main methode entfernen
     public static void main(String[] args) {
         new PersonService().createPerson();
     }
 
 
     public Person createPerson() {
-
+//Loop to get the attributes of a person
         while (!personCreated) {
-//TODO Comments
+            //if persontype is not chosen yet, choose it
             if (person == null) {
                 new SelectPersonTypeView(this).display();
                 continue;
             }
+            //if name is not set, input the name
             if (person.getName() == null || person.getName().isEmpty()) {
                 new EnterNameView(this).display();
                 continue;
             }
+            // if e-mail is not set, input the name
             if (person.getEmail() == null || person.getEmail().isEmpty()) {
                 new EnterEmailView(this).display();
                 continue;
             }
-
+            // let the client restart or confirm his choice
             new ConfirmSelectionView(this).display();
 
         }
