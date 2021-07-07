@@ -19,6 +19,8 @@ public abstract class Payment {
      * @return whether the authorization was successfully simulated (true)
      */
     public boolean authenticateCustomer(String email, String password) {
+        if (email == null || password == null) return false;
+
         boolean authenticated = !email.equals(password); // Purpose: Being able to simulate an unsuccessful authentication
 
         if (authenticated) {
@@ -49,6 +51,10 @@ public abstract class Payment {
 
     public Account getReceiver() {
         return receiverAccount;
+    }
+
+    public CurrencyAmount getCurrencyAmount() {
+        return currencyAmount;
     }
 
     public void setReceiverAccount(Account receiverAccount) {

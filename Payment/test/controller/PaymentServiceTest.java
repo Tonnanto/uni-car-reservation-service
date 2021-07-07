@@ -1,8 +1,10 @@
 package controller;
 
+import controller.commands.*;
 import model.Currency;
 import model.CurrencyAmount;
-import org.junit.jupiter.api.AfterAll;
+import model.Payment;
+import model.PaymentType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -16,18 +18,33 @@ public class PaymentServiceTest {
         paymentService = new PaymentService();
     }
 
-    @AfterAll
-    protected static void tearDown() {
-
-    }
-
     @Test
     protected void canAmountBePayed() {
-
         CurrencyAmount amount = new CurrencyAmount(300, Currency.EURO);
+        paymentService.currencyAmount = amount;
 
-        Assertions.assertNotNull(paymentService.payAmount(amount));
+        // Simulating the payment process for each of the payment types
+        for (PaymentType paymentType: PaymentType.values()) {
 
+            // Reset PaymentService
+            new CancelPaymentCommand(paymentService).execute();
+            Assertions.assertNull(paymentService.getPayment());
+
+            // Simulate: payment type selection and credentials entering
+            new SelectPaymentTypeCommand(paymentService, paymentType).execute();
+            new SetEmailCommand(paymentService, "anton@stamme.de").execute();
+            new SetPasswordCommand(paymentService, "password420").execute();
+            Assertions.assertTrue(paymentService.isUserAuthenticated());
+
+            // Simulate: payment confirmation
+            new ConfirmPaymentCommand(paymentService).execute();
+            Payment payment = paymentService.getPayment();
+
+            Assertions.assertTrue(paymentService.isAmountPayed());
+            Assertions.assertNotNull(payment);
+            Assertions.assertEquals(amount, payment.getCurrencyAmount());
+            Assertions.assertEquals(paymentType, payment.getPaymentType());
+        }
     }
 
     @Test
@@ -40,6 +57,4 @@ public class PaymentServiceTest {
         amount = new CurrencyAmount(0, Currency.EURO);
         Assertions.assertNull(paymentService.payAmount(amount));
     }
-
-
 }

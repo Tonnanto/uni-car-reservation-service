@@ -6,9 +6,9 @@ import view.*;
 public class PaymentService {
 
     private Payment payment;
-    private String email;
-    private String password;
-    private CurrencyAmount currencyAmount;
+    protected String email;
+    protected String password;
+    protected CurrencyAmount currencyAmount;
     private boolean userAuthenticated;
     private boolean amountPayed;
 
@@ -135,5 +135,9 @@ public class PaymentService {
         email = null;
         password = null;
         userAuthenticated = false;
+    }
+
+    public String getEmail() {
+        return email;
     }
 }
