@@ -23,10 +23,8 @@ public abstract class Payment {
 
         boolean authenticated = !email.equals(password); // Purpose: Being able to simulate an unsuccessful authentication
 
-        if (authenticated) {
-            //TODO: Use details from customer
+        if (authenticated)
             this.senderAccount = new Account(email);
-        }
 
         return authenticated;
     }

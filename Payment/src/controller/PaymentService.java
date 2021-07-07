@@ -12,11 +12,6 @@ public class PaymentService {
     private boolean userAuthenticated;
     private boolean amountPayed;
 
-    // TODO: temporary method
-    public static void main(String[] args) {
-        new PaymentService().payAmount(new CurrencyAmount(100, Currency.EURO));
-    }
-
     /**
      * UseCase: "payAmount"
      * Handles the payment procedure between a customer and the Car Reservation Service GmbH.
