@@ -1,5 +1,7 @@
 package behaviour;
 
+import model.Payment;
+import model.Resource;
 import structure.Booking;
 
 public class BookingService {
@@ -9,13 +11,13 @@ public class BookingService {
      * @return new booking
      */
 
-    public Booking createBooking() { //todo Payment && Resource
+    public Booking createBooking(Resource resource, Payment payment) {
 
         BookingBuilder bookingBuilder = new GermanBookingBuilder();
         // TODO: Prompt user to select language
 
         BookingDirector bookingDirector = new BookingDirector(bookingBuilder);
-        bookingDirector.createBooking();
+        bookingDirector.createBooking(resource,payment);
         return bookingDirector.getBooking();
     }
 }

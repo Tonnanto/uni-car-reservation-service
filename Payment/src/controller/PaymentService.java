@@ -102,6 +102,7 @@ public class PaymentService {
             case GOOGLE_WALLET -> this.payment = new GoogleWalletPayment(currencyAmount);
             case MONEY_WALLET -> this.payment = new MoneyWalletPayment(currencyAmount);
         }
+        this.paymentType = paymentType;  //Added for Booking! TODO we need to store this in Payment and return the Payment to get the PaymentType for the Booking
 
         payment.setReceiverAccount(getReceiverAccount());
     }

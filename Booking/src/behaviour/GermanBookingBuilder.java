@@ -1,6 +1,7 @@
 package behaviour;
 
 public class GermanBookingBuilder extends BookingBuilder {
+
     @Override
     public void buildHeader() {
         booking.setHeader("Lieber Kunde, Vielen Dank für ihre Reservierung.");
@@ -8,7 +9,7 @@ public class GermanBookingBuilder extends BookingBuilder {
 
     @Override
     public void buildBody() {
-        booking.setBody("Sie haben folgendes Auto reserviert: ");
+        booking.setBody("Sie haben folgendes Auto reserviert: "+ booking.getResource().getDescription() +": "+ booking.getResource().getPrice() +"€");
     }
 
     @Override
