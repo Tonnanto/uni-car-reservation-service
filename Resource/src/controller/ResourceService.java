@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Manages the selection process and the creation of a resource (car).
  */
-public class ResourceService implements Observer {
+public class ResourceService {
 
     private final List<Car> availableCars;
     private boolean resourceSelected;
@@ -41,21 +41,15 @@ public class ResourceService implements Observer {
                 new SelectCarView(this).display();
 
             } else {
+                // show selected resource
+                new ShowSelectedResourceView(this).display();
+
                 // add decorator
                 new AddCarDecoratorView(this).display();
             }
         }
 
         return resource;
-    }
-
-    /**
-     * Is being called whenever the associated Observables call .setChanged()
-     * @param object the object that changed
-     */
-    @Override
-    public void update(Object object) {
-        new ShowSelectedResourceView(this).display();
     }
 
     //================================================================================
@@ -80,11 +74,6 @@ public class ResourceService implements Observer {
 
     public void selectCar(Car car) {
         this.resource = car;
-
-        if (car != null) {
-            resource.addObserver(this);
-            resource.setChanged();
-        }
     }
 
     public void addDecorator(CarDecoratorType decoratorType) {
@@ -94,8 +83,6 @@ public class ResourceService implements Observer {
             case CHILD_SEAT -> new ChildSeat(resource);
             case SET_TOP_BOX -> new SetTopBox(resource);
         };
-
-        resource.setChanged();
     }
 
     public void resetSelection() {
