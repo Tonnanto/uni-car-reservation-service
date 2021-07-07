@@ -1,8 +1,6 @@
 package model;
 
-import controller.Observable;
-
-public abstract class Payment extends Observable {
+public abstract class Payment {
 
     private Account senderAccount;
     private Account receiverAccount;

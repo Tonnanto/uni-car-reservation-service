@@ -3,7 +3,7 @@ package controller;
 import model.*;
 import view.*;
 
-public class PaymentService implements Observer {
+public class PaymentService {
 
     private Payment payment;
     private String email;
@@ -33,18 +33,13 @@ public class PaymentService implements Observer {
         this.currencyAmount = amount;
 
         if (amount.getAmount() <= 0) {
-            // TODO: Show appropriate Error Message
+            System.out.println("CurrencyAmount can not be negative or zero!");
             return null;
         }
 
-        // TODO: wie kann hier ohne while loop sicher gestellt werden, dass die methode nicht returned, ohne dass der UseCase abgeschlossen ist, und die Bezahlung stattgefunden hat?
-        // TODO: Der Fakt, dass wir statt des Loops jetzt "setChanged()" und "update()" calls überall im controller und model verteilt haben, stört mich :D
-
-        // initial call of update
-        update(null);
-
         while (!amountPayed || payment == null) {
             if (payment == null) {
+                new ShowPaymentDetailsView(this).display();
                 new SelectPaymentTypeView(this).display();
                 continue;
             }
@@ -63,21 +58,13 @@ public class PaymentService implements Observer {
             }
 
             // User is authenticated to the payment provider
+            new ShowPaymentDetailsView(this).display();
             new ConfirmPaymentView(this).display();
         }
 
         new ShowConfirmationView(this).display();
 
         return payment;
-    }
-
-    /**
-     * This method being called whenever the associated Observables call .setChanged()
-     * @param object the object that changed
-     */
-    @Override
-    public void update(Object object) {
-        new ShowPaymentDetailsView(this).display();
     }
 
 
@@ -122,13 +109,10 @@ public class PaymentService implements Observer {
         }
 
         payment.setReceiverAccount(getReceiverAccount());
-        payment.addObserver(this);
-        payment.setChanged();
     }
 
     public void setEmail(String email) {
         this.email = email;
-        update(payment);
     }
 
     public void setPassword(String password) {
@@ -137,17 +121,13 @@ public class PaymentService implements Observer {
 
         new ShowAuthenticationStatusView(this).display();
 
-        if (userAuthenticated) {
+        if (userAuthenticated)
             this.password = password;
-            payment.setChanged();
-        }
     }
 
     public void confirmPayment() {
         if (payment == null || !userAuthenticated) return;
         amountPayed = payment.payAmount();
-
-        payment.setChanged();
     }
 
     public void cancelPayment() {
