@@ -2,9 +2,9 @@ package controller.commands;
 
 import controller.AuthenticationService;
 
-public class continueCommand extends AuthenticationServiceCommand {
+public class ContinueCommand extends AuthenticationServiceCommand {
 
-    public continueCommand(AuthenticationService authenticationService) {
+    public ContinueCommand(AuthenticationService authenticationService) {
         super(authenticationService);
     }
 

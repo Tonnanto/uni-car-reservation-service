@@ -12,8 +12,7 @@ public class StatusCommand extends AuthenticationServiceCommand {
 
     @Override
     public void execute() {
-        new ShowLoginStatusView(receiver).display();
-        new SelectAuthenticationServiceView(receiver).display();
+        receiver.showAuthenticationStatus();
     }
 
     @Override

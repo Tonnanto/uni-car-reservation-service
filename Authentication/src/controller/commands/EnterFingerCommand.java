@@ -10,7 +10,7 @@ public class EnterFingerCommand extends AuthenticationServiceCommand {
 
     @Override
     public void execute() {
-        receiver.setSubjectAuthenticated();
+        receiver.updateSubjectAuthenticated();
     }
 
     @Override

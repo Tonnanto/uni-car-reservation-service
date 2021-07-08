@@ -11,7 +11,7 @@ public class EnterEyeCommand extends AuthenticationServiceCommand {
 
     @Override
     public void execute() {
-        receiver.setSubjectAuthenticated();
+        receiver.updateSubjectAuthenticated();
     }
 
     @Override

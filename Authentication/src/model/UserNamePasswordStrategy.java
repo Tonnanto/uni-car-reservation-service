@@ -13,7 +13,7 @@ public class UserNamePasswordStrategy extends Credential {
 
     @Override
     public boolean authenticate(Subject subject) {
-        return true;
+        return username != null && password != null;
     }
 
     public String getUsername() {

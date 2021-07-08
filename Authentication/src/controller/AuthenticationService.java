@@ -35,9 +35,10 @@ public class AuthenticationService implements Observer {
      * Authenticate a person or system with the credential they choose
      */
 
-    public void authenticateSubject() {
+    public boolean authenticateSubject() {
         update(credential);
         new SelectAuthenticationServiceView(this).display();
+        return isSubjectAuthenticated;
     }
 
     public void setUsername(String username) {
@@ -94,7 +95,7 @@ public class AuthenticationService implements Observer {
         new SelectAuthenticationServiceView(this).display();
     }
 
-    public void setSubjectAuthenticated() {
+    public void updateSubjectAuthenticated() {
         isSubjectAuthenticated = credential.authenticate(subject);
         update(credential);
     }
@@ -107,7 +108,11 @@ public class AuthenticationService implements Observer {
     public void resetUsername() {
         if (credential instanceof UserNamePasswordStrategy) {
             ((UserNamePasswordStrategy) credential).setUsername(null);
-            new EnterUserNameView(this);
         }
+    }
+
+    public void showAuthenticationStatus(){
+        new ShowLoginStatusView(this).display();
+        new SelectAuthenticationServiceView(this).display();
     }
 }
