@@ -3,7 +3,7 @@ package controller;
 import model.*;
 import view.*;
 
-public class AuthenticationService implements Observer {
+public class AuthenticationService {
 
     private Credential credential;
     private final Subject subject;
@@ -20,15 +20,10 @@ public class AuthenticationService implements Observer {
     public void setCredential(String strategy) {
 
         switch (strategy) {
-            case "Username and Password" -> new UserNamePasswordStrategy(this);
-            case "Fingerprint" -> new FingerPrintStrategy(this);
-            case "Eyescan" -> new EyeScanStrategy(this);
-            case "Go back" -> {
-                credential = null;
-                new SelectAuthenticationServiceView(this);
-            }
+            case "Username and Password" -> credential = new UserNamePasswordStrategy();
+            case "Fingerprint" -> credential = new FingerPrintStrategy();
+            case "Eyescan" -> credential = new EyeScanStrategy();
         }
-
     }
 
     /**
@@ -36,7 +31,20 @@ public class AuthenticationService implements Observer {
      */
 
     public boolean authenticateSubject() {
-        update(credential);
+        while (!isSubjectAuthenticated) {
+            if (credential == null)
+                new SelectCredentialView(this).display();
+            if (credential instanceof UserNamePasswordStrategy) {
+                new EnterUserNameView(this).display();
+                if (credential != null)
+                    new EnterPasswordView(this).display();
+            }
+            if (credential instanceof FingerPrintStrategy)
+                new EnterFingerView(this).display();
+            if (credential instanceof EyeScanStrategy)
+                new EnterEyeView(this).display();
+        }
+        new ShowLoginStatusView(this).display();
         new SelectAuthenticationServiceView(this).display();
         return isSubjectAuthenticated;
     }
@@ -53,37 +61,6 @@ public class AuthenticationService implements Observer {
         }
     }
 
-    @Override
-    public void update(Object object) {
-
-        if (object instanceof Credential)
-            credential = (Credential) object;
-
-        if (isSubjectAuthenticated) {
-            new ShowLoginStatusView(this).display();
-            return;
-        }
-        if (credential == null) {
-            new SelectCredentialView(this).display();
-            return;
-        }
-        if (credential instanceof UserNamePasswordStrategy && ((UserNamePasswordStrategy) credential).getUsername() == null) {
-            new EnterUserNameView(this).display();
-            return;
-        }
-        if (credential instanceof UserNamePasswordStrategy && ((UserNamePasswordStrategy) credential).getPassword() == null) {
-            new EnterPasswordView(this).display();
-            return;
-        }
-        if (credential instanceof FingerPrintStrategy) {
-            new EnterFingerView(this).display();
-            return;
-        }
-        if (credential instanceof EyeScanStrategy) {
-            new EnterEyeView(this).display();
-        }
-    }
-
     public boolean isSubjectAuthenticated() {
         return isSubjectAuthenticated;
     }
@@ -97,12 +74,10 @@ public class AuthenticationService implements Observer {
 
     public void updateSubjectAuthenticated() {
         isSubjectAuthenticated = credential.authenticate(subject);
-        update(credential);
     }
 
     public void resetCredential() {
         credential = null;
-        new SelectCredentialView(this).display();
     }
 
     public void resetUsername() {
@@ -111,7 +86,7 @@ public class AuthenticationService implements Observer {
         }
     }
 
-    public void showAuthenticationStatus(){
+    public void showAuthenticationStatus() {
         new ShowLoginStatusView(this).display();
         new SelectAuthenticationServiceView(this).display();
     }
