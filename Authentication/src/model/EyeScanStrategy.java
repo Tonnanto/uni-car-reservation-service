@@ -8,4 +8,9 @@ public class EyeScanStrategy extends Credential {
     public boolean authenticate(Subject subject) {
         return true;
     }
+
+    @Override
+    public String getDescription() {
+        return "Eye Scan";
+    }
 }

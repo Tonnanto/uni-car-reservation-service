@@ -1,11 +1,12 @@
 package controller.commands;
 
 import controller.AuthenticationService;
+import model.Credential;
 
 public class SelectCredentialsCommand extends AuthenticationServiceCommand {
-    private final String credential;
+    private final Credential credential;
 
-    public SelectCredentialsCommand(AuthenticationService authenticationService, String credential) {
+    public SelectCredentialsCommand(AuthenticationService authenticationService, Credential credential) {
         super(authenticationService);
         this.credential = credential;
     }
@@ -17,6 +18,6 @@ public class SelectCredentialsCommand extends AuthenticationServiceCommand {
 
     @Override
     public String getDescription() {
-        return credential;
+        return credential.getDescription();
     }
 }

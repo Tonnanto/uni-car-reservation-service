@@ -12,6 +12,11 @@ public class UserNamePasswordStrategy extends Credential {
         return username != null && password != null;
     }
 
+    @Override
+    public String getDescription() {
+        return "Username and Password";
+    }
+
     public String getUsername() {
         return username;
     }

@@ -17,13 +17,9 @@ public class AuthenticationService {
         return credential;
     }
 
-    public void setCredential(String strategy) {
+    public void setCredential(Credential strategy) {
 
-        switch (strategy) {
-            case "Username and Password" -> credential = new UserNamePasswordStrategy();
-            case "Fingerprint" -> credential = new FingerPrintStrategy();
-            case "Eyescan" -> credential = new EyeScanStrategy();
-        }
+        this.credential = strategy;
     }
 
     /**
@@ -32,15 +28,20 @@ public class AuthenticationService {
 
     public boolean authenticateSubject() {
         while (!isSubjectAuthenticated) {
-            if (credential == null)
+            if (credential == null) {
                 new SelectCredentialView(this).display();
+                continue;
+            }
             if (credential instanceof UserNamePasswordStrategy) {
                 new EnterUserNameView(this).display();
                 if (credential != null)
                     new EnterPasswordView(this).display();
+                continue;
             }
-            if (credential instanceof FingerPrintStrategy)
+            if (credential instanceof FingerPrintStrategy) {
                 new EnterFingerView(this).display();
+                continue;
+            }
             if (credential instanceof EyeScanStrategy)
                 new EnterEyeView(this).display();
         }

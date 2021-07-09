@@ -21,12 +21,16 @@ public class SelectAuthenticationServiceView extends SelectionView {
     @Override
     protected List<Command> getCommands() {
         List<Command> commands = new ArrayList<>();
+
         if (!authenticationService.isSubjectAuthenticated())
             commands.add(new LogInCommand(authenticationService));
         else commands.add(new LogOutCommand(authenticationService));
+
         commands.add(new StatusCommand(authenticationService));
+
         if (authenticationService.isSubjectAuthenticated())
             commands.add(new ContinueCommand(authenticationService));
+
         return commands;
     }
 

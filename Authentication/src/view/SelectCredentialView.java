@@ -3,6 +3,9 @@ package view;
 import controller.AuthenticationService;
 import controller.Command;
 import controller.commands.SelectCredentialsCommand;
+import model.EyeScanStrategy;
+import model.FingerPrintStrategy;
+import model.UserNamePasswordStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +22,9 @@ public class SelectCredentialView extends SelectionView {
     protected List<Command> getCommands() {
 
         List<Command> commands = new ArrayList<>();                                //TODO new Credential
-        commands.add(new SelectCredentialsCommand(authenticationService, "Username and Password"));
-        commands.add(new SelectCredentialsCommand(authenticationService, "Fingerprint"));
-        commands.add(new SelectCredentialsCommand(authenticationService, "Eyescan"));
+        commands.add(new SelectCredentialsCommand(authenticationService, new UserNamePasswordStrategy()));
+        commands.add(new SelectCredentialsCommand(authenticationService, new FingerPrintStrategy()));
+        commands.add(new SelectCredentialsCommand(authenticationService, new EyeScanStrategy()));
         return commands;
     }
 

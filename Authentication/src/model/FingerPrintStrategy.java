@@ -8,4 +8,9 @@ public class FingerPrintStrategy extends Credential {
     public boolean authenticate(Subject subject) {
         return true;
     }
+
+    @Override
+    public String getDescription() {
+        return "Finger Scan";
+    }
 }
