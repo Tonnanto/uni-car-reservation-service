@@ -1,29 +1,22 @@
 package controller;
-
 import model.*;
-import view.ConfirmSelectionView;
-import view.EnterEmailView;
-import view.EnterNameView;
-import view.SelectPersonTypeView;
-
-import java.util.List;
+import view.*;
 
 
-public class PersonService implements Observer {
+public class PersonService {
 
 
     private boolean personCreated;
     private Person person;
-
-    public static void main(String[] args) {
-        new PersonService().createPerson();
-    }
+    public String email;
+    public String name;
+    public PersonType personType;
 
 
     public Person createPerson() {
 //Loop to get the attributes of a person
         while (!personCreated) {
-            //if persontype is not chosen yet, choose it
+            //if personType is not chosen yet, choose it
             if (person == null) {
                 new SelectPersonTypeView(this).display();
                 continue;
@@ -40,18 +33,28 @@ public class PersonService implements Observer {
             }
             // let the client restart or confirm his choice
             new ConfirmSelectionView(this).display();
+            new ShowPersonView(this).display();
 
         }
 
         return person;
     }
 
+    //================================================================================
+    // Accessors
+    //================================================================================
 
-    @Override
-    public void update(Object object) {
-
+    public PersonType getPersonType() {
+        return personType;
     }
 
+    public String getName(){
+        return name;
+    }
+
+    public String getEmail(){
+        return email;
+    }
 
     //================================================================================
     // The following methods are being called by their corresponding commands.
