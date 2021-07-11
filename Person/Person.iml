@@ -34,5 +34,6 @@
       </library>
     </orderEntry>
     <orderEntry type="module" module-name="Authentication" exported="" />
+    <orderEntry type="module" module-name="CarReservationService" />
   </component>
 </module>

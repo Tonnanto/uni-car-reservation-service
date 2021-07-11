@@ -1,27 +1,73 @@
 package controller;
+import model.*;
+import view.*;
 
-import model.LegalPerson;
-import model.NaturalPerson;
-import model.Person;
-import model.PersonType;
 
 public class PersonService {
 
-    private static int personCount = 0;
 
-    public Person createPerson(PersonType personType) {
+    private boolean personCreated;
+    private Person person;
 
-        String name = "Name";
-        //TODO prompt user to enter name
 
-        return switch (personType) {
-            case NATURAL_PERSON -> new NaturalPerson(name, ++personCount);
-            case LEGAL_PERSON -> new LegalPerson(name, ++personCount);
-        };
 
+    public Person createPerson() {
+//Loop to get the attributes of a person
+        while (!personCreated) {
+            //if personType is not chosen yet, choose it
+            if (person == null) {
+                new SelectPersonTypeView(this).display();
+                continue;
+            }
+            //if name is not set, input the name
+            if (person.getName() == null || person.getName().isEmpty()) {
+                new EnterNameView(this).display();
+                continue;
+            }
+            // if e-mail is not set, input the name
+            if (person.getEmail() == null || person.getEmail().isEmpty()) {
+                new EnterEmailView(this).display();
+                continue;
+            }
+            // let the client restart or confirm his choice
+            new ShowPersonView(this).display();
+            new ConfirmSelectionView(this).display();
+
+        }
+
+        return person;
     }
 
-    public static int getPersonCount() {
-        return personCount;
+    //================================================================================
+    // Accessors
+    //================================================================================
+
+    public Person getPerson() {
+        return person;
+    }
+
+    //================================================================================
+    // The following methods are being called by their corresponding commands.
+    //================================================================================
+
+    public void selectPersonType(PersonType personType) {
+        person = PersonFactory.createPerson(personType);
+    }
+
+    public void setName(String name) {
+        person.setName(name);
+    }
+
+    public void setEmail(String email) {
+        person.setEmail(email);
+    }
+
+    public void resetSelection() {
+        person = null;
+    }
+
+    public void finishSelection() {
+        if (person == null) return;
+        personCreated = true;
     }
 }
