@@ -1,4 +1,4 @@
-package structure;
+package model;
 
 import model.Payment;
 import model.Resource;

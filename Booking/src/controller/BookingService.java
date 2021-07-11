@@ -1,8 +1,6 @@
-package behaviour;
+package controller;
 
-import model.Payment;
-import model.Resource;
-import structure.Booking;
+import model.*;
 
 public class BookingService {
 

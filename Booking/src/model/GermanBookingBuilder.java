@@ -1,4 +1,4 @@
-package behaviour;
+package model;
 
 public class GermanBookingBuilder extends BookingBuilder {
 
