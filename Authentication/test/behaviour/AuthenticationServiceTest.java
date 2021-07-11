@@ -1,14 +1,17 @@
 package behaviour;
 
+
+import controller.AuthenticationService;
+import controller.PersonService;
 import model.PersonFactory;
 import model.PersonType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import structure.EyeScanStrategy;
-import structure.FingerPrintStrategy;
-import structure.Subject;
-import structure.UserNamePasswordStrategy;
+import model.EyeScanStrategy;
+import model.FingerPrintStrategy;
+import model.Subject;
+import model.UserNamePasswordStrategy;
 
 public class AuthenticationServiceTest {
     Subject subject;
@@ -16,13 +19,14 @@ public class AuthenticationServiceTest {
 
     @BeforeEach
     void setUp() {
-        authenticationService = new AuthenticationService();
+
 
 
     }
 
     @Test
     void canSubjectBeAuthenticated() {
+
 
         PersonFactory personFactory = new PersonFactory();
         subject = (Subject) personFactory.createPerson(PersonType.NATURAL_PERSON);
