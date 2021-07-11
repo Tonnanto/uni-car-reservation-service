@@ -1,8 +1,6 @@
 package controller.commands;
 
 import controller.AuthenticationService;
-import view.SelectAuthenticationServiceView;
-import view.ShowLoginStatusView;
 
 public class StatusCommand extends AuthenticationServiceCommand {
 

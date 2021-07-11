@@ -13,10 +13,6 @@ public class AuthenticationService {
         this.subject = subject;
     }
 
-    public Credential getCredential() {
-        return credential;
-    }
-
     public void setCredential(Credential strategy) {
 
         this.credential = strategy;
@@ -46,7 +42,6 @@ public class AuthenticationService {
                 new EnterEyeView(this).display();
         }
         new ShowLoginStatusView(this).display();
-        new SelectAuthenticationServiceView(this).display();
         return isSubjectAuthenticated;
     }
 
@@ -70,7 +65,6 @@ public class AuthenticationService {
         credential = null;
         isSubjectAuthenticated = false;
         new ShowLogOutView().display();
-        new SelectAuthenticationServiceView(this).display();
     }
 
     public void updateSubjectAuthenticated() {
@@ -89,6 +83,5 @@ public class AuthenticationService {
 
     public void showAuthenticationStatus() {
         new ShowLoginStatusView(this).display();
-        new SelectAuthenticationServiceView(this).display();
     }
 }

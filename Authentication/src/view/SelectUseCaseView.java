@@ -10,11 +10,11 @@ import controller.commands.StatusCommand;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SelectAuthenticationServiceView extends SelectionView {
+public class SelectUseCaseView extends SelectionView {
 
     private final AuthenticationService authenticationService;
 
-    public SelectAuthenticationServiceView(AuthenticationService authenticationService) {
+    public SelectUseCaseView(AuthenticationService authenticationService) {
         this.authenticationService = authenticationService;
     }
 
