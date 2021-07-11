@@ -17,4 +17,9 @@ public class EnglishBookingBuilder extends BookingBuilder{
     public void buildFooter() {
         booking.setFooter("If you need further assistance, fell free to contact us. With best regards, Your CarReservationTeam ");
     }
+
+    @Override
+    public void buildLanguage() {
+        booking.setLanguage(Language.ENGLISH);
+    }
 }

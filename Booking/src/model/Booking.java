@@ -1,14 +1,12 @@
 package model;
 
-import model.Payment;
-import model.Resource;
-
 public class Booking {
     private String header;
     private String body;
     private String footer;
     private Resource resource;
     private Payment payment;
+    private Language language;
 
     public Booking(Resource resource, Payment payment) {
         this.resource = resource;
@@ -53,5 +51,13 @@ public class Booking {
 
     public void setPayment(Payment payment) {
         this.payment = payment;
+    }
+
+    public Language getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
     }
 }

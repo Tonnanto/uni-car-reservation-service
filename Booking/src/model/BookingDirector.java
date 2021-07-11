@@ -20,5 +20,6 @@ public class BookingDirector {
         bookingBuilder.buildHeader();
         bookingBuilder.buildBody();
         bookingBuilder.buildFooter();
+        bookingBuilder.buildLanguage();
     }
 }

@@ -13,6 +13,8 @@ public abstract class BookingBuilder {
 
     public abstract void buildFooter();
 
+    public abstract void buildLanguage();
+
     public Booking getBooking() {
         return booking;
     }
