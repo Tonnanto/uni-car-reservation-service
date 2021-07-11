@@ -8,9 +8,7 @@ public class PersonService {
 
     private boolean personCreated;
     private Person person;
-    public String email;
-    public String name;
-    public PersonType personType;
+
 
 
     public Person createPerson() {
@@ -32,8 +30,8 @@ public class PersonService {
                 continue;
             }
             // let the client restart or confirm his choice
-            new ConfirmSelectionView(this).display();
             new ShowPersonView(this).display();
+            new ConfirmSelectionView(this).display();
 
         }
 
@@ -44,16 +42,8 @@ public class PersonService {
     // Accessors
     //================================================================================
 
-    public PersonType getPersonType() {
-        return personType;
-    }
-
-    public String getName(){
-        return name;
-    }
-
-    public String getEmail(){
-        return email;
+    public Person getPerson() {
+        return person;
     }
 
     //================================================================================

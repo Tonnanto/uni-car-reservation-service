@@ -6,4 +6,5 @@ public interface Person {
     void setName(String name);
     void setEmail(String email);
     String getEmail();
+
 }

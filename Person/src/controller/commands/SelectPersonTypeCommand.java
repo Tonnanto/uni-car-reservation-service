@@ -19,6 +19,6 @@ public class SelectPersonTypeCommand extends PersonServiceCommand {
 
     @Override
     public String getDescription() {
-        return personType.name().replace("_", " ").toLowerCase();
+        return personType.toString();
     }
 }

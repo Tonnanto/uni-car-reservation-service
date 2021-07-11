@@ -27,6 +27,6 @@ public class SelectPersonTypeView extends SelectionView {
     @Override
     protected String getMessage() {
 
-        return "Are you a natural person or a legal person";
+        return "Are you a Natural Person or a Legal Person";
     }
 }

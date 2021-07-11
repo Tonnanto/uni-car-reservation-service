@@ -1,6 +1,8 @@
 package view;
 
 import controller.PersonService;
+import model.NaturalPerson;
+import model.PersonType;
 
 public class ShowPersonView extends View{
 
@@ -10,15 +12,24 @@ public class ShowPersonView extends View{
 
     @Override
     protected String getMessage() {
-        String message = "Selected Person:\s";
 
-        message += String.format("\nPersonType: %s", personService.getPersonType());
+        if (personService.getPerson() == null) {
+            return "No person selected.";
+        }
 
-        if (personService.getName() != null)
-            message += String.format("\nName: %s", personService.getName());
+        String message = "Selected Person\s";
 
-        if (personService.getEmail() != null)
-            message += String.format("\nEmail: %s", personService.getEmail());
+        PersonType personType = personService.getPerson() instanceof NaturalPerson ? PersonType.NATURAL_PERSON : PersonType.LEGAL_PERSON;
+        String name = personService.getPerson().getName();
+        String email = personService.getPerson().getEmail();
+
+        message += String.format("\nPersonType: %s", personType);
+
+        if (name != null)
+            message += String.format("\nName: %s", name);
+
+        if (email != null)
+            message += String.format("\nEmail: %s", email);
 
         return message;
     }
