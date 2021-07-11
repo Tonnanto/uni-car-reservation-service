@@ -10,4 +10,9 @@ public class MoneyWalletPayment extends Payment {
     public boolean payAmount() {
         return true;
     }
+
+    @Override
+    public PaymentType getPaymentType() {
+        return PaymentType.MONEY_WALLET;
+    }
 }

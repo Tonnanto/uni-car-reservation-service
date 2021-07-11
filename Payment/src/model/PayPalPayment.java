@@ -10,4 +10,9 @@ public class PayPalPayment extends Payment {
     public boolean payAmount() {
         return true;
     }
+
+    @Override
+    public PaymentType getPaymentType() {
+        return PaymentType.PAYPAL;
+    }
 }
