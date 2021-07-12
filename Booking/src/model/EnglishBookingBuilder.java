@@ -1,6 +1,6 @@
 package model;
 
-public class EnglishBookingBuilder extends BookingBuilder{
+public class EnglishBookingBuilder extends BookingBuilder {
 
 
     @Override
@@ -10,7 +10,7 @@ public class EnglishBookingBuilder extends BookingBuilder{
 
     @Override
     public void buildBody() {
-        booking.setBody("Your reserved the following car: "+ booking.getResource().getDescription() +": "+ booking.getResource().getPrice() +"€");
+        booking.setBody("Your reserved the following car: " + booking.getResource().getDescription() + ": " + booking.getResource().getPrice() + "€");
     }
 
     @Override

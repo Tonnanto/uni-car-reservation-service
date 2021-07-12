@@ -8,7 +8,7 @@ import model.Language;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SelectLanguageView extends SelectionView{
+public class SelectLanguageView extends SelectionView {
 
     private final BookingService bookingService;
 
@@ -19,7 +19,7 @@ public class SelectLanguageView extends SelectionView{
     @Override
     protected List<Command> getCommands() {
 
-        List <Command> commands = new ArrayList<>();
+        List<Command> commands = new ArrayList<>();
         commands.add(new SetBookingBuilderCommand(bookingService, Language.ENGLISH));
         commands.add(new SetBookingBuilderCommand(bookingService, Language.GERMAN));
 

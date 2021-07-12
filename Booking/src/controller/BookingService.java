@@ -10,7 +10,8 @@ public class BookingService {
 
     /**
      * Create a new Booking in german or english with a text, resource and a Payment
-     *
+     * @param resource The Resource, that is selected
+     * @param payment The Payment, that is payed
      * @return new booking
      */
 

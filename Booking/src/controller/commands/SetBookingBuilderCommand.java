@@ -1,10 +1,9 @@
 package controller.commands;
 
 import controller.BookingService;
-import model.BookingBuilder;
 import model.Language;
 
-public class SetBookingBuilderCommand extends BookingServiceCommand{
+public class SetBookingBuilderCommand extends BookingServiceCommand {
 
     private final Language language;
 

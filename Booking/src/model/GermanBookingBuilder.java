@@ -9,7 +9,7 @@ public class GermanBookingBuilder extends BookingBuilder {
 
     @Override
     public void buildBody() {
-        booking.setBody("Sie haben folgendes Auto reserviert: "+ booking.getResource().getDescription() +": "+ booking.getResource().getPrice() +"€");
+        booking.setBody("Sie haben folgendes Auto reserviert: " + booking.getResource().getDescription() + ": " + booking.getResource().getPrice() + "€");
     }
 
     @Override
