@@ -52,8 +52,8 @@ public class CreateSummaryVisitor implements ContentVisitor {
                 BookingFile bookingFile = (BookingFile) contentEntry.getValue();
                 Booking booking = bookingFile.getBooking();
 
-                bookingCounts[booking.getPayment().getPaymentType().ordinal()][0]++; // TODO: get and filter language of booking
-                paymentAmounts[booking.getPayment().getPaymentType().ordinal()][0] += booking.getPayment().getCurrencyAmount().getAmount(); // TODO: get and filter language of booking
+                bookingCounts[booking.getPayment().getPaymentType().ordinal()][booking.getLanguage().ordinal()]++;
+                paymentAmounts[booking.getPayment().getPaymentType().ordinal()][booking.getLanguage().ordinal()] += booking.getPayment().getCurrencyAmount().getAmount();
             }
         }
 
