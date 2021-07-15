@@ -1,7 +1,5 @@
 package model;
 
-import structure.Booking;
-
 import java.util.Arrays;
 import java.util.Map;
 

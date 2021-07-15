@@ -1,9 +1,5 @@
 package model;
 
-import behaviour.BookingDirector;
-import behaviour.GermanBookingBuilder;
-import structure.Booking;
-
 public class BookingFile extends File {
 
     private static int bookingCount;
