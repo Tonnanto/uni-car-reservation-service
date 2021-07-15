@@ -1,33 +1,53 @@
 package controller;
 
-import model.Folder;
+import model.*;
 
 public class StatisticsService implements Observer {
 
     private Folder contentRootFolder;
 
+    public StatisticsService(Folder contentRootFolder) {
+        this.contentRootFolder = contentRootFolder;
+        contentRootFolder.addObserver(this);
+    }
+
+    // TODO: temporary
+    public static void main(String[] args) {
+        ContentService contentService = new ContentService();
+        StatisticsService statisticsService = new StatisticsService(contentService.getRoot());
+
+        contentService.addContent(new BookingFile());
+        contentService.addContent(new BookingFile());
+        contentService.addContent(new BookingFile());
+        contentService.addContent(new BookingFile());
+
+        statisticsService.getEnglishBookingsPaidByGoogleWallet();
+
+        System.out.println(contentService.getRoot().getSummaryFile());
+    }
+
     public void getGermanBookingsPaidByPayPal() {
-        // TODO: let GetBookingsVisitor visit contentRootFolder
+        new GetBookingsVisitor(Language.GERMAN, PaymentType.PAYPAL);
     }
 
     public void getGermanBookingsPaidByGoogleWallet() {
-        // TODO: let GetBookingsVisitor visit contentRootFolder
+        new GetBookingsVisitor(Language.GERMAN, PaymentType.GOOGLE_WALLET).visit(contentRootFolder);
     }
 
     public void getGermanBookingsPaidByMoneyWallet() {
-        // TODO: let GetBookingsVisitor visit contentRootFolder
+        new GetBookingsVisitor(Language.GERMAN, PaymentType.MONEY_WALLET).visit(contentRootFolder);
     }
 
     public void getEnglishBookingsPaidByPayPal() {
-        // TODO: let GetBookingsVisitor visit contentRootFolder
+        new GetBookingsVisitor(Language.ENGLISH, PaymentType.PAYPAL).visit(contentRootFolder);
     }
 
     public void getEnglishBookingsPaidByGoogleWallet() {
-        // TODO: let GetBookingsVisitor visit contentRootFolder
+        new GetBookingsVisitor(Language.ENGLISH, PaymentType.GOOGLE_WALLET).visit(contentRootFolder);
     }
 
     public void getEnglishBookingsPaidByMoneyWallet() {
-        // TODO: let GetBookingsVisitor visit contentRootFolder
+        new GetBookingsVisitor(Language.ENGLISH, PaymentType.MONEY_WALLET).visit(contentRootFolder);
     }
 
 
@@ -35,7 +55,7 @@ public class StatisticsService implements Observer {
     public void update(Object object) {
         if (object instanceof Folder) {
             Folder folder = (Folder) object;
-            // TODO: let CreateSummaryVisitor visit folder
+            new CreateSummaryVisitor().visit(folder);
         }
     }
 }

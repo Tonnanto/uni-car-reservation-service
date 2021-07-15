@@ -9,7 +9,7 @@ public class StatisticsServiceTest {
 
     @BeforeAll
     protected static void setUp() {
-        statisticsService = new StatisticsService();
+//        statisticsService = new StatisticsService();
     }
 
     @Test
