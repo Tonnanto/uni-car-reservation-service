@@ -1,4 +1,4 @@
-package behaviour;
+package model;
 
 public enum Language {
     GERMAN, ENGLISH

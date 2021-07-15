@@ -1,5 +1,5 @@
 package model;
 
-public interface StatisticsVisitor {
+public interface ContentVisitor {
     void visit(Folder folder);
 }
