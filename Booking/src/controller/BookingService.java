@@ -20,6 +20,7 @@ public class BookingService {
 
         BookingDirector bookingDirector = null;
         while (bookingBuilder == null) {
+            while (bookingBuilder == null)
             new SelectLanguageView(this).display();
             bookingDirector = new BookingDirector(this.bookingBuilder);
             bookingDirector.createBooking(resource, payment);
