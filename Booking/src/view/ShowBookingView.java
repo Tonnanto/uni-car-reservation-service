@@ -3,6 +3,7 @@ package view;
 import controller.BookingService;
 import controller.Command;
 import controller.commands.ContinueCommand;
+import controller.commands.ResetBookingCommand;
 import model.Booking;
 
 public class ShowBookingView extends StringInputView {
@@ -31,6 +32,11 @@ public class ShowBookingView extends StringInputView {
 
     @Override
     protected boolean isValidString(String s) {
-        return s.isEmpty();
+        return true;
+    }
+
+    @Override
+    protected Command getCancelCommand() {
+        return new ResetBookingCommand(bookingService);
     }
 }

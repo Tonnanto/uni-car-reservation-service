@@ -18,11 +18,14 @@ public class BookingService {
 
     public Booking createBooking(Resource resource, Payment payment) {
 
-        while (bookingBuilder == null)
+        BookingDirector bookingDirector = null;
+        while (bookingBuilder == null) {
             new SelectLanguageView(this).display();
-        BookingDirector bookingDirector = new BookingDirector(this.bookingBuilder);
-        bookingDirector.createBooking(resource, payment);
-        new ShowBookingView(this, bookingDirector.getBooking()).display();
+            bookingDirector = new BookingDirector(this.bookingBuilder);
+            bookingDirector.createBooking(resource, payment);
+            new ShowBookingView(this, bookingDirector.getBooking()).display();
+        }
+        assert bookingDirector != null;
         return bookingDirector.getBooking();
     }
 
@@ -31,5 +34,9 @@ public class BookingService {
             case GERMAN -> this.bookingBuilder = new GermanBookingBuilder();
             case ENGLISH -> this.bookingBuilder = new EnglishBookingBuilder();
         }
+    }
+
+    public void resetBooking() {
+        bookingBuilder = null;
     }
 }
