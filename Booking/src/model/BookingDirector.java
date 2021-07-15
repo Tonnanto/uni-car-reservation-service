@@ -1,8 +1,4 @@
-package behaviour;
-
-import model.Payment;
-import model.Resource;
-import structure.Booking;
+package model;
 
 public class BookingDirector {
     private final BookingBuilder bookingBuilder;
@@ -24,5 +20,6 @@ public class BookingDirector {
         bookingBuilder.buildHeader();
         bookingBuilder.buildBody();
         bookingBuilder.buildFooter();
+        bookingBuilder.buildLanguage();
     }
 }

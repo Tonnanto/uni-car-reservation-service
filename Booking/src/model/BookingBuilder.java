@@ -1,8 +1,4 @@
-package behaviour;
-
-import model.Payment;
-import model.Resource;
-import structure.Booking;
+package model;
 
 public abstract class BookingBuilder {
     protected Booking booking;
@@ -16,6 +12,8 @@ public abstract class BookingBuilder {
     public abstract void buildBody();
 
     public abstract void buildFooter();
+
+    public abstract void buildLanguage();
 
     public Booking getBooking() {
         return booking;
