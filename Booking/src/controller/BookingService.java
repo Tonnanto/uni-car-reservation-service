@@ -19,8 +19,8 @@ public class BookingService {
     public Booking createBooking(Resource resource, Payment payment) {
 
         BookingDirector bookingDirector = null;
-        while (bookingBuilder == null) {
-            while (bookingBuilder == null)
+        while (bookingBuilder == null) {        //for a the reset
+            while (bookingBuilder == null)      //for a failed set
                 new SelectLanguageView(this).display();
             bookingDirector = new BookingDirector(this.bookingBuilder);
             bookingDirector.createBooking(resource, payment);
