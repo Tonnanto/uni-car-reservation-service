@@ -2,7 +2,7 @@ package controller;
 
 import model.*;
 import view.SelectLanguageView;
-import view.ShowBookingView;
+import view.ConfirmBookingView;
 
 public class BookingService {
 
@@ -24,7 +24,7 @@ public class BookingService {
                 new SelectLanguageView(this).display();
             bookingDirector = new BookingDirector(this.bookingBuilder);
             bookingDirector.createBooking(resource, payment);
-            new ShowBookingView(this, bookingDirector.getBooking()).display();
+            new ConfirmBookingView(this, bookingDirector.getBooking()).display();
         }
         assert bookingDirector != null;
         return bookingDirector.getBooking();

@@ -6,12 +6,12 @@ import controller.commands.ContinueCommand;
 import controller.commands.ResetBookingCommand;
 import model.Booking;
 
-public class ShowBookingView extends StringInputView {
+public class ConfirmBookingView extends StringInputView {
 
     private final BookingService bookingService;
     private final Booking booking;
 
-    public ShowBookingView(BookingService bookingService, Booking booking) {
+    public ConfirmBookingView(BookingService bookingService, Booking booking) {
         this.bookingService = bookingService;
         this.booking = booking;
     }
