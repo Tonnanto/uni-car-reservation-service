@@ -14,23 +14,6 @@ public class StatisticsService implements Observer {
         updateAll(contentRootFolder);
     }
 
-    // TODO: temporary
-    public static void main(String[] args) {
-        ContentService contentService = new ContentService();
-
-        contentService.addContent(new BookingFile());
-        contentService.addContent(new BookingFile());
-        contentService.addContent(new BookingFile());
-        contentService.addContent(new BookingFile());
-
-        StatisticsService statisticsService = new StatisticsService(contentService.getRoot());
-
-
-        statisticsService.getEnglishBookingsPaidByGoogleWallet();
-
-        System.out.println(contentService.getRoot().getSummaryFile());
-    }
-
     public void getGermanBookingsPaidByPayPal() {
         new GetBookingsVisitor(Language.GERMAN, PaymentType.PAYPAL);
     }
