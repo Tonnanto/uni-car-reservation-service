@@ -2,6 +2,8 @@ package controller;
 
 import model.*;
 
+import java.util.Map;
+
 public class StatisticsService implements Observer {
 
     private Folder contentRootFolder;
@@ -9,17 +11,20 @@ public class StatisticsService implements Observer {
     public StatisticsService(Folder contentRootFolder) {
         this.contentRootFolder = contentRootFolder;
         contentRootFolder.addObserver(this);
+        updateAll(contentRootFolder);
     }
 
     // TODO: temporary
     public static void main(String[] args) {
         ContentService contentService = new ContentService();
-        StatisticsService statisticsService = new StatisticsService(contentService.getRoot());
 
         contentService.addContent(new BookingFile());
         contentService.addContent(new BookingFile());
         contentService.addContent(new BookingFile());
         contentService.addContent(new BookingFile());
+
+        StatisticsService statisticsService = new StatisticsService(contentService.getRoot());
+
 
         statisticsService.getEnglishBookingsPaidByGoogleWallet();
 
@@ -57,5 +62,18 @@ public class StatisticsService implements Observer {
             Folder folder = (Folder) object;
             new CreateSummaryVisitor().visit(folder);
         }
+    }
+
+    /**
+     * Updates the given folder and all of it's subfolders
+     * @param folder the folder to update
+     */
+    private void updateAll(Folder folder) {
+        for (Map.Entry<String, Content> contentEntry: folder.getContents().entrySet()) {
+            if (contentEntry.getValue() instanceof Folder) {
+                updateAll((Folder) contentEntry.getValue());
+            }
+        }
+        update(folder);
     }
 }
