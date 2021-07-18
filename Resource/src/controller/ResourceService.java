@@ -2,9 +2,7 @@ package controller;
 
 import model.Car;
 import model.Resource;
-import model.decorator.CarDecoratorType;
-import model.decorator.ChildSeat;
-import model.decorator.SetTopBox;
+import model.decorator.*;
 import view.AddCarDecoratorView;
 import view.SelectCarView;
 import view.ShowSelectedResourceView;
@@ -24,7 +22,9 @@ public class ResourceService {
     public ResourceService() {
         this.availableCars = Arrays.asList(
                 new Car("BMW 530d Touring", 49900),
-                new Car("Volkswagen Golf", 24000)
+                new Car("Volkswagen Golf", 24000),
+                new Car("Opel Corsa", 14600),
+                new Car("Mercedes Benz C220", 37440)
         );
     }
 
@@ -82,6 +82,9 @@ public class ResourceService {
         resource = switch (decoratorType) {
             case CHILD_SEAT -> new ChildSeat(resource);
             case SET_TOP_BOX -> new SetTopBox(resource);
+            case AMBIENCE_LIGHTING -> new AmbienceLighting(resource);
+            case MAGIC_TREE -> new MagicTree(resource);
+            case WINDOW_SHADE -> new WindowShade(resource);
         };
     }
 

@@ -19,4 +19,8 @@ public abstract class CarDecorator extends Resource {
     }
 
     public abstract String getName();
+
+    public Resource getResource() {
+        return resource;
+    }
 }
