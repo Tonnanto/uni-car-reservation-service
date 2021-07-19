@@ -24,5 +24,9 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module" module-name="CarReservationService" />
+    <orderEntry type="module" module-name="Payment" />
+    <orderEntry type="module" module-name="Booking" />
+    <orderEntry type="module" module-name="Resource" />
   </component>
 </module>

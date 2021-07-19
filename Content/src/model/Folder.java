@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class Folder extends Content {
+public class Folder extends Content implements Visitable {
 
     private final Map<String, Content> contents;
 
@@ -24,7 +24,7 @@ public class Folder extends Content {
     private boolean addContent(Content content) {
         if (getContent(content.getName()) != null) return false;
         this.contents.put(content.getName(), content);
-        this.createSummaryFile();
+        this.setChanged(); // Notifies StatisticsService
         return true;
     }
 
@@ -47,6 +47,8 @@ public class Folder extends Content {
         if (subContent == null) {
             // Specified path does not yet exist
             subFolder = new Folder(path[0]);
+            // Hand Observers through content hierarchy
+            subFolder.addObservers(this.getObservers());
             success = this.addContent(subFolder);
 
         } else if (subContent instanceof Folder) {
@@ -63,22 +65,26 @@ public class Folder extends Content {
         else
             success = subFolder.addContent(content) && success;
 
+        this.setChanged(); // Notifies StatisticsService
         return success;
     }
 
-
     /**
-     * Creates a File that contains a summary of all BookingFiles within this Folder.
-     * Adds this File to it's own contents
+     * Adds or overwrites the summary file
+     * Should only be called by Statistics::CreateSummaryVisitor
+     * @param file the summary file to add
      */
-    private void createSummaryFile() {
-        SummaryFile file = new SummaryFile(this.getName() + "_Summary");
-        //TODO: Add contents to summary file
-
-        // Adds or overrides summary file to folder
+    public void addSummaryFile(SummaryFile file) {
         this.contents.put(file.getName(), file);
     }
 
+    public SummaryFile getSummaryFile() {
+        for (Map.Entry<String, Content> contentEntry: contents.entrySet()) {
+            if (contentEntry.getValue() instanceof SummaryFile)
+                return (SummaryFile) contentEntry.getValue();
+        }
+        return null; // no summary file found
+    }
 
     /**
      * TODO: This belongs in the view package
@@ -108,5 +114,10 @@ public class Folder extends Content {
         }
 
         return sb.toString();
+    }
+
+    @Override
+    public void accept(ContentVisitor visitor) {
+        visitor.visit(this);
     }
 }
