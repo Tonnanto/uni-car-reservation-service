@@ -33,7 +33,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module" module-name="Authentication" exported="" />
-    <orderEntry type="module" module-name="CarReservationService" />
+    <orderEntry type="module" module-name="Utilities" />
   </component>
 </module>

@@ -40,6 +40,14 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module" module-name="test" />
+    <orderEntry type="module" module-name="Authentication" />
+    <orderEntry type="module" module-name="Person" />
+    <orderEntry type="module" module-name="Booking" />
+    <orderEntry type="module" module-name="Content" />
+    <orderEntry type="module" module-name="Payment" />
     <orderEntry type="module" module-name="Resource" />
+    <orderEntry type="module" module-name="Statistics" />
+    <orderEntry type="module" module-name="Utilities" />
   </component>
 </module>

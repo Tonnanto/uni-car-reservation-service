@@ -26,7 +26,7 @@
     </orderEntry>
     <orderEntry type="module" module-name="Content" />
     <orderEntry type="module" module-name="Payment" />
-    <orderEntry type="module" module-name="CarReservationService" />
     <orderEntry type="module" module-name="Booking" />
+    <orderEntry type="module" module-name="Utilities" />
   </component>
 </module>
