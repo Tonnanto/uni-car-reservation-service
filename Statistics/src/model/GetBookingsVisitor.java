@@ -1,5 +1,7 @@
 package model;
 
+import view.Language;
+
 public class GetBookingsVisitor implements ContentVisitor {
     private Language language;
     private PaymentType paymentType;

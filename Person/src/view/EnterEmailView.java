@@ -3,7 +3,6 @@ package view;
 import controller.Command;
 import controller.PersonService;
 import controller.commands.SetEmailCommand;
-import controller.commands.SetNameCommand;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

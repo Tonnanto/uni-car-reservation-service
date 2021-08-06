@@ -1,7 +1,7 @@
 package controller.commands;
 
 import controller.BookingService;
-import model.Language;
+import view.Language;
 
 public class SetBookingBuilderCommand extends BookingServiceCommand {
 

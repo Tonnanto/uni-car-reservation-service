@@ -1,5 +1,9 @@
 package model;
 
+import view.Language;
+
+import java.time.LocalDate;
+
 public class Booking {
     private String header;
     private String body;
