@@ -1,9 +1,9 @@
 package controller;
 
 import model.Content;
+import model.File;
 import model.Folder;
-import view.SelectShowMethodView;
-import view.ShowContentHierarchyView;
+import view.*;
 
 import java.text.DateFormatSymbols;
 import java.time.LocalDate;
@@ -54,11 +54,27 @@ public class ContentService {
      * Represents the UseCase "showContent"
      */
     public void showContent() {
+        // Let user select between "Show entire content hierarchy" and "Navigate Content"
         new SelectShowMethodView().display();
 
         // only enters loop if "Navigate Content" has been selected
         while (navigatingContent) {
+            if (navigationPath.size() <= 0) {
+                new ShowFolderView(this, root).display();
 
+            } else {
+                Content contentToShow = root.findContentWithPath(navigationPath.toArray(new String[0]));
+
+                if (contentToShow == null) {
+                    new ContentNotFoundView().display();
+
+                } else if (contentToShow instanceof Folder) {
+                    new ShowFolderView(this, (Folder) contentToShow).display();
+
+                } else {
+                    new ShowFileView(this, (File) contentToShow).display();
+                }
+            }
         }
     }
 
@@ -75,14 +91,12 @@ public class ContentService {
     //================================================================================
 
     public void showContentHierarchy() {
-        new ShowContentHierarchyView().display();
+        new ShowContentHierarchyView(this).display();
     }
 
     public void navigateContent() {
         navigatingContent = true;
-
         navigationPath = new Stack<>();
-        navigationPath.push(root.getName());
     }
 
     public void openContent(Content content) {
