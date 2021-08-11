@@ -9,11 +9,11 @@ public class ShowContentHierarchyCommand extends ContentServiceCommand {
 
     @Override
     public void execute() {
-
+        receiver.showContentHierarchy();
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return "Show the entire content hierarchy";
     }
 }

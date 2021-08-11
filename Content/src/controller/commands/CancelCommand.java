@@ -9,11 +9,11 @@ public class CancelCommand extends ContentServiceCommand {
 
     @Override
     public void execute() {
-
+        receiver.cancel();
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return "Done";
     }
 }

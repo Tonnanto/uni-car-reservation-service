@@ -9,11 +9,11 @@ public class CloseContentCommand extends ContentServiceCommand {
 
     @Override
     public void execute() {
-
+        receiver.closeContent();
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return "Go Back";
     }
 }

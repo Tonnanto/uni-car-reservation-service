@@ -21,4 +21,19 @@ public class BookingFile extends File {
     public Booking getBooking() {
         return booking;
     }
+
+    /**
+     * Returns a visual representation of the files content
+     * @return visual representation for console output
+     */
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getName());
+
+        // TODO: create visual representation of content
+        sb.append("\n>> Content <<");
+
+        return sb.toString();
+    }
 }

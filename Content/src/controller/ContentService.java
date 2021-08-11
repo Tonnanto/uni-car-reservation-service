@@ -1,5 +1,6 @@
 package controller;
 
+import model.BookingFile;
 import model.Content;
 import model.File;
 import model.Folder;
@@ -23,6 +24,26 @@ public class ContentService {
 
     public ContentService() {
         this.root = new Folder("Bookings");
+    }
+
+    public static void main(String[] args) {
+        ContentService cs = new ContentService();
+
+        // Adding test content
+        cs.addContent(new BookingFile(), LocalDate.of(2017, 1, 1));
+        cs.addContent(new BookingFile(), LocalDate.of(2017, 5, 23));
+        cs.addContent(new BookingFile(), LocalDate.of(2018, 12, 31));
+        cs.addContent(new BookingFile(), LocalDate.of(2018, 12, 31));
+        cs.addContent(new BookingFile());
+        cs.addContent(new BookingFile());
+        cs.addContent(new BookingFile());
+        cs.addContent(new BookingFile());
+        cs.addContent(new BookingFile());
+        cs.addContent(new BookingFile());
+
+        // triggering UseCase: showContent
+
+        cs.showContent();
     }
 
     /**
@@ -55,7 +76,7 @@ public class ContentService {
      */
     public void showContent() {
         // Let user select between "Show entire content hierarchy" and "Navigate Content"
-        new SelectShowMethodView().display();
+        new SelectShowMethodView(this).display();
 
         // only enters loop if "Navigate Content" has been selected
         while (navigatingContent) {
@@ -84,6 +105,10 @@ public class ContentService {
 
     public Folder getRoot() {
         return this.root;
+    }
+
+    public Stack<String> getNavigationPath() {
+        return navigationPath;
     }
 
     //================================================================================
