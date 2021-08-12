@@ -3,21 +3,21 @@ package view;
 import controller.Command;
 import controller.PaymentService;
 import controller.commands.CancelPaymentCommand;
-import controller.commands.SetEmailCommand;
+import controller.commands.SetPaymentEmailCommand;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class EnterEmailView extends StringInputView {
+public class EnterPaymentEmailView extends StringInputView {
     private final PaymentService paymentService;
 
-    public EnterEmailView(PaymentService paymentService) {
+    public EnterPaymentEmailView(PaymentService paymentService) {
         this.paymentService = paymentService;
     }
 
     @Override
     protected Command getCommand(String inputString) {
-        return new SetEmailCommand(paymentService, inputString.toLowerCase());
+        return new SetPaymentEmailCommand(paymentService, inputString.toLowerCase());
     }
 
     @Override

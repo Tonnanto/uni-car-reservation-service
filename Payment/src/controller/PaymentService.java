@@ -42,11 +42,11 @@ public class PaymentService {
             // PaymentType is selected
             if (!userAuthenticated) {
                 if (email == null || email.isEmpty()) {
-                    new EnterEmailView(this).display();
+                    new EnterPaymentEmailView(this).display();
                     continue;
                 }
                 if (password == null || password.isEmpty()) {
-                    new EnterPasswordView(this).display();
+                    new EnterPaymentPasswordView(this).display();
                     continue;
                 }
                 password = null; // if this line is being reached the user should be prompted to re-enter his password next

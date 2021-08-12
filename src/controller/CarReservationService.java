@@ -22,7 +22,7 @@ public class CarReservationService {
 
     public void reserveResource() {
         Resource selectedResource = new ResourceService().getSelectedResource();
-        Payment payment = new PaymentService().payAmount(new CurrencyAmount(selectedResource.getPrice(),Currency.EURO));//todo Currency in Resource?
+        Payment payment = new PaymentService().payAmount(new CurrencyAmount(selectedResource.getPrice(), Currency.EURO));//todo Currency in Resource?
         Booking booking = new BookingService().createBooking(selectedResource, payment);
         new ContentService().addContent(null, LocalDate.now());     //todo Booking übergeben
     }
@@ -30,8 +30,10 @@ public class CarReservationService {
     // Create Person
     public void createPerson() {
         person = new PersonService().createPerson();
-        authenticationService = new AuthenticationService((Subject) person);
+        if (person instanceof Subject)
+            authenticationService = new AuthenticationService((Subject) person);
     }
+
     // Authenticate Person
     public void authenticateSubject() {
         authenticationService.authenticateSubject();
@@ -43,7 +45,7 @@ public class CarReservationService {
     }
 
     // Show Statistics
-    public void showStatistics(){ //todo Auswahl der "Filter"
+    public void showStatistics() { //todo Auswahl der "Filter"
     }
 
     public void showAllResources() {

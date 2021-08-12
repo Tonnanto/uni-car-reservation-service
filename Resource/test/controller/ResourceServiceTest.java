@@ -1,8 +1,8 @@
 package controller;
 
 import controller.commands.AddDecoratorCommand;
-import controller.commands.FinishSelectionCommand;
-import controller.commands.ResetSelectionCommand;
+import controller.commands.FinishResourceSelectionCommand;
+import controller.commands.ResetResourceSelectionCommand;
 import controller.commands.SelectCarCommand;
 import model.Car;
 import model.Resource;
@@ -55,14 +55,14 @@ public class ResourceServiceTest {
 
     protected void canSelectionBeReset() {
         Assertions.assertNotNull(resourceService.getResource());
-        new ResetSelectionCommand(resourceService).execute();
+        new ResetResourceSelectionCommand(resourceService).execute();
         Assertions.assertNull(resourceService.getResource());
     }
 
     protected void canSelectionBeFinished() {
         Assertions.assertFalse(resourceService.isResourceSelected());
 
-        new FinishSelectionCommand(resourceService).execute();
+        new FinishResourceSelectionCommand(resourceService).execute();
 
         if (resourceService.getResource() != null) {
             Assertions.assertTrue(resourceService.isResourceSelected());

@@ -2,8 +2,8 @@ package controller.commands;
 
 import controller.ResourceService;
 
-public class FinishSelectionCommand extends ResourceServiceCommand {
-    public FinishSelectionCommand(ResourceService receiver) {
+public class FinishResourceSelectionCommand extends ResourceServiceCommand {
+    public FinishResourceSelectionCommand(ResourceService receiver) {
         super(receiver);
     }
 

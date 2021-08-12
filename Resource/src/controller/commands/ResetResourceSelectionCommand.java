@@ -2,8 +2,8 @@ package controller.commands;
 
 import controller.ResourceService;
 
-public class ResetSelectionCommand extends ResourceServiceCommand {
-    public ResetSelectionCommand(ResourceService receiver) {
+public class ResetResourceSelectionCommand extends ResourceServiceCommand {
+    public ResetResourceSelectionCommand(ResourceService receiver) {
         super(receiver);
     }
 
