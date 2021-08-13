@@ -6,9 +6,17 @@ public class BookingFile extends File {
 
     private Booking booking;
 
-    public BookingFile (String name) {
+    public BookingFile(Booking booking) {
+        super("Booking_" + ++bookingCount);
+        this.booking = booking;
+    }
+
+    // TODO: temporary constructor
+    public BookingFile(String name) {
         super(name);
     }
+
+    // TODO: temporary constructor
     public BookingFile() {
         super("Booking_" + ++bookingCount);
 
