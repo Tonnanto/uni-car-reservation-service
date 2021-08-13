@@ -21,7 +21,7 @@ public class AddCarDecoratorView extends SelectionView {
 
     @Override
     protected String getMessage() {
-        return "Select an addon:";
+        return Language.resourceBundle.getString("resource.AddCarDecoratorView.Message");
     }
 
     @Override

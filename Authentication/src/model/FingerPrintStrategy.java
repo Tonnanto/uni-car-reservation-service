@@ -1,6 +1,7 @@
 package model;
 
 import controller.AuthenticationService;
+import view.Language;
 
 public class FingerPrintStrategy extends Credential {
 
@@ -11,6 +12,6 @@ public class FingerPrintStrategy extends Credential {
 
     @Override
     public String getDescription() {
-        return "Finger Scan";
+        return Language.resourceBundle.getString("authentication.model.FingerPrintStrategy.Description");
     }
 }

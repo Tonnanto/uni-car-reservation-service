@@ -1,6 +1,7 @@
 package model;
 
 import controller.AuthenticationService;
+import view.Language;
 
 public class UserNamePasswordStrategy extends Credential {
 
@@ -14,7 +15,7 @@ public class UserNamePasswordStrategy extends Credential {
 
     @Override
     public String getDescription() {
-        return "Username and Password";
+        return Language.resourceBundle.getString("authentication.model.UserNamePasswordStrategy.Description");
     }
 
     public String getUsername() {

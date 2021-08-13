@@ -2,6 +2,7 @@ package controller.commands;
 
 import controller.Command;
 import controller.PersonService;
+import view.Language;
 
 public class SetEmailCommand extends PersonServiceCommand {
 
@@ -22,6 +23,6 @@ public class SetEmailCommand extends PersonServiceCommand {
 
     @Override
     public String getDescription() {
-        return "getDescription of Email :D";
+        return Language.resourceBundle.getString("person.controller.commands.SetEmailCommand.Description");
     }
 }

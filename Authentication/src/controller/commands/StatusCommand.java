@@ -1,6 +1,7 @@
 package controller.commands;
 
 import controller.AuthenticationService;
+import view.Language;
 
 public class StatusCommand extends AuthenticationServiceCommand {
 
@@ -15,6 +16,6 @@ public class StatusCommand extends AuthenticationServiceCommand {
 
     @Override
     public String getDescription() {
-        return "Login Status";
+        return Language.resourceBundle.getString("authentication.controller.commands.StatusCommand.Description");
     }
 }

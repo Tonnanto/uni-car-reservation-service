@@ -20,7 +20,7 @@ public class EnterPasswordView extends StringInputView {
 
     @Override
     protected String getMessage() {
-        return "Please enter your password: ";
+        return Language.resourceBundle.getString("authentication.view.EnterPasswordView.Message");
     }
 
     @Override

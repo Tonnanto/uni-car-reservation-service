@@ -1,6 +1,7 @@
 package controller.commands;
 
 import controller.AuthenticationService;
+import view.Language;
 
 public class ResetUserNameCommand extends AuthenticationServiceCommand {
 
@@ -15,7 +16,7 @@ public class ResetUserNameCommand extends AuthenticationServiceCommand {
 
     @Override
     public String getDescription() {
-        return "to go back";
+        return Language.resourceBundle.getString("authentication.controller.commands.ResetUserNameCommand.Description");
     }
 }
 

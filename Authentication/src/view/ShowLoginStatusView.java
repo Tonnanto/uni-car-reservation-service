@@ -13,7 +13,7 @@ public class ShowLoginStatusView extends View {
     @Override
     protected String getMessage() {
         if (authenticationService.isSubjectAuthenticated())
-            return "You are successfully logged in!";
-        else return "You are not logged in!";
+            return Language.resourceBundle.getString("authentication.view.ShowLogInStatusView.Message1");
+        else return Language.resourceBundle.getString("authentication.view.ShowLogInStatusView.Message2");
     }
 }

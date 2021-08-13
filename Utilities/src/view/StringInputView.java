@@ -98,6 +98,6 @@ public abstract class StringInputView extends View {
      * @return the validation message
      */
     protected String getValidationMessage() {
-        return "Please enter a valid String.";
+        return Language.resourceBundle.getString("utilities.view.StringInputView.ValidationMessage");
     }
 }

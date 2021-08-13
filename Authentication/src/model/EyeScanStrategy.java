@@ -1,6 +1,7 @@
 package model;
 
 import controller.AuthenticationService;
+import view.Language;
 
 public class EyeScanStrategy extends Credential {
 
@@ -11,6 +12,6 @@ public class EyeScanStrategy extends Credential {
 
     @Override
     public String getDescription() {
-        return "Eye Scan";
+        return Language.resourceBundle.getString("authentication.model.EyeScanStrategy.Description");
     }
 }

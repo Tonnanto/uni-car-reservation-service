@@ -20,7 +20,7 @@ public class EnterUserNameView extends StringInputView {
 
     @Override
     protected String getMessage() {
-        return "Please enter your username ('X' to cancel): ";
+        return Language.resourceBundle.getString("authentication.view.EnterUserNameView.Message");
     }
 
     @Override

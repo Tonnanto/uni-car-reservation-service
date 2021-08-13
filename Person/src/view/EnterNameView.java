@@ -16,11 +16,11 @@ public class EnterNameView extends StringInputView {
     }
 
     @Override
-    protected String getMessage() { return "Please enter your Name:"; }
+    protected String getMessage() { return Language.resourceBundle.getString("person.view.EnterNameView.Message"); }
 
     @Override
     protected boolean isValidString (String s) { return s.length() > 3;}
 
     @Override
-    protected String getValidationMessage() { return "Please enter a name with more than 3 characters";}
+    protected String getValidationMessage() { return Language.resourceBundle.getString("person.view.EnterNameView.ValidationMessage");}
 }

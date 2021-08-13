@@ -1,6 +1,7 @@
 package controller.commands;
 
 import controller.AuthenticationService;
+import view.Language;
 
 public class LogOutCommand extends AuthenticationServiceCommand {
 
@@ -15,6 +16,6 @@ public class LogOutCommand extends AuthenticationServiceCommand {
 
     @Override
     public String getDescription() {
-        return "Logout";
+        return Language.resourceBundle.getString("authentication.controller.commands.LogOutCommand.Description");
     }
 }

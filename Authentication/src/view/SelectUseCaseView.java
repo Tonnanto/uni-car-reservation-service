@@ -36,6 +36,6 @@ public class SelectUseCaseView extends SelectionView {
 
     @Override
     protected String getMessage() {
-        return "Please select a action: ";
+        return Language.resourceBundle.getString("authentication.view.SelectUseCaseView.Message");
     }
 }
