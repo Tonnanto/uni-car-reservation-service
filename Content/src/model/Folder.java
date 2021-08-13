@@ -17,6 +17,24 @@ public class Folder extends Content implements Visitable {
         return this.contents.get(name);
     }
 
+    public Content findContentWithPath(String... path) {
+        if (path.length <= 0) return null;
+        if (path.length == 1) return getContent(path[0]);
+
+        Content subContent = this.getContent(path[0]);
+        Folder subFolder;
+
+        if (subContent instanceof Folder) {
+            // Specified path exists
+            subFolder = (Folder) subContent;
+            return subFolder.findContentWithPath(Arrays.copyOfRange(path, 1, path.length));
+
+        } else {
+            // Specified path exists but is not a Folder
+            return null;
+        }
+    }
+
     public Map<String, Content> getContents() {
         return this.contents;
     }
