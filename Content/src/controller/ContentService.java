@@ -19,6 +19,7 @@ public class ContentService {
 
     private final Folder root;
 
+    private boolean showingContent = true;
     private boolean navigatingContent;
     private Stack<String> navigationPath;
 
@@ -75,25 +76,27 @@ public class ContentService {
      * Represents the UseCase "showContent"
      */
     public void showContent() {
-        // Let user select between "Show entire content hierarchy" and "Navigate Content"
-        new SelectShowMethodView(this).display();
+        while (showingContent) {
+            // Let user select between "Show entire content hierarchy" and "Navigate Content"
+            new SelectShowMethodView(this).display();
 
-        // only enters loop if "Navigate Content" has been selected
-        while (navigatingContent) {
-            if (navigationPath.size() <= 0) {
-                new ShowFolderView(this, root).display();
-
-            } else {
-                Content contentToShow = root.findContentWithPath(navigationPath.toArray(new String[0]));
-
-                if (contentToShow == null) {
-                    new ContentNotFoundView().display();
-
-                } else if (contentToShow instanceof Folder) {
-                    new ShowFolderView(this, (Folder) contentToShow).display();
+            // only enters loop if "Navigate Content" has been selected
+            while (navigatingContent) {
+                if (navigationPath.size() <= 0) {
+                    new ShowFolderView(this, root).display();
 
                 } else {
-                    new ShowFileView(this, (File) contentToShow).display();
+                    Content contentToShow = root.findContentWithPath(navigationPath.toArray(new String[0]));
+
+                    if (contentToShow == null) {
+                        new ContentNotFoundView().display();
+
+                    } else if (contentToShow instanceof Folder) {
+                        new ShowFolderView(this, (Folder) contentToShow).display();
+
+                    } else {
+                        new ShowFileView(this, (File) contentToShow).display();
+                    }
                 }
             }
         }
@@ -129,11 +132,14 @@ public class ContentService {
     }
 
     public void closeContent() {
-        navigationPath.pop();
+        if (navigationPath != null && navigationPath.size() > 0)
+            navigationPath.pop();
+        else
+            navigatingContent = false;
     }
 
     public void cancel() {
         navigatingContent = false;
-        navigationPath = null;
+        showingContent = false;
     }
 }

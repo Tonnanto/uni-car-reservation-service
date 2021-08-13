@@ -34,9 +34,7 @@ public class ShowFolderView extends SelectionView {
         commands.add(null);
 
         // Command to navigate back
-        if (contentService.getNavigationPath().size() > 0) {
-            commands.add(new CloseContentCommand(contentService));
-        }
+        commands.add(new CloseContentCommand(contentService));
 
         // Command to end the navigation
         commands.add(new CancelCommand(contentService));

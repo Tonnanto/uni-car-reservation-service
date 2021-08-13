@@ -110,9 +110,9 @@ public class Folder extends Content implements Visitable {
      */
     @Override
     public String toString() {
-        return "-------------------------------------------------------\n" +
+        return "\n" +
                 toString(0) +
-                "\n-------------------------------------------------------";
+                "\n";
     }
 
     private String toString(int indent) {
