@@ -9,12 +9,16 @@ public class CarReservationService {
 
     private Person person;
     private AuthenticationService authenticationService;
+    private ContentService contentService;
+    private StatisticsService statisticsService;
 
 //    public static void main(String[] args) {
 //        selectUseCase();
 //    }
 
     public void selectUseCase() {
+        contentService = new ContentService();
+        statisticsService = new StatisticsService(contentService.getRoot());
         while (true) {
             new SelectUseCaseView(this).display();
         }
@@ -24,7 +28,7 @@ public class CarReservationService {
         Resource selectedResource = new ResourceService().getSelectedResource();
         Payment payment = new PaymentService().payAmount(new CurrencyAmount(selectedResource.getPrice(), Currency.EURO));//todo Currency in Resource?
         Booking booking = new BookingService().createBooking(selectedResource, payment);
-        new ContentService().addContent(null, LocalDate.now());     //todo Booking übergeben
+        contentService.addContent(new BookingFile(booking));
     }
 
     // Create Person
@@ -41,7 +45,7 @@ public class CarReservationService {
 
     // Show Content
     public void showContent() {
-        new ContentService();    //todo show in Content
+        contentService.showContent();
     }
 
     // Show Statistics
