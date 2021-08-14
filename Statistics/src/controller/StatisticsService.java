@@ -2,12 +2,14 @@ package controller;
 
 import model.*;
 import view.Language;
+import view.SelectStatisticView;
 
 import java.util.Map;
 
 public class StatisticsService implements Observer {
 
     private Folder contentRootFolder;
+    private boolean showingStatistics;
 
     public StatisticsService(Folder contentRootFolder) {
         this.contentRootFolder = contentRootFolder;
@@ -16,27 +18,27 @@ public class StatisticsService implements Observer {
     }
 
     public void getGermanBookingsPaidByPayPal() {
-        new GetBookingsVisitor(Language.GERMAN, PaymentType.PAYPAL);
+//        new GetBookingsVisitor(Language.GERMAN, PaymentType.PAYPAL);
     }
 
     public void getGermanBookingsPaidByGoogleWallet() {
-        new GetBookingsVisitor(Language.GERMAN, PaymentType.GOOGLE_WALLET).visit(contentRootFolder);
+//        new GetBookingsVisitor(Language.GERMAN, PaymentType.GOOGLE_WALLET).visit(contentRootFolder);
     }
 
     public void getGermanBookingsPaidByMoneyWallet() {
-        new GetBookingsVisitor(Language.GERMAN, PaymentType.MONEY_WALLET).visit(contentRootFolder);
+//        new GetBookingsVisitor(Language.GERMAN, PaymentType.MONEY_WALLET).visit(contentRootFolder);
     }
 
     public void getEnglishBookingsPaidByPayPal() {
-        new GetBookingsVisitor(Language.ENGLISH, PaymentType.PAYPAL).visit(contentRootFolder);
+//        new GetBookingsVisitor(Language.ENGLISH, PaymentType.PAYPAL).visit(contentRootFolder);
     }
 
     public void getEnglishBookingsPaidByGoogleWallet() {
-        new GetBookingsVisitor(Language.ENGLISH, PaymentType.GOOGLE_WALLET).visit(contentRootFolder);
+//        new GetBookingsVisitor(Language.ENGLISH, PaymentType.GOOGLE_WALLET).visit(contentRootFolder);
     }
 
     public void getEnglishBookingsPaidByMoneyWallet() {
-        new GetBookingsVisitor(Language.ENGLISH, PaymentType.MONEY_WALLET).visit(contentRootFolder);
+//        new GetBookingsVisitor(Language.ENGLISH, PaymentType.MONEY_WALLET).visit(contentRootFolder);
     }
 
 
@@ -59,5 +61,35 @@ public class StatisticsService implements Observer {
             }
         }
         update(folder);
+    }
+
+    public void showStatistics() {
+        showingStatistics = true;
+
+        while (showingStatistics) {
+            new SelectStatisticView(this).display();
+        }
+    }
+
+
+
+    //================================================================================
+    // The following methods are being called by their corresponding commands.
+    //================================================================================
+
+    public void showStatistic(PaymentType paymentType, Language language) {
+        if (language == Language.ENGLISH) {
+            switch (paymentType) {
+                case PAYPAL -> getEnglishBookingsPaidByPayPal();
+                case GOOGLE_WALLET -> getEnglishBookingsPaidByGoogleWallet();
+                case MONEY_WALLET -> getEnglishBookingsPaidByMoneyWallet();
+            }
+        } else if (language == Language.GERMAN) {
+            switch (paymentType) {
+                case PAYPAL -> getGermanBookingsPaidByPayPal();
+                case GOOGLE_WALLET -> getGermanBookingsPaidByGoogleWallet();
+                case MONEY_WALLET -> getGermanBookingsPaidByMoneyWallet();
+            }
+        }
     }
 }
