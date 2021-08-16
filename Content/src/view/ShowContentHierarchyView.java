@@ -2,8 +2,13 @@ package view;
 
 import controller.Command;
 import controller.ContentService;
+import controller.commands.CancelCommand;
+import controller.commands.CloseContentCommand;
 
-public class ShowContentHierarchyView extends StringInputView {
+import java.util.ArrayList;
+import java.util.List;
+
+public class ShowContentHierarchyView extends SelectionView {
     private final ContentService contentService;
 
     public ShowContentHierarchyView(ContentService contentService) {
@@ -16,7 +21,15 @@ public class ShowContentHierarchyView extends StringInputView {
     }
 
     @Override
-    protected Command getCommand(String inputString) {
-        return null;
+    protected List<Command> getCommands() {
+        List<Command> commands = new ArrayList<>();
+
+        // Command to navigate back
+        commands.add(new CloseContentCommand(contentService));
+
+        // Command to end the navigation
+        commands.add(new CancelCommand(contentService));
+
+        return commands;
     }
 }
