@@ -53,7 +53,7 @@ public class CarReservationService {
     }
 
     public void showAllResources() {
-        new ResourceService().getSelectedResource();
+        new ResourceService().showAllResources();
     }
 
     public void logOut() {
