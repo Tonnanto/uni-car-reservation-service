@@ -23,4 +23,13 @@ public class CurrencyAmount {
     public String toString() {
         return String.format("%s%s", currency, new DecimalFormat("#.00").format(amount));
     }
+
+    /**
+     * Converts the CurrencyAmount to a different currency
+     * @param currency the Currency to convert to
+     * @return the new CurrencyAmount Object
+     */
+    public CurrencyAmount to(Currency currency) {
+        return new CurrencyAmount(this.amount / this.currency.inUSD() * currency.inUSD(), currency);
+    }
 }
