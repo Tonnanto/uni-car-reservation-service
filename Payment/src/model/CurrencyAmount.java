@@ -30,6 +30,8 @@ public class CurrencyAmount {
      * @return the new CurrencyAmount Object
      */
     public CurrencyAmount to(Currency currency) {
+        if (this.currency == currency) return new CurrencyAmount(amount, currency);
+
         return new CurrencyAmount(this.amount / this.currency.inUSD() * currency.inUSD(), currency);
     }
 }
