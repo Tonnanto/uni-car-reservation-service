@@ -21,7 +21,7 @@ public class CurrencyAmount {
 
     @Override
     public String toString() {
-        return String.format("%s%s", currency, new DecimalFormat("#.00").format(amount));
+        return String.format("%s%s", currency, new DecimalFormat("#0.00").format(amount));
     }
 
     /**
