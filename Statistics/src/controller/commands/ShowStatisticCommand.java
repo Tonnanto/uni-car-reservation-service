@@ -22,6 +22,6 @@ public class ShowStatisticCommand extends StatisticsServiceCommand {
 
     @Override
     public String getDescription() {
-        return String.format("%s Booking paid by %s", language, paymentType);
+        return String.format("%s Bookings paid by %s", language, paymentType);
     }
 }
