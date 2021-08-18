@@ -26,6 +26,6 @@ public class SelectPaymentTypeView extends SelectionView {
 
     @Override
     protected String getMessage() {
-        return "Please select a payment method:";
+        return Language.resourceBundle.getString("payment.view.SelectPaymentTypeView.getMessage");
     }
 }

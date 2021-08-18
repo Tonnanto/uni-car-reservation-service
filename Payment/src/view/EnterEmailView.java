@@ -27,7 +27,7 @@ public class EnterEmailView extends StringInputView {
 
     @Override
     protected String getMessage() {
-        return "Please enter your email for " + paymentService.getPayment().getPaymentType();
+        return Language.resourceBundle.getString("payment.view.EnterEmailView.getMessage") + " " + paymentService.getPayment().getPaymentType();
     }
 
     @Override
@@ -40,6 +40,6 @@ public class EnterEmailView extends StringInputView {
 
     @Override
     protected String getValidationMessage() {
-        return "Please enter a valid email address.";
+        return Language.resourceBundle.getString("payment.view.EnterEmailView.getValidationMessage");
     }
 }

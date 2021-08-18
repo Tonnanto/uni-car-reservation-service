@@ -1,6 +1,7 @@
 package controller.commands;
 
 import controller.BookingService;
+import view.Language;
 
 public class ResetBookingCommand extends BookingServiceCommand {
 
@@ -15,6 +16,6 @@ public class ResetBookingCommand extends BookingServiceCommand {
 
     @Override
     public String getDescription() {
-        return "Press X to change the language";
+        return Language.resourceBundle.getString("booking.controller.commands.ResetBookingCommand.getDescription");
     }
 }

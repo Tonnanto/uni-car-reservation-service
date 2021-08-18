@@ -1,5 +1,7 @@
 package model;
 
+import view.Language;
+
 public abstract class Payment {
 
     private Account senderAccount;
@@ -38,7 +40,7 @@ public abstract class Payment {
             return message;
         }
         else
-            return getPaymentType() + " Payment unsuccessful!";
+            return getPaymentType() + " " + Language.resourceBundle.getString("payment.model.Payment.getPaymentType2");
     }
 
     public abstract PaymentType getPaymentType();

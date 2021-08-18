@@ -28,7 +28,7 @@ public class PaymentService {
         this.currencyAmount = amount;
 
         if (amount.getAmount() <= 0) {
-            System.out.println("CurrencyAmount can not be negative or zero!");
+            System.out.println(Language.resourceBundle.getString("payment.controller.PaymentService"));
             return null;
         }
 
