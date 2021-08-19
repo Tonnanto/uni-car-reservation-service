@@ -21,6 +21,17 @@ public class CurrencyAmount {
 
     @Override
     public String toString() {
-        return String.format("%s%s", currency, new DecimalFormat("#.00").format(amount));
+        return String.format("%s%s", currency, new DecimalFormat("#0.00").format(amount));
+    }
+
+    /**
+     * Converts the CurrencyAmount to a different currency
+     * @param currency the Currency to convert to
+     * @return the new CurrencyAmount Object
+     */
+    public CurrencyAmount to(Currency currency) {
+        if (this.currency == currency) return new CurrencyAmount(amount, currency);
+
+        return new CurrencyAmount(this.amount / this.currency.inUSD() * currency.inUSD(), currency);
     }
 }
