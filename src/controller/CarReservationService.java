@@ -3,7 +3,6 @@ package controller;
 import model.*;
 import view.SelectUseCaseView;
 
-import java.time.LocalDate;
 
 public class CarReservationService {
 
@@ -49,7 +48,8 @@ public class CarReservationService {
     }
 
     // Show Statistics
-    public void showStatistics() { //todo Auswahl der "Filter"
+    public void showStatistics() {
+        statisticsService.showStatistics();
     }
 
     public void showAllResources() {
