@@ -5,10 +5,10 @@ import controller.PaymentService;
 import controller.commands.CancelPaymentCommand;
 import controller.commands.SetPasswordCommand;
 
-public class EnterPasswordView extends StringInputView {
+public class EnterPaymentPasswordView extends StringInputView {
     private final PaymentService paymentService;
 
-    public EnterPasswordView(PaymentService paymentService) {
+    public EnterPaymentPasswordView(PaymentService paymentService) {
         this.paymentService = paymentService;
     }
 

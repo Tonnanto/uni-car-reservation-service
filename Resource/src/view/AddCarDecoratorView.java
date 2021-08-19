@@ -3,8 +3,8 @@ package view;
 import controller.Command;
 import controller.ResourceService;
 import controller.commands.AddDecoratorCommand;
-import controller.commands.FinishSelectionCommand;
-import controller.commands.ResetSelectionCommand;
+import controller.commands.FinishResourceSelectionCommand;
+import controller.commands.ResetResourceSelectionCommand;
 import controller.commands.ResourceServiceCommand;
 import model.decorator.CarDecoratorType;
 
@@ -41,11 +41,11 @@ public class AddCarDecoratorView extends SelectionView {
         commands.add(null);
 
         // Reset Selection Command
-        command = new ResetSelectionCommand(resourceService);
+        command = new ResetResourceSelectionCommand(resourceService);
         commands.add(command);
 
         // Finish Selection Command
-        command = new FinishSelectionCommand(resourceService);
+        command = new FinishResourceSelectionCommand(resourceService);
         commands.add(command);
 
         return commands;

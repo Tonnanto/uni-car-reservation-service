@@ -5,6 +5,7 @@ import model.Resource;
 import model.decorator.*;
 import view.AddCarDecoratorView;
 import view.SelectCarView;
+import view.ShowAllResourcesView;
 import view.ShowSelectedResourceView;
 
 import java.util.Arrays;
@@ -50,6 +51,10 @@ public class ResourceService {
         }
 
         return resource;
+    }
+
+    public void showAllResources(){
+        new ShowAllResourcesView(this).display();
     }
 
     //================================================================================

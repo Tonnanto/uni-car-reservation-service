@@ -32,7 +32,7 @@ public class PaymentServiceTest {
 
             // Simulate: payment type selection and credentials entering
             new SelectPaymentTypeCommand(paymentService, paymentType).execute();
-            new SetEmailCommand(paymentService, "anton@stamme.de").execute();
+            new SetPaymentEmailCommand(paymentService, "anton@stamme.de").execute();
             new SetPasswordCommand(paymentService, "password420").execute();
             Assertions.assertTrue(paymentService.isUserAuthenticated());
 

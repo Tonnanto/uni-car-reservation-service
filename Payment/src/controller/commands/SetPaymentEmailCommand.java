@@ -2,10 +2,10 @@ package controller.commands;
 
 import controller.PaymentService;
 
-public class SetEmailCommand extends PaymentServiceCommand {
+public class SetPaymentEmailCommand extends PaymentServiceCommand {
     private final String email;
 
-    public SetEmailCommand(PaymentService receiver, String email) {
+    public SetPaymentEmailCommand(PaymentService receiver, String email) {
         super(receiver);
         this.email = email;
     }

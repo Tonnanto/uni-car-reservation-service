@@ -2,7 +2,7 @@ package view;
 
 import controller.BookingService;
 import controller.Command;
-import controller.commands.ContinueCommand;
+import controller.commands.ContinueBookingCommand;
 import controller.commands.ResetBookingCommand;
 import model.Booking;
 
@@ -27,7 +27,7 @@ public class ConfirmBookingView extends StringInputView {
 
     @Override
     protected Command getCommand(String inputString) {
-        return new ContinueCommand(bookingService);
+        return new ContinueBookingCommand(bookingService);
     }
 
     @Override
