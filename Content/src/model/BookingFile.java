@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Random;
+
 public class BookingFile extends File {
 
     private static int bookingCount;
@@ -20,9 +22,11 @@ public class BookingFile extends File {
     public BookingFile() {
         super("Booking_" + ++bookingCount);
 
+        Random r = new Random();
+        double price = r.nextInt(100000);
         // TODO: temporary example Booking
-        BookingDirector director = new BookingDirector(new GermanBookingBuilder());
-        director.createBooking(new Car("sdf", 300.0), new PayPalPayment(new CurrencyAmount(300.0, Currency.EURO)));
+        BookingDirector director = new BookingDirector(r.nextBoolean() ? new GermanBookingBuilder() : new EnglishBookingBuilder());
+        director.createBooking(new Car("sdf", price), new PayPalPayment(new CurrencyAmount(price, Currency.EURO)));
         this.booking = director.getBooking();
     }
 
