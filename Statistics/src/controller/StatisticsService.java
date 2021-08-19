@@ -2,12 +2,40 @@ package controller;
 
 import model.*;
 import view.Language;
+import view.SelectStatisticView;
+import view.ShowStatisticView;
 
+import java.time.LocalDate;
 import java.util.Map;
 
 public class StatisticsService implements Observer {
 
     private Folder contentRootFolder;
+    private boolean showingStatistics;
+
+    private BookingStatisticVisitor lastStatistic;
+
+    // TODO: temporary method
+    public static void main(String[] args) {
+        ContentService cs = new ContentService();
+        StatisticsService statisticsService = new StatisticsService(cs.getRoot());
+
+        // Adding test content
+        cs.addContent(new BookingFile(), LocalDate.of(2017, 1, 1));
+        cs.addContent(new BookingFile(), LocalDate.of(2017, 5, 23));
+        cs.addContent(new BookingFile(), LocalDate.of(2018, 12, 31));
+        cs.addContent(new BookingFile(), LocalDate.of(2018, 12, 31));
+        cs.addContent(new BookingFile());
+        cs.addContent(new BookingFile());
+        cs.addContent(new BookingFile());
+        cs.addContent(new BookingFile());
+        cs.addContent(new BookingFile());
+        cs.addContent(new BookingFile());
+
+        // triggering UseCase: showStatistics
+
+        statisticsService.showStatistics();
+    }
 
     public StatisticsService(Folder contentRootFolder) {
         this.contentRootFolder = contentRootFolder;
@@ -16,27 +44,39 @@ public class StatisticsService implements Observer {
     }
 
     public void getGermanBookingsPaidByPayPal() {
-        new GetBookingsVisitor(Language.GERMAN, PaymentType.PAYPAL);
+        BookingStatisticVisitor germanPayPalVisitor = new BookingStatisticVisitor(Language.GERMAN, PaymentType.PAYPAL);
+        this.contentRootFolder.accept(germanPayPalVisitor);
+        lastStatistic = germanPayPalVisitor;
     }
 
     public void getGermanBookingsPaidByGoogleWallet() {
-        new GetBookingsVisitor(Language.GERMAN, PaymentType.GOOGLE_WALLET).visit(contentRootFolder);
+        BookingStatisticVisitor germanPayPalVisitor = new BookingStatisticVisitor(Language.GERMAN, PaymentType.GOOGLE_WALLET);
+        this.contentRootFolder.accept(germanPayPalVisitor);
+        lastStatistic = germanPayPalVisitor;
     }
 
     public void getGermanBookingsPaidByMoneyWallet() {
-        new GetBookingsVisitor(Language.GERMAN, PaymentType.MONEY_WALLET).visit(contentRootFolder);
+        BookingStatisticVisitor germanPayPalVisitor = new BookingStatisticVisitor(Language.GERMAN, PaymentType.MONEY_WALLET);
+        this.contentRootFolder.accept(germanPayPalVisitor);
+        lastStatistic = germanPayPalVisitor;
     }
 
     public void getEnglishBookingsPaidByPayPal() {
-        new GetBookingsVisitor(Language.ENGLISH, PaymentType.PAYPAL).visit(contentRootFolder);
+        BookingStatisticVisitor germanPayPalVisitor = new BookingStatisticVisitor(Language.ENGLISH, PaymentType.PAYPAL);
+        this.contentRootFolder.accept(germanPayPalVisitor);
+        lastStatistic = germanPayPalVisitor;
     }
 
     public void getEnglishBookingsPaidByGoogleWallet() {
-        new GetBookingsVisitor(Language.ENGLISH, PaymentType.GOOGLE_WALLET).visit(contentRootFolder);
+        BookingStatisticVisitor germanPayPalVisitor = new BookingStatisticVisitor(Language.ENGLISH, PaymentType.GOOGLE_WALLET);
+        this.contentRootFolder.accept(germanPayPalVisitor);
+        lastStatistic = germanPayPalVisitor;
     }
 
     public void getEnglishBookingsPaidByMoneyWallet() {
-        new GetBookingsVisitor(Language.ENGLISH, PaymentType.MONEY_WALLET).visit(contentRootFolder);
+        BookingStatisticVisitor germanPayPalVisitor = new BookingStatisticVisitor(Language.ENGLISH, PaymentType.MONEY_WALLET);
+        this.contentRootFolder.accept(germanPayPalVisitor);
+        lastStatistic = germanPayPalVisitor;
     }
 
 
@@ -59,5 +99,47 @@ public class StatisticsService implements Observer {
             }
         }
         update(folder);
+    }
+
+    public void showStatistics() {
+        showingStatistics = true;
+
+        while (showingStatistics) {
+            new SelectStatisticView(this).display();
+        }
+    }
+
+    //================================================================================
+    // Accessors
+    //================================================================================
+
+    public BookingStatisticVisitor getLastStatistic() {
+        return lastStatistic;
+    }
+
+    //================================================================================
+    // The following methods are being called by their corresponding commands.
+    //================================================================================
+
+    public void showStatistic(PaymentType paymentType, Language language) {
+        if (language == Language.ENGLISH) {
+            switch (paymentType) {
+                case PAYPAL -> getEnglishBookingsPaidByPayPal();
+                case GOOGLE_WALLET -> getEnglishBookingsPaidByGoogleWallet();
+                case MONEY_WALLET -> getEnglishBookingsPaidByMoneyWallet();
+            }
+        } else if (language == Language.GERMAN) {
+            switch (paymentType) {
+                case PAYPAL -> getGermanBookingsPaidByPayPal();
+                case GOOGLE_WALLET -> getGermanBookingsPaidByGoogleWallet();
+                case MONEY_WALLET -> getGermanBookingsPaidByMoneyWallet();
+            }
+        }
+
+        new ShowStatisticView(this).display();
+    }
+
+    public void finishShowingStatistics() {
+        showingStatistics = false;
     }
 }
