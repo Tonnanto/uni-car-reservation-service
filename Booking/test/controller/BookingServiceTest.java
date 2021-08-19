@@ -1,6 +1,5 @@
-package behaviour;
+package controller;
 
-import controller.BookingService;
 import model.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;

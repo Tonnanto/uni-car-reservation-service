@@ -105,7 +105,6 @@ public class Folder extends Content implements Visitable {
     }
 
     /**
-     * TODO: This belongs in the view package
      * @return a visual string-representation of the content hierarchy within this Folder
      */
     @Override

@@ -1,4 +1,4 @@
-package behaviour;
+package controller;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

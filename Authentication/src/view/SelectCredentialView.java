@@ -21,7 +21,7 @@ public class SelectCredentialView extends SelectionView {
     @Override
     protected List<Command> getCommands() {
 
-        List<Command> commands = new ArrayList<>();                                //TODO new Credential
+        List<Command> commands = new ArrayList<>();
         commands.add(new SelectCredentialsCommand(authenticationService, new UserNamePasswordStrategy()));
         commands.add(new SelectCredentialsCommand(authenticationService, new FingerPrintStrategy()));
         commands.add(new SelectCredentialsCommand(authenticationService, new EyeScanStrategy()));

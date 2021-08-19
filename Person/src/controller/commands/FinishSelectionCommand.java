@@ -17,5 +17,4 @@ public class FinishSelectionCommand extends PersonServiceCommand {
     public String getDescription() {
         return Language.resourceBundle.getString("person.controller.commands.FinishSelectionCommand.Description");
     }
-    //TODO Ein View fürs Ende
 }
