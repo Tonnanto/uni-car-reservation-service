@@ -34,7 +34,7 @@ public class ShowStatisticView extends SelectionView {
 
         sb.append(String.format("All %s Bookings paid with %s:", statistic.getLanguage(), statistic.getPaymentType())).append("\n");
 
-        for (BookingFile bookingFile: statistic.getBookingFiless()) {
+        for (BookingFile bookingFile: statistic.getBookingFiles()) {
             sb.append("\n").append(bookingFile.getName()).append(" -> ").append(bookingFile.getBooking().getPayment().getCurrencyAmount().to(Currency.EURO));
         }
 

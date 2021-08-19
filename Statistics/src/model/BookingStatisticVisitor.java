@@ -63,7 +63,7 @@ public class BookingStatisticVisitor implements ContentVisitor {
         return paymentType;
     }
 
-    public List<BookingFile> getBookingFiless() {
+    public List<BookingFile> getBookingFiles() {
         return this.bookingFiles;
     }
 
