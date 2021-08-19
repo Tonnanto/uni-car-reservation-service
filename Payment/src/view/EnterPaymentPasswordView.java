@@ -24,6 +24,6 @@ public class EnterPaymentPasswordView extends StringInputView {
 
     @Override
     protected String getMessage() {
-        return "Please enter your password for " + paymentService.getPayment().getPaymentType();
+        return Language.resourceBundle.getString("payment.view.EnterPasswordView.getMessage") + " " + paymentService.getPayment().getPaymentType();
     }
 }

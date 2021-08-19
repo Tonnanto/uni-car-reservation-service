@@ -20,7 +20,7 @@ public class EnterFingerView extends StringInputView {
 
     @Override
     protected String getMessage() {
-        return "Please put your Finger on ENTER or type 'X' to cancel";
+        return Language.resourceBundle.getString("authentication.view.EnterFingerView.Message");
     }
 
     @Override
@@ -30,7 +30,7 @@ public class EnterFingerView extends StringInputView {
 
     @Override
     protected String getValidationMessage() {
-        return "Please put your Finger on ENTER or type 'X' to cancel";
+        return Language.resourceBundle.getString("authentication.view.EnterFingerView.ValidationMessage");
     }
 
     @Override

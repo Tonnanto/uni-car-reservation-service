@@ -23,6 +23,6 @@ public class ConfirmSelectionView extends SelectionView {
 
     @Override
     protected String getMessage() {
-        return "Do you want to reset or finish your selection?";
+        return Language.resourceBundle.getString("person.view.ConfirmSelectionView.Message");
     }
 }

@@ -1,6 +1,7 @@
 package controller.commands;
 
 import controller.PaymentService;
+import view.Language;
 
 public class ConfirmPaymentCommand extends PaymentServiceCommand {
     public ConfirmPaymentCommand(PaymentService receiver) {
@@ -14,6 +15,6 @@ public class ConfirmPaymentCommand extends PaymentServiceCommand {
 
     @Override
     public String getDescription() {
-        return "Confirm Payment";
+        return Language.resourceBundle.getString("payment.controller.commands.ConfirmPaymentCommand.getDescription");
     }
 }

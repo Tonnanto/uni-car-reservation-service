@@ -30,6 +30,6 @@ public class SelectCredentialView extends SelectionView {
 
     @Override
     protected String getMessage() {
-        return "Please select your login method:";
+        return Language.resourceBundle.getString("authentication.view.SelectCredentialView.Message");
     }
 }

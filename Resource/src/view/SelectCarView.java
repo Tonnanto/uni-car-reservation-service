@@ -18,7 +18,7 @@ public class SelectCarView extends SelectionView {
 
     @Override
     protected String getMessage() {
-        return "Please select a car:";
+        return Language.resourceBundle.getString("resource.SelectCarView.Message");
     }
 
     @Override

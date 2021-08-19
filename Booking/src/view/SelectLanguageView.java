@@ -27,6 +27,6 @@ public class SelectLanguageView extends SelectionView {
 
     @Override
     protected String getMessage() {
-        return "Please select a language for your bookingconfirmation";
+        return Language.resourceBundle.getString("booking.view.SelectLanguageView.getMessage");
     }
 }

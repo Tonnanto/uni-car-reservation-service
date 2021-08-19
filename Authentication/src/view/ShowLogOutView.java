@@ -3,6 +3,6 @@ package view;
 public class ShowLogOutView extends View {
     @Override
     protected String getMessage() {
-        return "You are successfully logged out!";
+        return Language.resourceBundle.getString("authentication.view.ShowLogOutView.Message");
     }
 }

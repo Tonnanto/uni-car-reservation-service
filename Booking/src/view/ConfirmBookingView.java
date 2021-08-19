@@ -22,7 +22,7 @@ public class ConfirmBookingView extends StringInputView {
                 + booking.getBody() + "\n"
                 + booking.getFooter() + "\n" +
                 "\n" +
-                "Please press ENTER to continue:";
+                Language.resourceBundle.getString("booking.view.ConfirmBookingView.getMessage");
     }
 
     @Override

@@ -19,7 +19,7 @@ public class EnterEmailView extends StringInputView{
     }
 
     @Override
-    protected String getMessage() { return "Please enter your E-Mail:"; }
+    protected String getMessage() { return Language.resourceBundle.getString("person.view.EnterEmailView.Message"); }
 
     @Override
     protected boolean isValidString (String s) {

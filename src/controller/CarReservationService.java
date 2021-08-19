@@ -11,10 +11,6 @@ public class CarReservationService {
     private ContentService contentService;
     private StatisticsService statisticsService;
 
-//    public static void main(String[] args) {
-//        selectUseCase();
-//    }
-
     public void selectUseCase() {
         contentService = new ContentService();
         statisticsService = new StatisticsService(contentService.getRoot());

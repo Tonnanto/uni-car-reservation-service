@@ -20,7 +20,7 @@ public class EnterEyeView extends StringInputView {
 
     @Override
     protected String getMessage() {
-        return "Look in the camera and hit ENTER or type 'X' to cancel";
+        return Language.resourceBundle.getString("authentication.view.EnterEyeView.Message");
     }
 
     @Override
@@ -30,7 +30,7 @@ public class EnterEyeView extends StringInputView {
 
     @Override
     protected String getValidationMessage() {
-        return "Look in the camera and hit ENTER or type 'X' to cancel";
+        return Language.resourceBundle.getString("authentication.view.EnterEyeView.ValidationMessage");
     }
 
     @Override

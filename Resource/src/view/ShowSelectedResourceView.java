@@ -12,6 +12,6 @@ public class ShowSelectedResourceView extends View {
 
     @Override
     protected String getMessage() {
-        return "Your selected resource:\n" + resourceService.getResource().getDescription();
+        return Language.resourceBundle.getString("resource.ShowSelectedResourceView.Message")+ "\n" + resourceService.getResource().getDescription();
     }
 }
