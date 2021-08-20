@@ -8,21 +8,26 @@ A car reservation service that is part of the software architecture course at ou
 
 ## Todos
 ### TODO und Warnings im Code
- - CurrencyAmount als price von Resource
- - getDecription for Commands zu StringInoutViews?
- - Visual String representation of Booking
- - Remove main methods / temporary constructor
- - Different Currencies in Summary File
- - Warnings fixen
+- ✔️ CurrencyAmount als price von Resource
+- getDecription for Commands zu StringInoutViews?
+- Visual String representation of Booking
+- Remove main methods / temporary constructor
+- Different Currencies in Summary File
+- Warnings fixen
+- Bug: UseCase "showContent" funktioniert manchmal nicht.
 
 ### User interaction und messages
- - Übersetzung von messages
- - Localization vervollständigen
- - Proof read (UX und Fehler / Typos) (English und deutsch)
+- Übersetzung von messages
+- Localization vervollständigen
+- Proof read (UX und Fehler / Typos) (English und deutsch)
+   - Bei show all resources Preise anzeigen (vielleicht als Tabelle)
+   - Bezeichnungen von dem ConfirmationView im Person Module
+   - Darstellung von Booking bzw. BookingFile
+   - reserveCar abbrechen können?
 
 ### JUnit Tests
- - Für jedes Package sinnvolle Tests für jeden UseCase
+- Für jedes Package sinnvolle Tests für jeden UseCase
 
 ### UML Diagramme
- - Klassen Diagramme überarbeiten
- - Package Diagramm
+- Klassen Diagramme überarbeiten
+- Package Diagramm
