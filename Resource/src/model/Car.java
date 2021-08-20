@@ -17,6 +17,6 @@ public class Car extends Resource {
 
     @Override
     public String getDescription() {
-        return this.name;
+        return String.format("%-32s %12s", name, price);
     }
 }

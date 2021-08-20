@@ -12,12 +12,16 @@ public class EnglishBookingBuilder extends BookingBuilder {
 
     @Override
     public void buildBody() {
-        booking.setBody("Your reserved the following car: " + booking.getResource().getDescription() + ": " + booking.getResource().getPrice() + "€");
+        String sb = "You have booked the following Resource:" +
+                "\n\n" + booking.getResource().getDescription() +
+                "\n" + "= Total: " + String.format("%36s", booking.getResource().getPrice()) +
+                "\n\n" + String.format("Paid with %s (%s)", booking.getPayment().getPaymentType(), booking.getPayment().getSender().getEmail());
+        booking.setBody(sb);
     }
 
     @Override
     public void buildFooter() {
-        booking.setFooter("If you need further assistance, fell free to contact us. With best regards, Your CarReservationTeam ");
+        booking.setFooter("If you need further assistance, feel free to contact us. \nWith best regards, Your CarReservationTeam!");
     }
 
     @Override

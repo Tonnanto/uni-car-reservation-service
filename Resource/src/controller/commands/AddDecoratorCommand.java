@@ -20,6 +20,6 @@ public class AddDecoratorCommand extends ResourceServiceCommand {
 
     @Override
     public String getDescription() {
-        return decoratorType.getName();
+        return decoratorType.getDescription();
     }
 }

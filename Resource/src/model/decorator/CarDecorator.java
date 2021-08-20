@@ -12,11 +12,13 @@ public abstract class CarDecorator extends Resource {
     }
 
     @Override
-    public abstract CurrencyAmount getPrice();
+    public CurrencyAmount getPrice() {
+        return this.resource.getPrice().add(getDecoratorType().getPrice());
+    }
 
     @Override
     public String getDescription() {
-        return this.resource.getDescription() + "\n+ " + this.getName();
+        return this.resource.getDescription() + "\n+ " + getDecoratorType().getDescription();
     }
 
     public abstract String getName();
@@ -24,4 +26,6 @@ public abstract class CarDecorator extends Resource {
     public Resource getResource() {
         return resource;
     }
+
+    public abstract CarDecoratorType getDecoratorType();
 }

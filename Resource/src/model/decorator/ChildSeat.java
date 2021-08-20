@@ -1,7 +1,5 @@
 package model.decorator;
 
-import model.Currency;
-import model.CurrencyAmount;
 import model.Resource;
 
 public class ChildSeat extends CarDecorator {
@@ -10,12 +8,12 @@ public class ChildSeat extends CarDecorator {
     }
 
     @Override
-    public CurrencyAmount getPrice() {
-        return this.resource.getPrice().add(new CurrencyAmount(30, Currency.US_DOLLAR));
+    public String getName() {
+        return CarDecoratorType.CHILD_SEAT.getName();
     }
 
     @Override
-    public String getName() {
-        return CarDecoratorType.CHILD_SEAT.getName();
+    public CarDecoratorType getDecoratorType() {
+        return CarDecoratorType.CHILD_SEAT;
     }
 }

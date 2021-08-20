@@ -11,7 +11,11 @@ public class GermanBookingBuilder extends BookingBuilder {
 
     @Override
     public void buildBody() {
-        booking.setBody("Sie haben folgendes Auto reserviert: " + booking.getResource().getDescription() + ": " + booking.getResource().getPrice() + "€");
+        String sb = "Sie haben die folgende Ressource gebucht:" +
+                "\n\n" + booking.getResource().getDescription() +
+                "\n" + "= Total: " + String.format("%36s", booking.getResource().getPrice()) +
+                "\n\n" + String.format("Paid with %s (%s)", booking.getPayment().getPaymentType(), booking.getPayment().getSender().getEmail());
+        booking.setBody(sb);
     }
 
     @Override

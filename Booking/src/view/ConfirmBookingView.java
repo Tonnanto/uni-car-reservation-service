@@ -18,9 +18,7 @@ public class ConfirmBookingView extends StringInputView {
 
     @Override
     protected String getMessage() {
-        return booking.getHeader() + "\n"
-                + booking.getBody() + "\n"
-                + booking.getFooter() + "\n" +
+        return booking +
                 "\n" +
                 Language.resourceBundle.getString("booking.view.ConfirmBookingView.getMessage");
     }

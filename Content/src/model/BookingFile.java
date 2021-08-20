@@ -1,5 +1,7 @@
 package model;
 
+import model.decorator.AmbienceLighting;
+
 import java.util.Random;
 
 public class BookingFile extends File {
@@ -26,7 +28,9 @@ public class BookingFile extends File {
         double price = r.nextInt(100000);
         // TODO: temporary example Booking
         BookingDirector director = new BookingDirector(r.nextBoolean() ? new GermanBookingBuilder() : new EnglishBookingBuilder());
-        director.createBooking(new Car("sdf", new CurrencyAmount(price, Currency.EURO)), new PayPalPayment(new CurrencyAmount(price, Currency.EURO)));
+        Payment payment = new MoneyWalletPayment(new CurrencyAmount(price, Currency.EURO));
+        payment.authenticateCustomer("anton@stamme.de", "ewfrg");
+        director.createBooking(new AmbienceLighting(new Car("Mercedes Benz GLB 220d", new CurrencyAmount(price, Currency.EURO))), payment);
         this.booking = director.getBooking();
     }
 
@@ -44,8 +48,12 @@ public class BookingFile extends File {
         sb.append(getName());
 
         // TODO: create visual representation of content
-        sb.append("\n>> Content <<");
+        sb.append("\n").append(booking);
 
         return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new BookingFile());
     }
 }

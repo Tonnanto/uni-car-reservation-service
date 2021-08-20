@@ -23,7 +23,7 @@ public class ShowAllResourcesView extends View {
                 Decorators:
                 """);
         for (CarDecoratorType carDecoratorType : CarDecoratorType.values()) {
-            text.append(carDecoratorType.getName()).append("\n");
+            text.append(carDecoratorType.getDescription()).append("\n");
         }
         return text.toString();
     }
