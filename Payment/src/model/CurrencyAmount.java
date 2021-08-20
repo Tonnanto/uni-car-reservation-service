@@ -34,4 +34,14 @@ public class CurrencyAmount {
 
         return new CurrencyAmount(this.amount / this.currency.inUSD() * currency.inUSD(), currency);
     }
+
+    /**
+     * Adds a given currencyAmount to the current one.
+     * If necessary converts the given currencyAmount to the currency of the current one first.
+     * @param addAmount currencyAmount to add
+     * @return a new currencyAmount Object
+     */
+    public CurrencyAmount add(CurrencyAmount addAmount) {
+        return new CurrencyAmount(this.amount + (addAmount.to(this.currency).getAmount()), currency);
+    }
 }

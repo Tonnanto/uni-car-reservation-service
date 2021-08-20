@@ -16,7 +16,7 @@ class BookingServiceTest {
     @Test
     void canBookingBeCreated() {
 
-        Resource resource = new Car("Benz", 200);
+        Resource resource = new Car("Benz", new CurrencyAmount(200, Currency.US_DOLLAR));
         Payment payment = new PayPalPayment(new CurrencyAmount(200, Currency.EURO));
 
         Booking booking = bookingService.createBooking(resource, payment);

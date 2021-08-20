@@ -1,6 +1,8 @@
 package controller;
 
 import model.Car;
+import model.Currency;
+import model.CurrencyAmount;
 import model.Resource;
 import model.decorator.*;
 import view.AddCarDecoratorView;
@@ -22,10 +24,10 @@ public class ResourceService {
 
     public ResourceService() {
         this.availableCars = Arrays.asList(
-                new Car("BMW 530d Touring", 49900),
-                new Car("Volkswagen Golf", 24000),
-                new Car("Opel Corsa", 14600),
-                new Car("Mercedes Benz C220", 37440)
+                new Car("BMW 530d Touring", new CurrencyAmount(49900, Currency.US_DOLLAR)),
+                new Car("Volkswagen Golf", new CurrencyAmount(24000, Currency.US_DOLLAR)),
+                new Car("Opel Corsa", new CurrencyAmount(14600, Currency.US_DOLLAR)),
+                new Car("Mercedes Benz C220", new CurrencyAmount(37440, Currency.US_DOLLAR))
         );
     }
 

@@ -21,7 +21,7 @@ public class CarReservationService {
 
     public void reserveResource() {
         Resource selectedResource = new ResourceService().getSelectedResource();
-        Payment payment = new PaymentService().payAmount(new CurrencyAmount(selectedResource.getPrice(), Currency.EURO));//todo Currency in Resource?
+        Payment payment = new PaymentService().payAmount(selectedResource.getPrice());
         Booking booking = new BookingService().createBooking(selectedResource, payment);
         contentService.addContent(new BookingFile(booking));
     }

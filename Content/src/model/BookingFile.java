@@ -26,7 +26,7 @@ public class BookingFile extends File {
         double price = r.nextInt(100000);
         // TODO: temporary example Booking
         BookingDirector director = new BookingDirector(r.nextBoolean() ? new GermanBookingBuilder() : new EnglishBookingBuilder());
-        director.createBooking(new Car("sdf", price), new PayPalPayment(new CurrencyAmount(price, Currency.EURO)));
+        director.createBooking(new Car("sdf", new CurrencyAmount(price, Currency.EURO)), new PayPalPayment(new CurrencyAmount(price, Currency.EURO)));
         this.booking = director.getBooking();
     }
 

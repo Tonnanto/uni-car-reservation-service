@@ -1,5 +1,6 @@
 package model.decorator;
 
+import model.CurrencyAmount;
 import model.Resource;
 
 public abstract class CarDecorator extends Resource {
@@ -11,7 +12,7 @@ public abstract class CarDecorator extends Resource {
     }
 
     @Override
-    public abstract double getPrice();
+    public abstract CurrencyAmount getPrice();
 
     @Override
     public String getDescription() {

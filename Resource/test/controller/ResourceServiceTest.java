@@ -5,6 +5,8 @@ import controller.commands.FinishResourceSelectionCommand;
 import controller.commands.ResetResourceSelectionCommand;
 import controller.commands.SelectCarCommand;
 import model.Car;
+import model.Currency;
+import model.CurrencyAmount;
 import model.Resource;
 import model.decorator.CarDecoratorType;
 import org.junit.jupiter.api.*;
@@ -35,7 +37,7 @@ public class ResourceServiceTest {
     }
 
     protected void canCarBeSelected() {
-        Car car = new Car("Audi", 35000);
+        Car car = new Car("Audi", new CurrencyAmount(35000, Currency.US_DOLLAR));
         new SelectCarCommand(resourceService, car).execute();
 
         Resource selectedResource = resourceService.getResource();

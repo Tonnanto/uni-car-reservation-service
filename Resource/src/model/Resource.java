@@ -5,7 +5,7 @@ import model.decorator.CarDecorator;
 import model.decorator.*;
 
 public abstract class Resource {
-    public abstract double getPrice();
+    public abstract CurrencyAmount getPrice();
     public abstract String getDescription();
 
     public boolean containsDecoratorType(CarDecoratorType carDecoratorType) {
