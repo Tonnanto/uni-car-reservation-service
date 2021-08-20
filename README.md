@@ -10,7 +10,7 @@ A car reservation service that is part of the software architecture course at ou
 ### TODO und Warnings im Code
 - ✔️ CurrencyAmount als price von Resource
 - getDecription for Commands zu StringInoutViews?
-- Visual String representation of Booking
+- ✔️ Visual String representation of Booking
 - Remove main methods / temporary constructor
 - Different Currencies in Summary File
 - Warnings fixen
@@ -19,11 +19,13 @@ A car reservation service that is part of the software architecture course at ou
 ### User interaction und messages
 - Übersetzung von messages
 - Localization vervollständigen
+   - Währungen berücksichtigen. (Einmal auswählen und überall diese Währung anzeigen)
 - Proof read (UX und Fehler / Typos) (English und deutsch)
    - Bei show all resources Preise anzeigen (vielleicht als Tabelle)
    - Bezeichnungen von dem ConfirmationView im Person Module
    - Darstellung von Booking bzw. BookingFile
    - reserveCar abbrechen können?
+   - Preise von Autos Kaufpreise oder Mietpreise?
 
 ### JUnit Tests
 - Für jedes Package sinnvolle Tests für jeden UseCase
