@@ -19,7 +19,7 @@ public abstract class StringInputView extends View {
     public void display() {
         // display view
         System.out.println(separator);
-        if (getCancelCommand()!= null)
+        if (getCancelCommand() != null)
             System.out.printf("[%s] %s\n", cancelCharacter, getCancelCommand().getDescription());
         System.out.println(getMessage());
 
@@ -41,6 +41,7 @@ public abstract class StringInputView extends View {
 
     /**
      * Override this method to decide if the user should have the option to cancel the input.
+     *
      * @return the command that should be executed when the user cancels
      */
     protected Command getCancelCommand() {
@@ -57,12 +58,12 @@ public abstract class StringInputView extends View {
         System.out.print(inputPrefix);
         Scanner scanner = new Scanner(System.in);
 
-        while(scanner.hasNextLine()) {
+        while (scanner.hasNextLine()) {
 
             String enteredString = scanner.nextLine();
 
             // Cancel
-            if (getCancelCommand() != null && enteredString.equalsIgnoreCase(cancelCharacter.toString()))  {
+            if (getCancelCommand() != null && enteredString.equalsIgnoreCase(cancelCharacter.toString())) {
                 getCancelCommand().execute();
                 break;
             }
@@ -95,6 +96,7 @@ public abstract class StringInputView extends View {
 
     /**
      * Override this method to use a custom message when an invalid String has been entered.
+     *
      * @return the validation message
      */
     protected String getValidationMessage() {

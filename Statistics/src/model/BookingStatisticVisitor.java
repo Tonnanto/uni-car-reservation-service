@@ -30,13 +30,14 @@ public class BookingStatisticVisitor implements ContentVisitor {
 
     /**
      * Finds and returns all bookingFiles within the given folder that have the specified Language and PaymentType
+     *
      * @param folder the that is being searched
      * @return all bookingFiles that were found
      */
     private List<BookingFile> getMatchingBookingFilesFrom(Folder folder) {
         List<BookingFile> foundBookings = new ArrayList<>();
 
-        for (Map.Entry<String, Content> contentEntry: folder.getContents().entrySet()) {
+        for (Map.Entry<String, Content> contentEntry : folder.getContents().entrySet()) {
             // 1. Look for BookingFiles within this folder
             // 2. Look for BookingFiles within subfolders
 
@@ -74,7 +75,7 @@ public class BookingStatisticVisitor implements ContentVisitor {
     public CurrencyAmount getBookingsValue(Currency currency) {
         double amount = 0;
 
-        for (BookingFile bookingFile: bookingFiles) {
+        for (BookingFile bookingFile : bookingFiles) {
             CurrencyAmount bookingValue = bookingFile.getBooking().getPayment().getCurrencyAmount();
             amount += bookingValue.to(currency).getAmount();
         }

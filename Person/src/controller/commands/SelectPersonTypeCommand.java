@@ -1,11 +1,10 @@
 package controller.commands;
 
-import controller.Command;
 import controller.PersonService;
 import model.PersonType;
 
 public class SelectPersonTypeCommand extends PersonServiceCommand {
-    private PersonType personType;
+    private final PersonType personType;
 
     public SelectPersonTypeCommand(PersonService receiver, PersonType personType) {
         super(receiver);

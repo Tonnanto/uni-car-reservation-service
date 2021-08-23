@@ -34,6 +34,7 @@ public class ResourceService {
     /**
      * Creates and returns a resource according to the selections of a user.
      * Different Views are being displayed in order to receive user input.
+     *
      * @return the selected resource
      */
     public Resource getSelectedResource() {
@@ -55,7 +56,7 @@ public class ResourceService {
         return resource;
     }
 
-    public void showAllResources(){
+    public void showAllResources() {
         new ShowAllResourcesView(this).display();
     }
 

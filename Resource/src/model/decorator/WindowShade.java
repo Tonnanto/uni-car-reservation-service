@@ -2,7 +2,7 @@ package model.decorator;
 
 import model.Resource;
 
-public class WindowShade extends CarDecorator{
+public class WindowShade extends CarDecorator {
     public WindowShade(Resource resource) {
         super(resource);
     }

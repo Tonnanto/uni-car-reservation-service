@@ -11,8 +11,9 @@ import java.util.List;
 
 public class ShowFileView extends SelectionView {
 
-    ContentService contentService;
-    File file;
+    final ContentService contentService;
+    final File file;
+
     public ShowFileView(ContentService contentService, File file) {
         this.contentService = contentService;
         this.file = file;
@@ -41,7 +42,7 @@ public class ShowFileView extends SelectionView {
 
         message.append("> ").append(this.contentService.getRoot().getName());
 
-        for (String s: this.contentService.getNavigationPath()) {
+        for (String s : this.contentService.getNavigationPath()) {
             message.append("/").append(s);
         }
         message.append(":\n");

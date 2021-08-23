@@ -1,15 +1,15 @@
 package view;
 
-import controller.commands.SelectPersonTypeCommand;
 import controller.Command;
 import controller.PersonService;
+import controller.commands.SelectPersonTypeCommand;
 import model.PersonType;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SelectPersonTypeView extends SelectionView {
-    private PersonService personService;
+    private final PersonService personService;
 
     public SelectPersonTypeView(PersonService personService) {
         this.personService = personService;

@@ -26,6 +26,7 @@ public class CurrencyAmount {
 
     /**
      * Converts the CurrencyAmount to a different currency
+     *
      * @param currency the Currency to convert to
      * @return the new CurrencyAmount Object
      */
@@ -38,6 +39,7 @@ public class CurrencyAmount {
     /**
      * Adds a given currencyAmount to the current one.
      * If necessary converts the given currencyAmount to the currency of the current one first.
+     *
      * @param addAmount currencyAmount to add
      * @return a new currencyAmount Object
      */

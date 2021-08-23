@@ -34,12 +34,17 @@ public class BookingFile extends File {
         this.booking = director.getBooking();
     }
 
+    public static void main(String[] args) {
+        System.out.println(new BookingFile());
+    }
+
     public Booking getBooking() {
         return booking;
     }
 
     /**
      * Returns a visual representation of the files content
+     *
      * @return visual representation for console output
      */
     @Override
@@ -51,9 +56,5 @@ public class BookingFile extends File {
         sb.append("\n").append(booking);
 
         return sb.toString();
-    }
-
-    public static void main(String[] args) {
-        System.out.println(new BookingFile());
     }
 }

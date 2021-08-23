@@ -5,7 +5,7 @@ import controller.Command;
 
 public abstract class CarReservationCommand implements Command {
 
-    protected CarReservationService receiver;
+    protected final CarReservationService receiver;
 
     public CarReservationCommand(CarReservationService carReservationService) {
         this.receiver = carReservationService;

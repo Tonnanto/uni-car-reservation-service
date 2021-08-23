@@ -5,8 +5,8 @@ import view.*;
 
 public class AuthenticationService {
 
-    private Credential credential;
     private final Subject subject;
+    private Credential credential;
     private boolean isSubjectAuthenticated = false;
 
     public AuthenticationService(Subject subject) {
@@ -22,7 +22,7 @@ public class AuthenticationService {
      * Authenticate a person or system with the credential they choose
      */
 
-    public boolean authenticateSubject() {
+    public void authenticateSubject() {
         while (!isSubjectAuthenticated) {
             if (credential == null) {
                 new SelectCredentialView(this).display();
@@ -42,7 +42,6 @@ public class AuthenticationService {
                 new EnterEyeView(this).display();
         }
         new ShowLoginStatusView(this).display();
-        return isSubjectAuthenticated;
     }
 
     public void setUsername(String username) {

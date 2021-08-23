@@ -5,7 +5,7 @@ import controller.ResourceService;
 
 public abstract class ResourceServiceCommand implements Command {
 
-    protected ResourceService receiver;
+    protected final ResourceService receiver;
 
     public ResourceServiceCommand(ResourceService receiver) {
         this.receiver = receiver;

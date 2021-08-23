@@ -4,11 +4,13 @@ import controller.PersonService;
 import model.NaturalPerson;
 import model.PersonType;
 
-public class ShowPersonView extends View{
+public class ShowPersonView extends View {
 
     private final PersonService personService;
 
-    public ShowPersonView(PersonService personService) { this.personService = personService; }
+    public ShowPersonView(PersonService personService) {
+        this.personService = personService;
+    }
 
     @Override
     protected String getMessage() {

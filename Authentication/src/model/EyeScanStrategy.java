@@ -1,6 +1,5 @@
 package model;
 
-import controller.AuthenticationService;
 import view.Language;
 
 public class EyeScanStrategy extends Credential {

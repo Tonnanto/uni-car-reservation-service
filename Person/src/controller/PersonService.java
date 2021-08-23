@@ -1,5 +1,8 @@
 package controller;
-import model.*;
+
+import model.Person;
+import model.PersonFactory;
+import model.PersonType;
 import view.*;
 
 
@@ -8,7 +11,6 @@ public class PersonService {
 
     private boolean personCreated;
     private Person person;
-
 
 
     public Person createPerson() {

@@ -5,7 +5,7 @@ import controller.Command;
 
 public abstract class AuthenticationServiceCommand implements Command {
 
-    protected AuthenticationService receiver;
+    protected final AuthenticationService receiver;
 
     public AuthenticationServiceCommand(AuthenticationService authenticationService) {
         this.receiver = authenticationService;

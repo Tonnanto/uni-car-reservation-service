@@ -26,7 +26,7 @@ public class Observable {
     }
 
     private void notifyObservers() {
-        for(Observer observer: observers) {
+        for (Observer observer : observers) {
             observer.update(this);
         }
     }

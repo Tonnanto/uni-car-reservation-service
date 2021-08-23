@@ -5,7 +5,7 @@ import model.Content;
 
 public class OpenContentCommand extends ContentServiceCommand {
 
-    private Content content;
+    private final Content content;
 
     public OpenContentCommand(ContentService receiver, Content content) {
         super(receiver);

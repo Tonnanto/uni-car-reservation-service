@@ -6,7 +6,7 @@ public enum PersonType {
 
     @Override
     public String toString() {
-        return switch (this){
+        return switch (this) {
             case NATURAL_PERSON -> "Natural Person";
             case LEGAL_PERSON -> "Legal Person";
         };

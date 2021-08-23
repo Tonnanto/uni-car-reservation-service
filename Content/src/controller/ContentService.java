@@ -62,7 +62,7 @@ public class ContentService {
      * Adds Content to the hierarchy according to the specified date.
      *
      * @param content the content that should be added
-     * @param date the date at which the content should be added
+     * @param date    the date at which the content should be added
      * @return whether the operation was successful
      */
     public boolean addContent(Content content, LocalDate date) {

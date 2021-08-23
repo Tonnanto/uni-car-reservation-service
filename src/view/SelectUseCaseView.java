@@ -20,7 +20,7 @@ public class SelectUseCaseView extends SelectionView {
 
         List<Command> commands = new ArrayList<>();
 
-        if (carReservationService.getAuthenticationService() == null  || !carReservationService.getAuthenticationService().isSubjectAuthenticated()) {
+        if (carReservationService.getAuthenticationService() == null || !carReservationService.getAuthenticationService().isSubjectAuthenticated()) {
             commands.add(new ShowAllResources(carReservationService));
             commands.add(new CreatePersonCommand(carReservationService));
             if (carReservationService.getPerson() != null && carReservationService.getAuthenticationService() != null)
@@ -37,7 +37,7 @@ public class SelectUseCaseView extends SelectionView {
     @Override
     protected String getMessage() {
         if (carReservationService.getPerson() != null) {
-            if (carReservationService.getAuthenticationService()!= null && carReservationService.getAuthenticationService().isSubjectAuthenticated())
+            if (carReservationService.getAuthenticationService() != null && carReservationService.getAuthenticationService().isSubjectAuthenticated())
                 return "You are logged in as " + carReservationService.getPerson().getName();
             else return "Hello " + carReservationService.getPerson().getName();
         }

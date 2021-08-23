@@ -6,11 +6,11 @@ public class SummaryFile extends File {
 
 
     // Stores the total number of Bookings per language and per payment method
-    int[][] bookingCounts;
+    final int[][] bookingCounts;
 
     // Stores the total amount payed per language and per payment method
     // TODO: Consider different currencies?
-    double[][] paymentAmounts;
+    final double[][] paymentAmounts;
 
     public SummaryFile(String name, int[][] bookingCounts, double[][] paymentAmounts) {
         super(name);
@@ -36,24 +36,24 @@ public class SummaryFile extends File {
         sb.append(String.format("│ Payment Method         Language   │ Bookings │   Revenue │%n"));
         sb.append(String.format("├───────────────────────────────────┼──────────┼───────────┤%n"));
 
-        for (PaymentType paymentType: PaymentType.values()) {
+        for (PaymentType paymentType : PaymentType.values()) {
             // Prevents index out of bounds
             if (bookingCounts.length < paymentType.ordinal() ||
                     paymentAmounts.length < paymentType.ordinal()) break;
 
-            for (Language language: Language.values()) {
+            for (Language language : Language.values()) {
                 // Prevents index out of bounds
                 if (bookingCounts[paymentType.ordinal()].length < language.ordinal() ||
                         paymentAmounts[paymentType.ordinal()].length < language.ordinal()) break;
 
                 sb.append(
-                    String.format(
-                        "│ %-22s %-10s │ %8d │ %9s │%n",
-                        paymentType,
-                        "(" + language.name() + ")",
-                        bookingCounts[paymentType.ordinal()][language.ordinal()],
-                        paymentAmounts[paymentType.ordinal()][language.ordinal()]
-                    )
+                        String.format(
+                                "│ %-22s %-10s │ %8d │ %9s │%n",
+                                paymentType,
+                                "(" + language.name() + ")",
+                                bookingCounts[paymentType.ordinal()][language.ordinal()],
+                                paymentAmounts[paymentType.ordinal()][language.ordinal()]
+                        )
                 );
             }
         }

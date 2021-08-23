@@ -18,7 +18,8 @@ public class ShowConfirmationView extends View {
             System.out.print(".");
             try {
                 TimeUnit.MILLISECONDS.sleep(300);
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
         }
         return paymentService.getPayment().createConfirmation(paymentService.isAmountPayed());
     }

@@ -1,11 +1,11 @@
 package model;
 
 import model.decorator.CarDecorator;
-
-import model.decorator.*;
+import model.decorator.CarDecoratorType;
 
 public abstract class Resource {
     public abstract CurrencyAmount getPrice();
+
     public abstract String getDescription();
 
     public boolean containsDecoratorType(CarDecoratorType carDecoratorType) {

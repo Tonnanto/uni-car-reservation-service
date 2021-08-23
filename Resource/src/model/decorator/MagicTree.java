@@ -2,7 +2,7 @@ package model.decorator;
 
 import model.Resource;
 
-public class MagicTree extends CarDecorator{
+public class MagicTree extends CarDecorator {
     public MagicTree(Resource resource) {
         super(resource);
     }

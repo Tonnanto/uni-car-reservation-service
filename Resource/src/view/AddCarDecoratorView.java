@@ -30,7 +30,7 @@ public class AddCarDecoratorView extends SelectionView {
         ResourceServiceCommand command;
 
         // Add an AddDecoratorCommand for each CarDecoratorType
-        for (CarDecoratorType decoratorType: CarDecoratorType.values()) {
+        for (CarDecoratorType decoratorType : CarDecoratorType.values()) {
             if (decoratorType.canBeAddedMoreThanOnce() || !resourceService.getResource().containsDecoratorType(decoratorType)) {
                 AddDecoratorCommand decoratorCommand = new AddDecoratorCommand(resourceService, decoratorType);
                 commands.add(decoratorCommand);

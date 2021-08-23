@@ -1,6 +1,5 @@
 package model;
 
-import controller.AuthenticationService;
 import view.Language;
 
 public class UserNamePasswordStrategy extends Credential {

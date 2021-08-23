@@ -2,7 +2,7 @@ package controller.commands;
 
 import controller.CarReservationService;
 
-public class CreatePersonCommand extends CarReservationCommand{
+public class CreatePersonCommand extends CarReservationCommand {
 
     public CreatePersonCommand(CarReservationService carReservationService) {
         super(carReservationService);

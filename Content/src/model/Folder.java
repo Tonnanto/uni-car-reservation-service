@@ -52,7 +52,7 @@ public class Folder extends Content implements Visitable {
      * Only fails if the specified path exists but is not a folder.
      *
      * @param content the content to be added
-     * @param path the specified path as Strings
+     * @param path    the specified path as Strings
      */
     public boolean addContent(Content content, String... path) {
         if (path.length <= 0)
@@ -90,6 +90,7 @@ public class Folder extends Content implements Visitable {
     /**
      * Adds or overwrites the summary file
      * Should only be called by Statistics::CreateSummaryVisitor
+     *
      * @param file the summary file to add
      */
     public void addSummaryFile(SummaryFile file) {
@@ -97,7 +98,7 @@ public class Folder extends Content implements Visitable {
     }
 
     public SummaryFile getSummaryFile() {
-        for (Map.Entry<String, Content> contentEntry: contents.entrySet()) {
+        for (Map.Entry<String, Content> contentEntry : contents.entrySet()) {
             if (contentEntry.getValue() instanceof SummaryFile)
                 return (SummaryFile) contentEntry.getValue();
         }
@@ -118,7 +119,7 @@ public class Folder extends Content implements Visitable {
         StringBuilder sb = new StringBuilder();
         sb.append(this.getName());
 
-        for (Map.Entry<String, Content> entry: this.contents.entrySet()) {
+        for (Map.Entry<String, Content> entry : this.contents.entrySet()) {
             sb.append("\n").append(new String(new char[indent]).replace("\0", "."));
             sb.append(". ");
             if (entry.getValue() instanceof Folder) {

@@ -5,10 +5,10 @@ import view.*;
 
 public class PaymentService {
 
-    private Payment payment;
     protected String email;
     protected String password;
     protected CurrencyAmount currencyAmount;
+    private Payment payment;
     private boolean userAuthenticated;
     private boolean amountPayed;
 
@@ -16,7 +16,7 @@ public class PaymentService {
      * UseCase: "payAmount"
      * Handles the payment procedure between a customer and the Car Reservation Service GmbH.
      * After selecting a payment type of choice the payment procedure consists of 3 main steps:
-     *
+     * <p>
      * 1. authenticate customer with payment provider
      * 2. make the transfer from the customer's to the company's account
      * 3. create a payment confirmation and show it to the user
@@ -69,6 +69,7 @@ public class PaymentService {
 
     /**
      * Gets the account of the Car Reservation Service GmbH.
+     *
      * @return the default receiver account
      */
     private Account getReceiverAccount() {

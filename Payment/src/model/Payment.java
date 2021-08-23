@@ -2,11 +2,12 @@ package model;
 
 import view.Language;
 
+@SuppressWarnings("SameReturnValue")
 public abstract class Payment {
 
+    private final CurrencyAmount currencyAmount;
     private Account senderAccount;
     private Account receiverAccount;
-    private final CurrencyAmount currencyAmount;
 
     public Payment(CurrencyAmount amount) {
         this.currencyAmount = amount;
@@ -16,7 +17,7 @@ public abstract class Payment {
      * Simulates the authorization at an arbitrary payment provider.
      * Succeeds all the time. Credentials don't actually matter.
      *
-     * @param email the email entered by the customer
+     * @param email    the email entered by the customer
      * @param password the password entered by the customer
      * @return whether the authorization was successfully simulated (true)
      */
@@ -31,6 +32,7 @@ public abstract class Payment {
         return authenticated;
     }
 
+    @SuppressWarnings("SameReturnValue")
     public abstract boolean payAmount();
 
     public String createConfirmation(boolean success) {
@@ -38,8 +40,7 @@ public abstract class Payment {
             String message = getPaymentType() + " Payment successful!";
             message += String.format("\n%s has been transferred from %s to %s.", currencyAmount, senderAccount.getEmail(), receiverAccount.getEmail());
             return message;
-        }
-        else
+        } else
             return getPaymentType() + " " + Language.resourceBundle.getString("payment.model.Payment.getPaymentType2");
     }
 

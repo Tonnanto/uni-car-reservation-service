@@ -1,11 +1,10 @@
 package controller.commands;
 
 import controller.BookingService;
-import controller.Command;
 
 public class ContinueBookingCommand extends BookingServiceCommand {
 
-    public ContinueBookingCommand(BookingService bookingService){
+    public ContinueBookingCommand(BookingService bookingService) {
         super(bookingService);
     }
 

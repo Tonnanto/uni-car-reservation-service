@@ -8,7 +8,9 @@ public class EnterNameView extends StringInputView {
 
     private final PersonService personService;
 
-    public EnterNameView(PersonService personService) { this.personService = personService; }
+    public EnterNameView(PersonService personService) {
+        this.personService = personService;
+    }
 
     @Override
     protected Command getCommand(String inputString) {
@@ -16,11 +18,17 @@ public class EnterNameView extends StringInputView {
     }
 
     @Override
-    protected String getMessage() { return Language.resourceBundle.getString("person.view.EnterNameView.Message"); }
+    protected String getMessage() {
+        return Language.resourceBundle.getString("person.view.EnterNameView.Message");
+    }
 
     @Override
-    protected boolean isValidString (String s) { return s.length() > 3;}
+    protected boolean isValidString(String s) {
+        return s.length() > 3;
+    }
 
     @Override
-    protected String getValidationMessage() { return Language.resourceBundle.getString("person.view.EnterNameView.ValidationMessage");}
+    protected String getValidationMessage() {
+        return Language.resourceBundle.getString("person.view.EnterNameView.ValidationMessage");
+    }
 }

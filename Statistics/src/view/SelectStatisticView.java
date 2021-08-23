@@ -10,7 +10,7 @@ import java.util.List;
 
 public class SelectStatisticView extends SelectionView {
 
-    StatisticsService statisticsService;
+    final StatisticsService statisticsService;
 
     public SelectStatisticView(StatisticsService statisticsService) {
         this.statisticsService = statisticsService;
@@ -20,8 +20,8 @@ public class SelectStatisticView extends SelectionView {
     protected List<Command> getCommands() {
         List<Command> commands = new ArrayList<>();
 
-        for (Language language: Language.values()) {
-            for (PaymentType paymentType: PaymentType.values()) {
+        for (Language language : Language.values()) {
+            for (PaymentType paymentType : PaymentType.values()) {
                 commands.add(new ShowStatisticCommand(statisticsService, paymentType, language));
             }
         }

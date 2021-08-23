@@ -6,8 +6,8 @@ import view.Language;
 
 public class ShowStatisticCommand extends StatisticsServiceCommand {
 
-    Language language;
-    PaymentType paymentType;
+    final Language language;
+    final PaymentType paymentType;
 
     public ShowStatisticCommand(StatisticsService receiver, PaymentType paymentType, Language language) {
         super(receiver);

@@ -19,13 +19,13 @@ public class CreateSummaryVisitor implements ContentVisitor {
         double[][] paymentAmounts = new double[PaymentType.values().length][Language.values().length];
 
         // Fill arrays with initial values
-        for (int[] row: bookingCounts)
+        for (int[] row : bookingCounts)
             Arrays.fill(row, 0);
-        for (double[] row: paymentAmounts)
+        for (double[] row : paymentAmounts)
             Arrays.fill(row, 0.0);
 
 
-        for (Map.Entry<String, Content> contentEntry: folder.getContents().entrySet()) {
+        for (Map.Entry<String, Content> contentEntry : folder.getContents().entrySet()) {
             if (contentEntry.getValue() instanceof Folder) {
                 // Content is Folder -> get summary file of subFolder and add contents to summary file
                 Folder subFolder = (Folder) contentEntry.getValue();
@@ -33,12 +33,12 @@ public class CreateSummaryVisitor implements ContentVisitor {
 
                 if (summaryFile != null) {
 
-                    for (PaymentType paymentType: PaymentType.values()) {
+                    for (PaymentType paymentType : PaymentType.values()) {
                         // Prevents index out of bounds
                         if (bookingCounts.length < paymentType.ordinal() ||
                                 paymentAmounts.length < paymentType.ordinal()) break;
 
-                        for (Language language: Language.values()) {
+                        for (Language language : Language.values()) {
                             // Prevents index out of bounds
                             if (bookingCounts[paymentType.ordinal()].length < language.ordinal() ||
                                     paymentAmounts[paymentType.ordinal()].length < language.ordinal()) break;
@@ -49,7 +49,7 @@ public class CreateSummaryVisitor implements ContentVisitor {
                     }
                 }
 
-            } else if  (contentEntry.getValue() instanceof BookingFile) {
+            } else if (contentEntry.getValue() instanceof BookingFile) {
                 // Content is BookingFile -> read file and add data to summary file
                 BookingFile bookingFile = (BookingFile) contentEntry.getValue();
                 Booking booking = bookingFile.getBooking();

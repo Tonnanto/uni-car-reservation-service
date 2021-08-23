@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SelectShowMethodView extends SelectionView {
-    private ContentService contentService;
+    private final ContentService contentService;
 
     public SelectShowMethodView(ContentService contentService) {
         this.contentService = contentService;

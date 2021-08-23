@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ShowStatisticView extends SelectionView {
 
-    StatisticsService statisticsService;
+    final StatisticsService statisticsService;
 
     public ShowStatisticView(StatisticsService statisticsService) {
         this.statisticsService = statisticsService;
@@ -34,7 +34,7 @@ public class ShowStatisticView extends SelectionView {
 
         sb.append(String.format("All %s Bookings paid with %s:", statistic.getLanguage(), statistic.getPaymentType())).append("\n");
 
-        for (BookingFile bookingFile: statistic.getBookingFiles()) {
+        for (BookingFile bookingFile : statistic.getBookingFiles()) {
             sb.append("\n").append(bookingFile.getName()).append(" -> ").append(bookingFile.getBooking().getPayment().getCurrencyAmount().to(Currency.EURO));
         }
 

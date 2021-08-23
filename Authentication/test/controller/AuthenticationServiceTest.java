@@ -13,7 +13,6 @@ public class AuthenticationServiceTest {
     void setUp() {
 
 
-
     }
 
     @Test
@@ -21,17 +20,6 @@ public class AuthenticationServiceTest {
 
         // TODO: Implement useful test
 
-//        PersonFactory personFactory = new PersonFactory();
-//        subject = (Subject) personFactory.createPerson(PersonType.NATURAL_PERSON);
-//
-//        authenticationService.setCredential(new EyeScanStrategy());
-//        Assertions.assertTrue(authenticationService.authenticateSubject(subject));
-//
-//        authenticationService.setCredential(new UserNamePasswordStrategy());
-//        Assertions.assertTrue(authenticationService.authenticateSubject(subject));
-//
-//        authenticationService.setCredential(new FingerPrintStrategy());
-//        Assertions.assertTrue(authenticationService.authenticateSubject(subject));
     }
 
 }

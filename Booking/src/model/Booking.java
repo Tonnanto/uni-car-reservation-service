@@ -3,7 +3,8 @@ package model;
 import view.Language;
 
 import java.text.BreakIterator;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Booking {
     private String header;
@@ -18,28 +19,28 @@ public class Booking {
         this.payment = payment;
     }
 
-    public void setHeader(String buildHeader) {
-        this.header = buildHeader;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
-    }
-
-    public void setFooter(String footer) {
-        this.footer = footer;
-    }
-
     public String getHeader() {
         return header;
+    }
+
+    public void setHeader(String buildHeader) {
+        this.header = buildHeader;
     }
 
     public String getBody() {
         return body;
     }
 
+    public void setBody(String body) {
+        this.body = body;
+    }
+
     public String getFooter() {
         return footer;
+    }
+
+    public void setFooter(String footer) {
+        this.footer = footer;
     }
 
     public Resource getResource() {
@@ -74,21 +75,21 @@ public class Booking {
         sb.append(String.format("┌────────────────────────────────────────────────────┐%n"));
 
         // Header
-        for (String line: sentenceToLines(header, documentWidth)) {
+        for (String line : sentenceToLines(header, documentWidth)) {
             sb.append(String.format("│ %-50s │%n", line));
         }
 
         sb.append(String.format("├────────────────────────────────────────────────────┤%n"));
 
         // Body
-        for (String line: sentenceToLines(body, documentWidth)) {
+        for (String line : sentenceToLines(body, documentWidth)) {
             sb.append(String.format("│ %-50s │%n", line));
         }
 
         sb.append(String.format("├────────────────────────────────────────────────────┤%n"));
 
         // Footer
-        for (String line: sentenceToLines(footer, documentWidth)) {
+        for (String line : sentenceToLines(footer, documentWidth)) {
             sb.append(String.format("│ %-50s │%n", line));
         }
 
@@ -110,7 +111,7 @@ public class Booking {
              end != BreakIterator.DONE;
              start = end, end = iterator.next()
         ) {
-            String word = sentence.substring(start,end);
+            String word = sentence.substring(start, end);
 //            if (word.contains("\n")) continue;
 
             if (!word.contains("\n") && line.length() + word.length() + 1 < maxCharacters) {
@@ -120,14 +121,6 @@ public class Booking {
                 line = new StringBuilder(word.contains("\n") ? "" : word);
             }
         }
-//        while (!words.isEmpty()) {
-//            if (line.length() + words.peek().length() + 1 < maxCharacters) {
-//                line.append(" ").append(words.poll());
-//            } else {
-//                lines.add(line.toString());
-//                line = new StringBuilder();
-//            }
-//        }
         lines.add(line.toString());
 
         return lines;

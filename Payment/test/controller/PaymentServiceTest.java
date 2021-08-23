@@ -24,7 +24,7 @@ public class PaymentServiceTest {
         paymentService.currencyAmount = amount;
 
         // Simulating the payment process for each of the payment types
-        for (PaymentType paymentType: PaymentType.values()) {
+        for (PaymentType paymentType : PaymentType.values()) {
 
             // Reset PaymentService
             new CancelPaymentCommand(paymentService).execute();

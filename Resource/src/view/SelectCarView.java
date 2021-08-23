@@ -26,7 +26,7 @@ public class SelectCarView extends SelectionView {
         List<Command> commands = new ArrayList<>();
 
         // Add an AddDecoratorCommand for each CarDecoratorType
-        for (Car car: resourceService.getAvailableCars()) {
+        for (Car car : resourceService.getAvailableCars()) {
             SelectCarCommand selectCarCommand = new SelectCarCommand(resourceService, car);
             commands.add(selectCarCommand);
         }

@@ -24,7 +24,7 @@ public abstract class SelectionView extends View {
         System.out.println(getMessage());
 
         int commandNumber = 1;
-        for (Command command: getCommands()) {
+        for (Command command : getCommands()) {
             if (command == null) {
                 System.out.println();
                 continue;
@@ -60,8 +60,8 @@ public abstract class SelectionView extends View {
         Scanner scanner = new Scanner(System.in);
         long optionCount = getFilteredCommands().size();
 
-        while(scanner.hasNext()) {
-            if(!scanner.hasNextInt()) {
+        while (scanner.hasNext()) {
+            if (!scanner.hasNextInt()) {
                 // input is not a number
                 System.out.println(Language.resourceBundle.getString("utilities.view.SelectionView.readIntInput") + optionCount);
                 System.out.print(inputPrefix);

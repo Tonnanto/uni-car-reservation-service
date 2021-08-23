@@ -3,7 +3,7 @@ package model;
 public class LegalPerson implements Person {
 
     private String name;
-    private int id;
+    private final int id;
     private String email;
 
     public LegalPerson(int id) {
@@ -16,23 +16,23 @@ public class LegalPerson implements Person {
     }
 
     @Override
-    public int getId() {
-        return this.id;
-    }
-
-    @Override
     public void setName(String name) {
         this.name = name;
     }
 
     @Override
-    public void setEmail(String email) {
-        this.email = email;
+    public int getId() {
+        return this.id;
     }
 
     @Override
     public String getEmail() {
         return this.email;
+    }
+
+    @Override
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
 

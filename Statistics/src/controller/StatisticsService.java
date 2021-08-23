@@ -10,10 +10,16 @@ import java.util.Map;
 
 public class StatisticsService implements Observer {
 
-    private Folder contentRootFolder;
+    private final Folder contentRootFolder;
     private boolean showingStatistics;
 
     private BookingStatisticVisitor lastStatistic;
+
+    public StatisticsService(Folder contentRootFolder) {
+        this.contentRootFolder = contentRootFolder;
+        contentRootFolder.addObserver(this);
+        updateAll(contentRootFolder);
+    }
 
     // TODO: temporary method
     public static void main(String[] args) {
@@ -35,12 +41,6 @@ public class StatisticsService implements Observer {
         // triggering UseCase: showStatistics
 
         statisticsService.showStatistics();
-    }
-
-    public StatisticsService(Folder contentRootFolder) {
-        this.contentRootFolder = contentRootFolder;
-        contentRootFolder.addObserver(this);
-        updateAll(contentRootFolder);
     }
 
     public void getGermanBookingsPaidByPayPal() {
@@ -90,10 +90,11 @@ public class StatisticsService implements Observer {
 
     /**
      * Updates the given folder and all of it's subfolders
+     *
      * @param folder the folder to update
      */
     private void updateAll(Folder folder) {
-        for (Map.Entry<String, Content> contentEntry: folder.getContents().entrySet()) {
+        for (Map.Entry<String, Content> contentEntry : folder.getContents().entrySet()) {
             if (contentEntry.getValue() instanceof Folder) {
                 updateAll((Folder) contentEntry.getValue());
             }

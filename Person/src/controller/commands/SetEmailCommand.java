@@ -1,6 +1,5 @@
 package controller.commands;
 
-import controller.Command;
 import controller.PersonService;
 import view.Language;
 

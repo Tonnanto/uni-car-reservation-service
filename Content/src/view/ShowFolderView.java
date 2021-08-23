@@ -14,8 +14,8 @@ import java.util.Map;
 
 public class ShowFolderView extends SelectionView {
 
-    ContentService contentService;
-    Folder folder;
+    final ContentService contentService;
+    final Folder folder;
 
     public ShowFolderView(ContentService contentService, Folder folder) {
         this.contentService = contentService;
@@ -27,7 +27,7 @@ public class ShowFolderView extends SelectionView {
         List<Command> commands = new ArrayList<>();
 
         // Commands to open content of this folder
-        for (Map.Entry<String, Content> entry: folder.getContents().entrySet()) {
+        for (Map.Entry<String, Content> entry : folder.getContents().entrySet()) {
             commands.add(new OpenContentCommand(contentService, entry.getValue()));
         }
 
@@ -48,7 +48,7 @@ public class ShowFolderView extends SelectionView {
 
         message.append("\n\n> ").append(this.contentService.getRoot().getName());
 
-        for (String s: this.contentService.getNavigationPath()) {
+        for (String s : this.contentService.getNavigationPath()) {
             message.append("/").append(s);
         }
         message.append(":");

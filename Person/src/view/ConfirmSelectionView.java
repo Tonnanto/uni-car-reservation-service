@@ -9,9 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ConfirmSelectionView extends SelectionView {
-    private PersonService personService;
+    private final PersonService personService;
 
-    public ConfirmSelectionView(PersonService personService) { this.personService = personService; }
+    public ConfirmSelectionView(PersonService personService) {
+        this.personService = personService;
+    }
 
     @Override
     protected List<Command> getCommands() {
