@@ -14,7 +14,7 @@ A car reservation service that is part of the software architecture course at ou
 - Remove main methods / temporary constructor
 - Different Currencies in Summary File
 - Warnings fixen
-- Bug: UseCase "showContent" funktioniert manchmal nicht.
+- ✔ Bug: UseCase "showContent" funktioniert manchmal nicht.
 
 ### User interaction und messages
 - Übersetzung von messages
