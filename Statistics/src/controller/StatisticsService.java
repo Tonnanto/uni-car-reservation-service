@@ -40,7 +40,8 @@ public class StatisticsService implements Observer {
 
         // triggering UseCase: showStatistics
 
-        statisticsService.showStatistics();
+//        statisticsService.showStatistics();
+        cs.showContent();
     }
 
     public void getGermanBookingsPaidByPayPal() {

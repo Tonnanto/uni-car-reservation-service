@@ -17,6 +17,7 @@ public class Car extends Resource {
 
     @Override
     public String getDescription() {
+        // TODO: Adjust Currency to user settings
         return String.format("%-32s %12s", name, price);
     }
 }

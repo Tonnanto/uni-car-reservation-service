@@ -16,13 +16,13 @@ public class CreateSummaryVisitor implements ContentVisitor {
     @Override
     public void visit(Folder folder) {
         int[][] bookingCounts = new int[PaymentType.values().length][Language.values().length];
-        double[][] paymentAmounts = new double[PaymentType.values().length][Language.values().length];
+        CurrencyAmount[][] paymentAmounts = new CurrencyAmount[PaymentType.values().length][Language.values().length];
 
         // Fill arrays with initial values
         for (int[] row : bookingCounts)
             Arrays.fill(row, 0);
-        for (double[] row : paymentAmounts)
-            Arrays.fill(row, 0.0);
+        for (CurrencyAmount[] row : paymentAmounts)
+            Arrays.fill(row, new CurrencyAmount(0.0, Currency.US_DOLLAR)); // TODO: Adjust Currency to user settings
 
 
         for (Map.Entry<String, Content> contentEntry : folder.getContents().entrySet()) {
@@ -44,7 +44,7 @@ public class CreateSummaryVisitor implements ContentVisitor {
                                     paymentAmounts[paymentType.ordinal()].length < language.ordinal()) break;
 
                             bookingCounts[paymentType.ordinal()][language.ordinal()] += summaryFile.getBookingCounts()[paymentType.ordinal()][language.ordinal()];
-                            paymentAmounts[paymentType.ordinal()][language.ordinal()] += summaryFile.getPaymentAmounts()[paymentType.ordinal()][language.ordinal()];
+                            paymentAmounts[paymentType.ordinal()][language.ordinal()] = paymentAmounts[paymentType.ordinal()][language.ordinal()].add(summaryFile.getPaymentAmounts()[paymentType.ordinal()][language.ordinal()]);
                         }
                     }
                 }
@@ -55,7 +55,7 @@ public class CreateSummaryVisitor implements ContentVisitor {
                 Booking booking = bookingFile.getBooking();
 
                 bookingCounts[booking.getPayment().getPaymentType().ordinal()][booking.getLanguage().ordinal()]++;
-                paymentAmounts[booking.getPayment().getPaymentType().ordinal()][booking.getLanguage().ordinal()] += booking.getPayment().getCurrencyAmount().getAmount();
+                paymentAmounts[booking.getPayment().getPaymentType().ordinal()][booking.getLanguage().ordinal()] = paymentAmounts[booking.getPayment().getPaymentType().ordinal()][booking.getLanguage().ordinal()].add(booking.getPayment().getCurrencyAmount());
             }
         }
 

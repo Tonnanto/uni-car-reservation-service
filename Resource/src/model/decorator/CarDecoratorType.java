@@ -34,6 +34,7 @@ public enum CarDecoratorType {
     }
 
     public String getDescription() {
+        // TODO: Adjust Currency to user settings
         return String.format("%-30s %12s", this.getName(), this.getPrice());
     }
 }

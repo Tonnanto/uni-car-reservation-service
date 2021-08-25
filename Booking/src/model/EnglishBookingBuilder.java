@@ -12,6 +12,7 @@ public class EnglishBookingBuilder extends BookingBuilder {
 
     @Override
     public void buildBody() {
+        // TODO: Adjust Currency to user settings
         String sb = "You have booked the following Resource:" +
                 "\n\n" + booking.getResource().getDescription() +
                 "\n" + "= Total: " + String.format("%36s", booking.getResource().getPrice()) +
