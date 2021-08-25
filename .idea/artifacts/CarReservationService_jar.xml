@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="CarReservationService:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/CarReservationService_jar</output-path>
+    <root id="archive" name="CarReservationService.jar">
+      <element id="module-output" name="CarReservationService" />
+      <element id="module-output" name="Authentication" />
+      <element id="module-output" name="Person" />
+      <element id="module-output" name="Utilities" />
+      <element id="module-output" name="Booking" />
+      <element id="module-output" name="Resource" />
+      <element id="module-output" name="Payment" />
+      <element id="module-output" name="Content" />
+      <element id="module-output" name="Statistics" />
+    </root>
+  </artifact>
+</component>
