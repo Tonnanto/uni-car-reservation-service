@@ -14,12 +14,12 @@ multiple modules, each one of them complying with a given design pattern.
 ### TODO und Warnings im Code
 
 - ✔️ CurrencyAmount als price von Resource
-- getDecription for Commands zu StringInoutViews?
+- ✔️ getDecription for Commands zu StringInoutViews?
 - ✔️ Visual String representation of Booking
-- Remove main methods / temporary constructor
 - ✔️ Different Currencies in Summary File
-- Warnings fixen
 - ✔️ Bug: UseCase "showContent" funktioniert manchmal nicht.
+- Remove main methods / temporary constructor
+- Warnings fixen
 
 ### User interaction und messages
 
