@@ -10,11 +10,6 @@ public class ContinueBookingCommand extends BookingServiceCommand {
 
     @Override
     public void execute() {
-
-    }
-
-    @Override
-    public String getDescription() {
-        return null;
+        // By doing nothing the programm will automatically continue
     }
 }

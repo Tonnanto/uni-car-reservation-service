@@ -9,4 +9,9 @@ public abstract class StatisticsServiceCommand implements Command {
     public StatisticsServiceCommand(StatisticsService receiver) {
         this.receiver = receiver;
     }
+
+    @Override
+    public String getDescription() {
+        return "";
+    }
 }

@@ -15,9 +15,4 @@ public class EnterUserNameCommand extends AuthenticationServiceCommand {
     public void execute() {
         receiver.setUsername(username);
     }
-
-    @Override
-    public String getDescription() {
-        return username;
-    }
 }

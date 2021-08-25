@@ -9,4 +9,9 @@ public abstract class BookingServiceCommand implements Command {
     public BookingServiceCommand(BookingService bookingService) {
         this.receiver = bookingService;
     }
+
+    @Override
+    public String getDescription() {
+        return "";
+    }
 }

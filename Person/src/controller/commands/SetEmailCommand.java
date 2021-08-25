@@ -1,7 +1,6 @@
 package controller.commands;
 
 import controller.PersonService;
-import view.Language;
 
 public class SetEmailCommand extends PersonServiceCommand {
 
@@ -16,12 +15,5 @@ public class SetEmailCommand extends PersonServiceCommand {
     @Override
     public void execute() {
         receiver.setEmail(email);
-    }
-
-    //TODO Wie in SetNameCommand "braucht" man wirklich eine getDescription?
-
-    @Override
-    public String getDescription() {
-        return Language.resourceBundle.getString("person.controller.commands.SetEmailCommand.Description");
     }
 }

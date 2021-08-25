@@ -9,4 +9,9 @@ public abstract class PersonServiceCommand implements Command {
     public PersonServiceCommand(PersonService receiver) {
         this.receiver = receiver;
     }
+
+    @Override
+    public String getDescription() {
+        return "";
+    }
 }

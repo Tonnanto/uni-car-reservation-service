@@ -16,9 +16,4 @@ public class EnterPasswordCommand extends AuthenticationServiceCommand {
         receiver.setPassword(password);
         receiver.updateSubjectAuthenticated();
     }
-
-    @Override
-    public String getDescription() {
-        return password;
-    }
 }

@@ -10,4 +10,9 @@ public abstract class AuthenticationServiceCommand implements Command {
     public AuthenticationServiceCommand(AuthenticationService authenticationService) {
         this.receiver = authenticationService;
     }
+
+    @Override
+    public String getDescription() {
+        return "";
+    }
 }

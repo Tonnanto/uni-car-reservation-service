@@ -9,4 +9,9 @@ public abstract class ContentServiceCommand implements Command {
     public ContentServiceCommand(ContentService receiver) {
         this.receiver = receiver;
     }
+
+    @Override
+    public String getDescription() {
+        return "";
+    }
 }

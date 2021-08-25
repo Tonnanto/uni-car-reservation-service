@@ -10,4 +10,9 @@ public abstract class ResourceServiceCommand implements Command {
     public ResourceServiceCommand(ResourceService receiver) {
         this.receiver = receiver;
     }
+
+    @Override
+    public String getDescription() {
+        return "";
+    }
 }
