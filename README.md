@@ -17,9 +17,9 @@ multiple modules, each one of them complying with a given design pattern.
 - getDecription for Commands zu StringInoutViews?
 - ✔️ Visual String representation of Booking
 - Remove main methods / temporary constructor
-- Different Currencies in Summary File
+- ✔️ Different Currencies in Summary File
 - Warnings fixen
-- ✔ Bug: UseCase "showContent" funktioniert manchmal nicht.
+- ✔️ Bug: UseCase "showContent" funktioniert manchmal nicht.
 
 ### User interaction und messages
 
