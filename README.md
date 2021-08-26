@@ -25,11 +25,11 @@ multiple modules, each one of them complying with a given design pattern.
 
 - Übersetzung von messages
 - Localization vervollständigen
-    - Währungen berücksichtigen. (Einmal auswählen und überall diese Währung anzeigen)
+    - ✔️ Währungen berücksichtigen. (Einmal auswählen und überall diese Währung anzeigen)
 - Proof read (UX und Fehler / Typos) (English und deutsch)
-    - Bei show all resources Preise anzeigen (vielleicht als Tabelle)
+    - ✔️ Bei show all resources Preise anzeigen (vielleicht als Tabelle)
     - Bezeichnungen von dem ConfirmationView im Person Module
-    - Darstellung von Booking bzw. BookingFile
+    - ✔️ Darstellung von Booking bzw. BookingFile
     - reserveCar abbrechen können?
     - Preise von Autos Kaufpreise oder Mietpreise?
 
