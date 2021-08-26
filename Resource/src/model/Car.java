@@ -21,4 +21,8 @@ public class Car extends Resource {
     public String getDescription() {
         return String.format("%-32s %12s", name, price.to(Config.currency));
     }
+
+    public String getName() {
+        return name;
+    }
 }

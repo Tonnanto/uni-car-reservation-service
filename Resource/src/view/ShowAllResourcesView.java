@@ -1,5 +1,6 @@
 package view;
 
+import controller.Config;
 import controller.ResourceService;
 import model.Car;
 import model.decorator.CarDecoratorType;
@@ -14,17 +15,51 @@ public class ShowAllResourcesView extends View {
 
     @Override
     protected String getMessage() {
-        StringBuilder text = new StringBuilder("Cars: \n");
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("\n");
+        sb.append(String.format("┌───────────────────────────────────┬──────────────┐%n"));
+        sb.append(
+                String.format(
+                        "│ %-33s │ %12s │%n",
+                        "Cars",
+                        "Price"
+                )
+        );
+        sb.append(String.format("├───────────────────────────────────┼──────────────┤%n"));
+
         for (Car car : resourceService.getAvailableCars()) {
-            text.append(car.getDescription()).append("\n");
+            sb.append(
+                    String.format(
+                            "│ %-33s │ %12s │%n",
+                            car.getName(),
+                            car.getPrice().to(Config.currency)
+                    )
+            );
         }
-        text.append("""
-                ~~~~~~~~~~~~~~~~~~~~~~~~~~\s
-                Decorators:
-                """);
+
+        sb.append(String.format("├───────────────────────────────────┼──────────────┤%n"));
+        sb.append(
+                String.format(
+                        "│ %-33s │ %12s │%n",
+                        "Add-Ons",
+                        ""
+                )
+        );
+        sb.append(String.format("├───────────────────────────────────┼──────────────┤%n"));
+
         for (CarDecoratorType carDecoratorType : CarDecoratorType.values()) {
-            text.append(carDecoratorType.getDescription()).append("\n");
+            sb.append(
+                    String.format(
+                            "│ %-33s │ %12s │%n",
+                            carDecoratorType.getName(),
+                            carDecoratorType.getPrice().to(Config.currency)
+                    )
+            );
         }
-        return text.toString();
+
+        sb.append(String.format("└───────────────────────────────────┴──────────────┘%n"));
+
+        return sb.toString();
     }
 }
