@@ -19,6 +19,6 @@ public class SetBookingBuilderCommand extends BookingServiceCommand {
 
     @Override
     public String getDescription() {
-        return language.name();
+        return language.toString();
     }
 }

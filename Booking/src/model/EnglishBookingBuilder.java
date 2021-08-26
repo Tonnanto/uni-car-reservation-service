@@ -1,5 +1,7 @@
 package model;
 
+import controller.Config;
+
 public class EnglishBookingBuilder extends BookingBuilder {
 
 
@@ -10,10 +12,9 @@ public class EnglishBookingBuilder extends BookingBuilder {
 
     @Override
     public void buildBody() {
-        // TODO: Adjust model.Currency to user settings
         String sb = "You have booked the following Resource:" +
                 "\n\n" + booking.getResource().getDescription() +
-                "\n" + "= Total: " + String.format("%36s", booking.getResource().getPrice()) +
+                "\n" + "= Total: " + String.format("%36s", booking.getResource().getPrice().to(Config.currency)) +
                 "\n\n" + String.format("Paid with %s (%s)", booking.getPayment().getPaymentType(), booking.getPayment().getSender().getEmail());
         booking.setBody(sb);
     }

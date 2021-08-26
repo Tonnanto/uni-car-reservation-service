@@ -1,5 +1,7 @@
 package model;
 
+import controller.Config;
+
 public class SummaryFile extends File {
 
 
@@ -50,7 +52,7 @@ public class SummaryFile extends File {
                                 paymentType,
                                 "(" + language.name() + ")",
                                 bookingCounts[paymentType.ordinal()][language.ordinal()],
-                                paymentAmounts[paymentType.ordinal()][language.ordinal()]
+                                paymentAmounts[paymentType.ordinal()][language.ordinal()].to(Config.currency)
                         )
                 );
             }

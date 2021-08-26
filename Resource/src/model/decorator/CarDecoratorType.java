@@ -1,5 +1,6 @@
 package model.decorator;
 
+import controller.Config;
 import model.Currency;
 import model.CurrencyAmount;
 
@@ -34,7 +35,6 @@ public enum CarDecoratorType {
     }
 
     public String getDescription() {
-        // TODO: Adjust model.Currency to user settings
-        return String.format("%-30s %12s", this.getName(), this.getPrice());
+        return String.format("%-30s %12s", this.getName(), this.getPrice().to(Config.currency));
     }
 }
