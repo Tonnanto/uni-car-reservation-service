@@ -16,7 +16,7 @@ public class ShowPersonView extends View {
     protected String getMessage() {
 
         if (personService.getPerson() == null) {
-            return "No person selected.";
+            return Language.resourceBundle.getString("person.view.ShowPersonView.Message1");
         }
 
         String message = "Selected Person\s";
