@@ -1,7 +1,7 @@
 package controller;
 
 import model.*;
-import view.Language;
+import model.Language;
 import view.SelectCurrencyView;
 import view.SelectLanguageView;
 import view.SelectUseCaseView;

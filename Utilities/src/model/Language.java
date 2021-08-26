@@ -1,4 +1,6 @@
-package view;
+package model;
+
+import controller.Config;
 
 public enum Language {
     GERMAN, ENGLISH;
@@ -6,8 +8,8 @@ public enum Language {
     @Override
     public String toString() {
         return switch (this) {
-            case GERMAN -> "German";
-            case ENGLISH -> "English";
+            case GERMAN -> Config.resourceBundle.getString("utilities.model.Language.german");
+            case ENGLISH -> Config.resourceBundle.getString("utilities.model.Language.english");
         };
     }
 

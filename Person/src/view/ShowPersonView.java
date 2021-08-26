@@ -1,5 +1,6 @@
 package view;
 
+import controller.Config;
 import controller.PersonService;
 import model.NaturalPerson;
 import model.PersonType;
@@ -16,7 +17,7 @@ public class ShowPersonView extends View {
     protected String getMessage() {
 
         if (personService.getPerson() == null) {
-            return "No person selected.";
+            return Config.resourceBundle.getString("person.view.ShowPersonView.Message1");
         }
 
         String message = "Selected Person\s";

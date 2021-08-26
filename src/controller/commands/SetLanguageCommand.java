@@ -1,7 +1,7 @@
 package controller.commands;
 
 import controller.CarReservationService;
-import view.Language;
+import model.Language;
 
 public class SetLanguageCommand extends CarReservationCommand {
 

@@ -2,7 +2,9 @@ package view;
 
 import controller.CarReservationService;
 import controller.Command;
+import controller.Config;
 import controller.commands.SetLanguageCommand;
+import model.Language;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +27,6 @@ public class SelectLanguageView extends SelectionView {
 
     @Override
     protected String getMessage() {
-        return "Please select a Language";
+        return Config.resourceBundle.getString("utilities.view.SelectLanguageView.Message");
     }
 }

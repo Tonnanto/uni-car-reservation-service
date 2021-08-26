@@ -1,7 +1,5 @@
 package model;
 
-import view.Language;
-
 public class EnglishBookingBuilder extends BookingBuilder {
 
 

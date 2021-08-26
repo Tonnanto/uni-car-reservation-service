@@ -2,6 +2,7 @@ package view;
 
 import controller.CarReservationService;
 import controller.Command;
+import controller.Config;
 import controller.commands.SetCurrencyCommand;
 import model.Currency;
 
@@ -26,6 +27,6 @@ public class SelectCurrencyView extends SelectionView {
 
     @Override
     protected String getMessage() {
-        return "Please select a Currency.";
+        return Config.resourceBundle.getString("utilities.view.SelectCurrencyView.Message");
     }
 }

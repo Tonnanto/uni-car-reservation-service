@@ -3,6 +3,7 @@ package view;
 import controller.Command;
 import controller.StatisticsService;
 import controller.commands.ShowStatisticCommand;
+import model.Language;
 import model.PaymentType;
 
 import java.util.ArrayList;

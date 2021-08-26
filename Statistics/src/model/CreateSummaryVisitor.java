@@ -1,7 +1,5 @@
 package model;
 
-import view.Language;
-
 import java.util.Arrays;
 import java.util.Map;
 

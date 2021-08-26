@@ -2,8 +2,8 @@ package controller;
 
 import model.*;
 import view.ConfirmBookingView;
-import view.Language;
-import view.SelectLanguageView;
+import model.Language;
+import view.SelectBookingLanguageView;
 
 public class BookingService {
 
@@ -22,7 +22,7 @@ public class BookingService {
         BookingDirector bookingDirector = null;
         while (bookingBuilder == null) {        //for a the reset
             while (bookingBuilder == null)      //for a failed set
-                new SelectLanguageView(this).display();
+                new SelectBookingLanguageView(this).display();
             bookingDirector = new BookingDirector(this.bookingBuilder);
             bookingDirector.createBooking(resource, payment);
             new ConfirmBookingView(this, bookingDirector.getBooking()).display();

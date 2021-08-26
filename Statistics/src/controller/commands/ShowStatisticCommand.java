@@ -2,7 +2,7 @@ package controller.commands;
 
 import controller.StatisticsService;
 import model.PaymentType;
-import view.Language;
+import model.Language;
 
 public class ShowStatisticCommand extends StatisticsServiceCommand {
 

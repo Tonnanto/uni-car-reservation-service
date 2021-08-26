@@ -4,15 +4,16 @@ import controller.BookingService;
 import controller.Command;
 import controller.Config;
 import controller.commands.SetBookingBuilderCommand;
+import model.Language;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SelectLanguageView extends SelectionView {
+public class SelectBookingLanguageView extends SelectionView {
 
     private final BookingService bookingService;
 
-    public SelectLanguageView(BookingService bookingService) {
+    public SelectBookingLanguageView(BookingService bookingService) {
         this.bookingService = bookingService;
     }
 
