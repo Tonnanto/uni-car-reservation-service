@@ -1,6 +1,7 @@
 package view;
 
 import controller.Command;
+import controller.Config;
 import controller.ResourceService;
 import controller.commands.AddDecoratorCommand;
 import controller.commands.FinishResourceSelectionCommand;
@@ -21,7 +22,7 @@ public class AddCarDecoratorView extends SelectionView {
 
     @Override
     protected String getMessage() {
-        return Language.resourceBundle.getString("resource.AddCarDecoratorView.Message");
+        return Config.resourceBundle.getString("resource.AddCarDecoratorView.Message");
     }
 
     @Override

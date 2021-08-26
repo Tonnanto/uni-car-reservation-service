@@ -1,6 +1,6 @@
 package model;
 
-import view.Language;
+import controller.Config;
 
 @SuppressWarnings("SameReturnValue")
 public abstract class Payment {
@@ -41,7 +41,7 @@ public abstract class Payment {
             message += String.format("\n%s has been transferred from %s to %s.", currencyAmount, senderAccount.getEmail(), receiverAccount.getEmail());
             return message;
         } else
-            return getPaymentType() + " " + Language.resourceBundle.getString("payment.model.Payment.getPaymentType2");
+            return getPaymentType() + " " + Config.resourceBundle.getString("payment.model.Payment.getPaymentType2");
     }
 
     public abstract PaymentType getPaymentType();

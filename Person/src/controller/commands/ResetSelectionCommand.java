@@ -1,7 +1,7 @@
 package controller.commands;
 
+import controller.Config;
 import controller.PersonService;
-import view.Language;
 
 public class ResetSelectionCommand extends PersonServiceCommand {
     public ResetSelectionCommand(PersonService receiver) {
@@ -15,6 +15,6 @@ public class ResetSelectionCommand extends PersonServiceCommand {
 
     @Override
     public String getDescription() {
-        return Language.resourceBundle.getString("person.controller.commands.ResetSelectionCommand.Description");
+        return Config.resourceBundle.getString("person.controller.commands.ResetSelectionCommand.Description");
     }
 }

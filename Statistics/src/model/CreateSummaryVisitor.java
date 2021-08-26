@@ -22,7 +22,7 @@ public class CreateSummaryVisitor implements ContentVisitor {
         for (int[] row : bookingCounts)
             Arrays.fill(row, 0);
         for (CurrencyAmount[] row : paymentAmounts)
-            Arrays.fill(row, new CurrencyAmount(0.0, Currency.US_DOLLAR)); // TODO: Adjust Currency to user settings
+            Arrays.fill(row, new CurrencyAmount(0.0, Currency.US_DOLLAR)); // TODO: Adjust model.Currency to user settings
 
 
         for (Map.Entry<String, Content> contentEntry : folder.getContents().entrySet()) {

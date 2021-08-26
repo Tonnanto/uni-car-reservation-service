@@ -2,6 +2,7 @@ package view;
 
 import controller.AuthenticationService;
 import controller.Command;
+import controller.Config;
 import controller.commands.ContinueCommand;
 import controller.commands.LogInCommand;
 import controller.commands.LogOutCommand;
@@ -36,6 +37,6 @@ public class SelectUseCaseView extends SelectionView {
 
     @Override
     protected String getMessage() {
-        return Language.resourceBundle.getString("authentication.view.SelectUseCaseView.Message");
+        return Config.resourceBundle.getString("authentication.view.SelectUseCaseView.Message");
     }
 }

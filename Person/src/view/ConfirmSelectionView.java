@@ -1,6 +1,7 @@
 package view;
 
 import controller.Command;
+import controller.Config;
 import controller.PersonService;
 import controller.commands.FinishSelectionCommand;
 import controller.commands.ResetSelectionCommand;
@@ -25,6 +26,6 @@ public class ConfirmSelectionView extends SelectionView {
 
     @Override
     protected String getMessage() {
-        return Language.resourceBundle.getString("person.view.ConfirmSelectionView.Message");
+        return Config.resourceBundle.getString("person.view.ConfirmSelectionView.Message");
     }
 }

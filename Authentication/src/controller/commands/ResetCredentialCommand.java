@@ -1,7 +1,7 @@
 package controller.commands;
 
 import controller.AuthenticationService;
-import view.Language;
+import controller.Config;
 
 public class ResetCredentialCommand extends AuthenticationServiceCommand {
 
@@ -16,6 +16,6 @@ public class ResetCredentialCommand extends AuthenticationServiceCommand {
 
     @Override
     public String getDescription() {
-        return Language.resourceBundle.getString("authentication.controller.commands.ResetCredentialCommand.Description");
+        return Config.resourceBundle.getString("authentication.controller.commands.ResetCredentialCommand.Description");
     }
 }

@@ -31,6 +31,10 @@ public class SelectUseCaseView extends SelectionView {
             commands.add(new ShowContentCommand(carReservationService));
             commands.add(new LogOutCommand(carReservationService));
         }
+
+        commands.add(null);
+        commands.add(new PromptConfigCommand(carReservationService));
+
         return commands;
     }
 

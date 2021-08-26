@@ -1,7 +1,7 @@
 package controller.commands;
 
+import controller.Config;
 import controller.PersonService;
-import view.Language;
 
 public class FinishSelectionCommand extends PersonServiceCommand {
     public FinishSelectionCommand(PersonService receiver) {
@@ -15,6 +15,6 @@ public class FinishSelectionCommand extends PersonServiceCommand {
 
     @Override
     public String getDescription() {
-        return Language.resourceBundle.getString("person.controller.commands.FinishSelectionCommand.Description");
+        return Config.resourceBundle.getString("person.controller.commands.FinishSelectionCommand.Description");
     }
 }

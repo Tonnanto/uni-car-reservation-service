@@ -1,5 +1,6 @@
 package view;
 
+import controller.Config;
 import controller.ResourceService;
 
 public class ShowSelectedResourceView extends View {
@@ -12,6 +13,6 @@ public class ShowSelectedResourceView extends View {
 
     @Override
     protected String getMessage() {
-        return Language.resourceBundle.getString("resource.ShowSelectedResourceView.Message") + "\n" + resourceService.getResource().getDescription() + "\n\n= Total: " + resourceService.getResource().getPrice();
+        return Config.resourceBundle.getString("resource.ShowSelectedResourceView.Message") + "\n" + resourceService.getResource().getDescription() + "\n\n= Total: " + resourceService.getResource().getPrice();
     }
 }

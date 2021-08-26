@@ -1,8 +1,10 @@
 package view;
 
+import controller.Config;
+
 public class ShowLogOutView extends View {
     @Override
     protected String getMessage() {
-        return Language.resourceBundle.getString("authentication.view.ShowLogOutView.Message");
+        return Config.resourceBundle.getString("authentication.view.ShowLogOutView.Message");
     }
 }

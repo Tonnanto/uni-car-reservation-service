@@ -1,7 +1,7 @@
 package controller.commands;
 
+import controller.Config;
 import controller.ResourceService;
-import view.Language;
 
 public class ResetResourceSelectionCommand extends ResourceServiceCommand {
     public ResetResourceSelectionCommand(ResourceService receiver) {
@@ -15,6 +15,6 @@ public class ResetResourceSelectionCommand extends ResourceServiceCommand {
 
     @Override
     public String getDescription() {
-        return Language.resourceBundle.getString("resource.controller.commands.ResetSelectionCommand.Description");
+        return Config.resourceBundle.getString("resource.controller.commands.ResetSelectionCommand.Description");
     }
 }

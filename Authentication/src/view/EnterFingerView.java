@@ -2,6 +2,7 @@ package view;
 
 import controller.AuthenticationService;
 import controller.Command;
+import controller.Config;
 import controller.commands.EnterFingerCommand;
 import controller.commands.ResetCredentialCommand;
 
@@ -20,7 +21,7 @@ public class EnterFingerView extends StringInputView {
 
     @Override
     protected String getMessage() {
-        return Language.resourceBundle.getString("authentication.view.EnterFingerView.Message");
+        return Config.resourceBundle.getString("authentication.view.EnterFingerView.Message");
     }
 
     @Override
@@ -30,7 +31,7 @@ public class EnterFingerView extends StringInputView {
 
     @Override
     protected String getValidationMessage() {
-        return Language.resourceBundle.getString("authentication.view.EnterFingerView.ValidationMessage");
+        return Config.resourceBundle.getString("authentication.view.EnterFingerView.ValidationMessage");
     }
 
     @Override

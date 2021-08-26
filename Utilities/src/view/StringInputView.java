@@ -1,6 +1,7 @@
 package view;
 
 import controller.Command;
+import controller.Config;
 
 import java.util.Scanner;
 
@@ -100,6 +101,6 @@ public abstract class StringInputView extends View {
      * @return the validation message
      */
     protected String getValidationMessage() {
-        return Language.resourceBundle.getString("utilities.view.StringInputView.ValidationMessage");
+        return Config.resourceBundle.getString("utilities.view.StringInputView.ValidationMessage");
     }
 }

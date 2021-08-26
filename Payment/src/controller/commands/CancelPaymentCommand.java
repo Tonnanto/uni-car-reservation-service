@@ -1,7 +1,7 @@
 package controller.commands;
 
+import controller.Config;
 import controller.PaymentService;
-import view.Language;
 
 public class CancelPaymentCommand extends PaymentServiceCommand {
     public CancelPaymentCommand(PaymentService receiver) {
@@ -15,6 +15,6 @@ public class CancelPaymentCommand extends PaymentServiceCommand {
 
     @Override
     public String getDescription() {
-        return Language.resourceBundle.getString("payment.controller.commands.CancelPaymentCommand.getDescription");
+        return Config.resourceBundle.getString("payment.controller.commands.CancelPaymentCommand.getDescription");
     }
 }

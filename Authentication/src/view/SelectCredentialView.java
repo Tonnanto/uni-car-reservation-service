@@ -2,6 +2,7 @@ package view;
 
 import controller.AuthenticationService;
 import controller.Command;
+import controller.Config;
 import controller.commands.SelectCredentialsCommand;
 import model.EyeScanStrategy;
 import model.FingerPrintStrategy;
@@ -30,6 +31,6 @@ public class SelectCredentialView extends SelectionView {
 
     @Override
     protected String getMessage() {
-        return Language.resourceBundle.getString("authentication.view.SelectCredentialView.Message");
+        return Config.resourceBundle.getString("authentication.view.SelectCredentialView.Message");
     }
 }

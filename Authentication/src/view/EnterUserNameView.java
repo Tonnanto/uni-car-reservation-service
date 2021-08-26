@@ -2,6 +2,7 @@ package view;
 
 import controller.AuthenticationService;
 import controller.Command;
+import controller.Config;
 import controller.commands.EnterUserNameCommand;
 import controller.commands.ResetCredentialCommand;
 
@@ -20,7 +21,7 @@ public class EnterUserNameView extends StringInputView {
 
     @Override
     protected String getMessage() {
-        return Language.resourceBundle.getString("authentication.view.EnterUserNameView.Message");
+        return Config.resourceBundle.getString("authentication.view.EnterUserNameView.Message");
     }
 
     @Override

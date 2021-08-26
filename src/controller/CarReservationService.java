@@ -1,7 +1,13 @@
 package controller;
 
 import model.*;
+import view.Language;
+import view.SelectCurrencyView;
+import view.SelectLanguageView;
 import view.SelectUseCaseView;
+
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 
 public class CarReservationService {
@@ -14,6 +20,9 @@ public class CarReservationService {
     public void selectUseCase() {
         contentService = new ContentService();
         statisticsService = new StatisticsService(contentService.getRoot());
+
+        promptConfig();
+
         while (true) {
             new SelectUseCaseView(this).display();
         }
@@ -62,5 +71,19 @@ public class CarReservationService {
 
     public AuthenticationService getAuthenticationService() {
         return authenticationService;
+    }
+
+    public void setLanguage(Language language) {
+        Locale locale = new Locale(language.countryCode());
+        Config.resourceBundle = ResourceBundle.getBundle("view.Bundle", locale);
+    }
+
+    public void setCurrency(Currency currency) {
+        Config.currency = currency;
+    }
+
+    public void promptConfig() {
+        new SelectLanguageView(this).display();
+        new SelectCurrencyView(this).display();
     }
 }

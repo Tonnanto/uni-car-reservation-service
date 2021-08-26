@@ -1,6 +1,7 @@
 package view;
 
 import controller.Command;
+import controller.Config;
 import controller.PersonService;
 import controller.commands.SetNameCommand;
 
@@ -19,7 +20,7 @@ public class EnterNameView extends StringInputView {
 
     @Override
     protected String getMessage() {
-        return Language.resourceBundle.getString("person.view.EnterNameView.Message");
+        return Config.resourceBundle.getString("person.view.EnterNameView.Message");
     }
 
     @Override
@@ -29,6 +30,6 @@ public class EnterNameView extends StringInputView {
 
     @Override
     protected String getValidationMessage() {
-        return Language.resourceBundle.getString("person.view.EnterNameView.ValidationMessage");
+        return Config.resourceBundle.getString("person.view.EnterNameView.ValidationMessage");
     }
 }

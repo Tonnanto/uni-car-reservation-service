@@ -21,14 +21,14 @@ public class PaymentService {
      * 2. make the transfer from the customer's to the company's account
      * 3. create a payment confirmation and show it to the user
      *
-     * @param amount the CurrencyAmount that is being payed
+     * @param amount the model.CurrencyAmount that is being payed
      * @return whether the payment was successful
      */
     public Payment payAmount(CurrencyAmount amount) {
         this.currencyAmount = amount;
 
         if (amount.getAmount() <= 0) {
-            System.out.println(Language.resourceBundle.getString("payment.controller.PaymentService"));
+            System.out.println(Config.resourceBundle.getString("payment.controller.PaymentService"));
             return null;
         }
 

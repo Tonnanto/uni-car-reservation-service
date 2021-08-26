@@ -1,6 +1,7 @@
 package view;
 
 import controller.Command;
+import controller.Config;
 import controller.PaymentService;
 import controller.commands.SelectPaymentTypeCommand;
 import model.PaymentType;
@@ -26,6 +27,6 @@ public class SelectPaymentTypeView extends SelectionView {
 
     @Override
     protected String getMessage() {
-        return Language.resourceBundle.getString("payment.view.SelectPaymentTypeView.getMessage");
+        return Config.resourceBundle.getString("payment.view.SelectPaymentTypeView.getMessage");
     }
 }

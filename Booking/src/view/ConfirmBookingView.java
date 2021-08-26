@@ -2,6 +2,7 @@ package view;
 
 import controller.BookingService;
 import controller.Command;
+import controller.Config;
 import controller.commands.ContinueBookingCommand;
 import controller.commands.ResetBookingCommand;
 import model.Booking;
@@ -20,7 +21,7 @@ public class ConfirmBookingView extends StringInputView {
     protected String getMessage() {
         return booking +
                 "\n" +
-                Language.resourceBundle.getString("booking.view.ConfirmBookingView.getMessage");
+                Config.resourceBundle.getString("booking.view.ConfirmBookingView.getMessage");
     }
 
     @Override

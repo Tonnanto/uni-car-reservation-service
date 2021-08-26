@@ -1,6 +1,7 @@
 package view;
 
 import controller.Command;
+import controller.Config;
 import controller.PersonService;
 import controller.commands.SetEmailCommand;
 
@@ -22,7 +23,7 @@ public class EnterEmailView extends StringInputView {
 
     @Override
     protected String getMessage() {
-        return Language.resourceBundle.getString("person.view.EnterEmailView.Message");
+        return Config.resourceBundle.getString("person.view.EnterEmailView.Message");
     }
 
     @Override

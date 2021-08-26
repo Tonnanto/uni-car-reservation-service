@@ -11,6 +11,13 @@ public enum Currency {
         };
     }
 
+    public String toName() {
+        return switch (this) {
+            case EURO -> "EURO";
+            case US_DOLLAR -> "US-Dollar";
+        };
+    }
+
     /**
      * @return The exchange rate of the given currency to USD
      */

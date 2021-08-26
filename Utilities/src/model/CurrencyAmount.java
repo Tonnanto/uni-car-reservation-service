@@ -25,10 +25,10 @@ public class CurrencyAmount {
     }
 
     /**
-     * Converts the CurrencyAmount to a different currency
+     * Converts the model.CurrencyAmount to a different currency
      *
-     * @param currency the Currency to convert to
-     * @return the new CurrencyAmount Object
+     * @param currency the model.Currency to convert to
+     * @return the new model.CurrencyAmount Object
      */
     public CurrencyAmount to(Currency currency) {
         if (this.currency == currency) return new CurrencyAmount(amount, currency);

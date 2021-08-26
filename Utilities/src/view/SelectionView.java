@@ -1,6 +1,7 @@
 package view;
 
 import controller.Command;
+import controller.Config;
 
 import java.util.List;
 import java.util.Objects;
@@ -63,7 +64,7 @@ public abstract class SelectionView extends View {
         while (scanner.hasNext()) {
             if (!scanner.hasNextInt()) {
                 // input is not a number
-                System.out.println(Language.resourceBundle.getString("utilities.view.SelectionView.readIntInput") + optionCount);
+                System.out.println(Config.resourceBundle.getString("utilities.view.SelectionView.readIntInput") + optionCount);
                 System.out.print(inputPrefix);
                 scanner.next();
                 continue;
@@ -73,7 +74,7 @@ public abstract class SelectionView extends View {
 
             if (enteredNumber <= 0 || enteredNumber > optionCount) {
                 // input number is out of valid range
-                System.out.println(Language.resourceBundle.getString("utilities.view.SelectionView.readIntInput") + optionCount);
+                System.out.println(Config.resourceBundle.getString("utilities.view.SelectionView.readIntInput") + optionCount);
                 System.out.print(inputPrefix);
                 continue;
             }

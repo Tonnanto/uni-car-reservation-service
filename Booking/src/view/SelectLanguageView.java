@@ -2,6 +2,7 @@ package view;
 
 import controller.BookingService;
 import controller.Command;
+import controller.Config;
 import controller.commands.SetBookingBuilderCommand;
 
 import java.util.ArrayList;
@@ -27,6 +28,6 @@ public class SelectLanguageView extends SelectionView {
 
     @Override
     protected String getMessage() {
-        return Language.resourceBundle.getString("booking.view.SelectLanguageView.getMessage");
+        return Config.resourceBundle.getString("booking.view.SelectLanguageView.getMessage");
     }
 }

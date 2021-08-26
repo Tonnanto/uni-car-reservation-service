@@ -1,6 +1,7 @@
 package view;
 
 import controller.Command;
+import controller.Config;
 import controller.PaymentService;
 import controller.commands.CancelPaymentCommand;
 import controller.commands.SetPasswordCommand;
@@ -24,6 +25,6 @@ public class EnterPaymentPasswordView extends StringInputView {
 
     @Override
     protected String getMessage() {
-        return Language.resourceBundle.getString("payment.view.EnterPasswordView.getMessage") + " " + paymentService.getPayment().getPaymentType();
+        return Config.resourceBundle.getString("payment.view.EnterPasswordView.getMessage") + " " + paymentService.getPayment().getPaymentType();
     }
 }

@@ -1,6 +1,7 @@
 package view;
 
 import controller.Command;
+import controller.Config;
 import controller.PersonService;
 import controller.commands.SelectPersonTypeCommand;
 import model.PersonType;
@@ -27,6 +28,6 @@ public class SelectPersonTypeView extends SelectionView {
     @Override
     protected String getMessage() {
 
-        return Language.resourceBundle.getString("person.view.SelectPersonTypeView.Message");
+        return Config.resourceBundle.getString("person.view.SelectPersonTypeView.Message");
     }
 }

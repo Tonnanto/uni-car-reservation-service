@@ -1,6 +1,7 @@
 package view;
 
 import controller.AuthenticationService;
+import controller.Config;
 
 public class ShowLoginStatusView extends View {
 
@@ -13,7 +14,7 @@ public class ShowLoginStatusView extends View {
     @Override
     protected String getMessage() {
         if (authenticationService.isSubjectAuthenticated())
-            return Language.resourceBundle.getString("authentication.view.ShowLogInStatusView.Message1");
-        else return Language.resourceBundle.getString("authentication.view.ShowLogInStatusView.Message2");
+            return Config.resourceBundle.getString("authentication.view.ShowLogInStatusView.Message1");
+        else return Config.resourceBundle.getString("authentication.view.ShowLogInStatusView.Message2");
     }
 }

@@ -1,6 +1,7 @@
 package view;
 
 import controller.Command;
+import controller.Config;
 import controller.PaymentService;
 import controller.commands.CancelPaymentCommand;
 import controller.commands.SetPaymentEmailCommand;
@@ -27,7 +28,7 @@ public class EnterPaymentEmailView extends StringInputView {
 
     @Override
     protected String getMessage() {
-        return Language.resourceBundle.getString("payment.view.EnterEmailView.getMessage") + " " + paymentService.getPayment().getPaymentType();
+        return Config.resourceBundle.getString("payment.view.EnterEmailView.getMessage") + " " + paymentService.getPayment().getPaymentType();
     }
 
     @Override
@@ -40,6 +41,6 @@ public class EnterPaymentEmailView extends StringInputView {
 
     @Override
     protected String getValidationMessage() {
-        return Language.resourceBundle.getString("payment.view.EnterEmailView.getValidationMessage");
+        return Config.resourceBundle.getString("payment.view.EnterEmailView.getValidationMessage");
     }
 }
