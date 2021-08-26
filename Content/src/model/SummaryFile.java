@@ -33,7 +33,15 @@ public class SummaryFile extends File {
 
         sb.append("\n");
         sb.append(String.format("┌───────────────────────────────────┬──────────┬──────────────┐%n"));
-        sb.append(String.format("│ Payment Method         Language   │ Bookings │      Revenue │%n"));
+        sb.append(
+                String.format(
+                        "│ %-22s %-10s │ %8s │ %12s │%n",
+                        "Payment Method",
+                        "Language",
+                        "Bookings",
+                        "Revenue"
+                )
+        );
         sb.append(String.format("├───────────────────────────────────┼──────────┼──────────────┤%n"));
 
         for (PaymentType paymentType : PaymentType.values()) {
