@@ -1,6 +1,7 @@
 package controller.commands;
 
 import controller.CarReservationService;
+import controller.Config;
 
 public class LogOutCommand extends CarReservationCommand {
 
@@ -15,6 +16,6 @@ public class LogOutCommand extends CarReservationCommand {
 
     @Override
     public String getDescription() {
-        return "Log out";
+        return Config.resourceBundle.getString("src.controller.commands.LogOutCommand.Description");
     }
 }

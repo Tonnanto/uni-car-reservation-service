@@ -9,11 +9,11 @@ public enum CarDecoratorType {
 
     public String getName() {
         return switch (this) {
-            case SET_TOP_BOX -> "Set-Top-Box";
-            case CHILD_SEAT -> "Child Seat";
-            case AMBIENCE_LIGHTING -> "Ambience Lighting";
-            case MAGIC_TREE -> "Magic Tree";
-            case WINDOW_SHADE -> "Window Shade";
+            case SET_TOP_BOX -> Config.resourceBundle.getString("resource.controller.model.decorator.Name1");
+            case CHILD_SEAT -> Config.resourceBundle.getString("resource.controller.model.decorator.Name2");
+            case AMBIENCE_LIGHTING -> Config.resourceBundle.getString("resource.controller.model.decorator.Name3");
+            case MAGIC_TREE -> Config.resourceBundle.getString("resource.controller.model.decorator.Name4");
+            case WINDOW_SHADE -> Config.resourceBundle.getString("resource.controller.model.decorator.Name5");
         };
     }
 

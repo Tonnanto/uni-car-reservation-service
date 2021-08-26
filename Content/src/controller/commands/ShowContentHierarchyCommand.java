@@ -1,5 +1,6 @@
 package controller.commands;
 
+import controller.Config;
 import controller.ContentService;
 
 public class ShowContentHierarchyCommand extends ContentServiceCommand {
@@ -14,6 +15,6 @@ public class ShowContentHierarchyCommand extends ContentServiceCommand {
 
     @Override
     public String getDescription() {
-        return "Show the entire content hierarchy";
+        return Config.resourceBundle.getString("content.controller.commands.ShowContentHierarchyCommand.Description");
     }
 }

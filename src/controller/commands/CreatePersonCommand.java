@@ -1,6 +1,7 @@
 package controller.commands;
 
 import controller.CarReservationService;
+import controller.Config;
 
 public class CreatePersonCommand extends CarReservationCommand {
 
@@ -15,7 +16,7 @@ public class CreatePersonCommand extends CarReservationCommand {
 
     @Override
     public String getDescription() {
-        if (receiver.getPerson() == null) return "Sign up";
-        return "Change Person";
+        if (receiver.getPerson() == null) return Config.resourceBundle.getString("src.controller.commands.CreatePersonCommand.Description1");
+        return Config.resourceBundle.getString("src.controller.commands.CreatePersonCommand.Description2");
     }
 }

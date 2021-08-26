@@ -1,5 +1,6 @@
 package controller.commands;
 
+import controller.Config;
 import controller.ContentService;
 
 public class CloseContentCommand extends ContentServiceCommand {
@@ -14,6 +15,6 @@ public class CloseContentCommand extends ContentServiceCommand {
 
     @Override
     public String getDescription() {
-        return "Go Back";
+        return Config.resourceBundle.getString("content.controller.commands.CloseContentCommand.Description");
     }
 }

@@ -1,6 +1,7 @@
 package view;
 
 import controller.Command;
+import controller.Config;
 import controller.ContentService;
 import controller.commands.CancelCommand;
 import controller.commands.CloseContentCommand;
@@ -17,7 +18,7 @@ public class ShowContentHierarchyView extends SelectionView {
 
     @Override
     protected String getMessage() {
-        return "Content Hierarchy: \n" + contentService.getRoot();
+        return Config.resourceBundle.getString("content.view.ShowContentHierarchyView.Message") + " \n" + contentService.getRoot();
     }
 
     @Override

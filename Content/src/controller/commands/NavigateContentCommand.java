@@ -1,5 +1,6 @@
 package controller.commands;
 
+import controller.Config;
 import controller.ContentService;
 
 public class NavigateContentCommand extends ContentServiceCommand {
@@ -14,6 +15,6 @@ public class NavigateContentCommand extends ContentServiceCommand {
 
     @Override
     public String getDescription() {
-        return "Navigate the content hierarchy";
+        return Config.resourceBundle.getString("content.controller.commands.NavigateContentCommand.Description");
     }
 }

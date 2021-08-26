@@ -22,8 +22,8 @@ public class ShowAllResourcesView extends View {
         sb.append(
                 String.format(
                         "│ %-33s │ %12s │%n",
-                        "Cars",
-                        "Price"
+                        Config.resourceBundle.getString("resource.view.ShowAllResourcesView.Message1"),
+                        Config.resourceBundle.getString("resource.view.ShowAllResourcesView.Message2")
                 )
         );
         sb.append(String.format("├───────────────────────────────────┼──────────────┤%n"));
@@ -42,7 +42,7 @@ public class ShowAllResourcesView extends View {
         sb.append(
                 String.format(
                         "│ %-33s │ %12s │%n",
-                        "Add-Ons",
+                        Config.resourceBundle.getString("resource.view.ShowAllResourcesView.Message3"),
                         ""
                 )
         );

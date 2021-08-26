@@ -1,8 +1,10 @@
 package view;
 
+import controller.Config;
+
 public class ContentNotFoundView extends View {
     @Override
     protected String getMessage() {
-        return "The content you were trying to open was not found.";
+        return Config.resourceBundle.getString("content.view.ContentNotFoundView.Message");
     }
 }

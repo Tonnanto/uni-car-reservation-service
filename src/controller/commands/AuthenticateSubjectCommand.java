@@ -1,6 +1,7 @@
 package controller.commands;
 
 import controller.CarReservationService;
+import controller.Config;
 
 public class AuthenticateSubjectCommand extends CarReservationCommand {
 
@@ -15,6 +16,7 @@ public class AuthenticateSubjectCommand extends CarReservationCommand {
 
     @Override
     public String getDescription() {
-        return "Log in";
+        return Config.resourceBundle.getString("src.controller.commands.AuthenticateSubjectCommand.Description")
+                ;
     }
 }

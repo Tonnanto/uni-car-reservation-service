@@ -1,6 +1,7 @@
 package controller.commands;
 
 import controller.CarReservationService;
+import controller.Config;
 
 public class PromptConfigCommand extends CarReservationCommand {
     public PromptConfigCommand(CarReservationService carReservationService) {
@@ -14,6 +15,6 @@ public class PromptConfigCommand extends CarReservationCommand {
 
     @Override
     public String getDescription() {
-        return "Change Language and Currency";
+        return Config.resourceBundle.getString("src.controller.commands.PromptConfigCommand.Description");
     }
 }

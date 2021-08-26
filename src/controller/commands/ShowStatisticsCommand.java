@@ -1,6 +1,7 @@
 package controller.commands;
 
 import controller.CarReservationService;
+import controller.Config;
 
 public class ShowStatisticsCommand extends CarReservationCommand {
 
@@ -15,6 +16,6 @@ public class ShowStatisticsCommand extends CarReservationCommand {
 
     @Override
     public String getDescription() {
-        return "Show statistics";
+        return Config.resourceBundle.getString("src.controller.commands.ShowStatisticsCommand.Description");
     }
 }

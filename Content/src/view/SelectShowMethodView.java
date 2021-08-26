@@ -1,6 +1,7 @@
 package view;
 
 import controller.Command;
+import controller.Config;
 import controller.ContentService;
 import controller.commands.NavigateContentCommand;
 import controller.commands.ShowContentHierarchyCommand;
@@ -25,6 +26,6 @@ public class SelectShowMethodView extends SelectionView {
 
     @Override
     protected String getMessage() {
-        return "How do you like the content displayed?";
+        return Config.resourceBundle.getString("content.view.SelectShowMethodView.Message");
     }
 }

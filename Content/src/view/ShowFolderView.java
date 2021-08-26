@@ -1,6 +1,7 @@
 package view;
 
 import controller.Command;
+import controller.Config;
 import controller.ContentService;
 import controller.commands.CancelCommand;
 import controller.commands.CloseContentCommand;
@@ -44,7 +45,7 @@ public class ShowFolderView extends SelectionView {
 
     @Override
     protected String getMessage() {
-        StringBuilder message = new StringBuilder("Select a directory or a file to open it.");
+        StringBuilder message = new StringBuilder(Config.resourceBundle.getString("content.view.ShowFolderView.Message"));
 
         message.append("\n\n> ").append(this.contentService.getRoot().getName());
 

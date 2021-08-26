@@ -1,5 +1,6 @@
 package controller.commands;
 
+import controller.Config;
 import controller.ContentService;
 
 public class CancelCommand extends ContentServiceCommand {
@@ -14,6 +15,6 @@ public class CancelCommand extends ContentServiceCommand {
 
     @Override
     public String getDescription() {
-        return "Done";
+        return Config.resourceBundle.getString("content.controller.commands.CancelCommand.Description");
     }
 }

@@ -1,6 +1,7 @@
 package controller.commands;
 
 import controller.CarReservationService;
+import controller.Config;
 
 public class ReserveResourceCommand extends CarReservationCommand {
 
@@ -15,6 +16,6 @@ public class ReserveResourceCommand extends CarReservationCommand {
 
     @Override
     public String getDescription() {
-        return "Reserve a car";
+        return Config.resourceBundle.getString("src.controller.commands.ReserveResourceCommand.Description");
     }
 }

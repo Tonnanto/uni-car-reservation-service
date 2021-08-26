@@ -9,7 +9,6 @@ public class SummaryFile extends File {
     final int[][] bookingCounts;
 
     // Stores the total amount payed per language and per payment method
-    // TODO: Consider different currencies?
     final CurrencyAmount[][] paymentAmounts;
 
     public SummaryFile(String name, int[][] bookingCounts, CurrencyAmount[][] paymentAmounts) {
@@ -36,10 +35,10 @@ public class SummaryFile extends File {
         sb.append(
                 String.format(
                         "│ %-22s %-10s │ %8s │ %12s │%n",
-                        "Payment Method",
-                        "Language",
-                        "Bookings",
-                        "Revenue"
+                        Config.resourceBundle.getString("content.model.SummaryFile.String1"),
+                        Config.resourceBundle.getString("content.model.SummaryFile.String2"),
+                        Config.resourceBundle.getString("content.model.SummaryFile.String3"),
+                        Config.resourceBundle.getString("content.model.SummaryFile.String4")
                 )
         );
         sb.append(String.format("├───────────────────────────────────┼──────────┼──────────────┤%n"));
