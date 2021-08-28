@@ -41,9 +41,10 @@ public class SelectUseCaseView extends SelectionView {
     @Override
     protected String getMessage() {
         if (carReservationService.getPerson() != null) {
+            // TODO: Localization
             if (carReservationService.getAuthenticationService() != null && carReservationService.getAuthenticationService().isSubjectAuthenticated())
                 return "You are logged in as " + carReservationService.getPerson().getName();
-            else return "Hello " + carReservationService.getPerson().getName();
+            else return "Hello " + carReservationService.getPerson().getName() + "\nPlease authenticate before reserving a car.";
         }
         return "";
     }

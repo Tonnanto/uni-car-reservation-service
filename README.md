@@ -21,6 +21,8 @@ multiple modules, each one of them complying with a given design pattern.
 - Remove main methods / temporary constructor
 - Warnings fixen
 - Rename Main Method (Class) in CarReservationService
+- reserveCar abbrechen können?
+- Dependency between Booking and Person? (In Booking die Person hinterlegen, die gebucht hat)
 
 ### User interaction und messages
 
@@ -31,8 +33,8 @@ multiple modules, each one of them complying with a given design pattern.
     - ✔️ Bei show all resources Preise anzeigen (vielleicht als Tabelle)
     - Bezeichnungen von dem ConfirmationView im Person Module
     - ✔️ Darstellung von Booking bzw. BookingFile
-    - reserveCar abbrechen können?
-    - Preise von Autos Kaufpreise oder Mietpreise?
+- Preise von Autos Kaufpreise oder Mietpreise?
+- Ist SelectPersonTypeView überflüssig?
 
 ### JUnit Tests
 
