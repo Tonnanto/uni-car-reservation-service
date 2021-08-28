@@ -14,7 +14,7 @@ public class PersonService {
 
 
     public Person createPerson() {
-//Loop to get the attributes of a person
+        //Loop to get the attributes of a person
         while (!personCreated) {
             //if personType is not chosen yet, choose it
             if (person == null) {

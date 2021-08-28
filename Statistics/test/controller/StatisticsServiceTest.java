@@ -1,6 +1,5 @@
 package controller;
 
-import model.BookingFile;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -18,14 +17,14 @@ public class StatisticsServiceTest {
     @Test
     protected void canSummaryBeCreated() {
 
-        contentService.addContent(new BookingFile());
-        contentService.addContent(new BookingFile());
-        contentService.addContent(new BookingFile());
-        contentService.addContent(new BookingFile());
-
-        statisticsService.getEnglishBookingsPaidByGoogleWallet();
-
-        System.out.println(contentService.getRoot().getSummaryFile());
+//        contentService.addContent(new BookingFile());
+//        contentService.addContent(new BookingFile());
+//        contentService.addContent(new BookingFile());
+//        contentService.addContent(new BookingFile());
+//
+//        statisticsService.getEnglishBookingsPaidByGoogleWallet();
+//
+//        System.out.println(contentService.getRoot().getSummaryFile());
 
         // TODO: some assertions
     }

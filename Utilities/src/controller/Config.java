@@ -6,5 +6,5 @@ import java.util.ResourceBundle;
 
 public class Config {
     public static ResourceBundle resourceBundle;
-    public static Currency currency;
+    public static Currency currency = Currency.EURO;
 }

@@ -12,8 +12,8 @@ public class GermanBookingBuilder extends BookingBuilder {
         // TODO: Adjust model.Currency to user settings
         String sb = "Sie haben die folgende Ressource gebucht:" +
                 "\n\n" + booking.getResource().getDescription() +
-                "\n" + "= Total: " + String.format("%36s", booking.getResource().getPrice()) +
-                "\n\n" + String.format("Paid with %s (%s)", booking.getPayment().getPaymentType(), booking.getPayment().getSender().getEmail());
+                "\n" + "= Insgesamt: " + String.format("%32s", booking.getResource().getPrice()) +
+                "\n\n" + String.format("Bezahlt mit %s (%s)", booking.getPayment().getPaymentType(), booking.getPayment().getSender().getEmail());
         booking.setBody(sb);
     }
 

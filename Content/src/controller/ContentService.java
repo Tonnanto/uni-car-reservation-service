@@ -1,6 +1,5 @@
 package controller;
 
-import model.BookingFile;
 import model.Content;
 import model.File;
 import model.Folder;
@@ -27,25 +26,26 @@ public class ContentService {
         this.root = new Folder("Bookings");
     }
 
-    public static void main(String[] args) {
-        ContentService cs = new ContentService();
-
-        // Adding test content
-        cs.addContent(new BookingFile(), LocalDate.of(2017, 1, 1));
-        cs.addContent(new BookingFile(), LocalDate.of(2017, 5, 23));
-        cs.addContent(new BookingFile(), LocalDate.of(2018, 12, 31));
-        cs.addContent(new BookingFile(), LocalDate.of(2018, 12, 31));
-        cs.addContent(new BookingFile());
-        cs.addContent(new BookingFile());
-        cs.addContent(new BookingFile());
-        cs.addContent(new BookingFile());
-        cs.addContent(new BookingFile());
-        cs.addContent(new BookingFile());
-
-        // triggering UseCase: showContent
-
-        cs.showContent();
-    }
+    // TODO: temp method
+//    public static void main(String[] args) {
+//        ContentService cs = new ContentService();
+//
+//        // Adding test content
+//        cs.addContent(new BookingFile(), LocalDate.of(2017, 1, 1));
+//        cs.addContent(new BookingFile(), LocalDate.of(2017, 5, 23));
+//        cs.addContent(new BookingFile(), LocalDate.of(2018, 12, 31));
+//        cs.addContent(new BookingFile(), LocalDate.of(2018, 12, 31));
+//        cs.addContent(new BookingFile());
+//        cs.addContent(new BookingFile());
+//        cs.addContent(new BookingFile());
+//        cs.addContent(new BookingFile());
+//        cs.addContent(new BookingFile());
+//        cs.addContent(new BookingFile());
+//
+//        // triggering UseCase: showContent
+//
+//        cs.showContent();
+//    }
 
     /**
      * Adds Content to the hierarchy. Uses the current date to determine the correct location.

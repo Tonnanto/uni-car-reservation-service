@@ -1,11 +1,9 @@
 package controller;
 
 import model.*;
-import model.Language;
 import view.SelectStatisticView;
 import view.ShowStatisticView;
 
-import java.time.LocalDate;
 import java.util.Map;
 
 public class StatisticsService implements Observer {
@@ -22,27 +20,27 @@ public class StatisticsService implements Observer {
     }
 
     // TODO: temporary method
-    public static void main(String[] args) {
-        ContentService cs = new ContentService();
-        StatisticsService statisticsService = new StatisticsService(cs.getRoot());
-
-        // Adding test content
-        cs.addContent(new BookingFile(), LocalDate.of(2017, 1, 1));
-        cs.addContent(new BookingFile(), LocalDate.of(2017, 5, 23));
-        cs.addContent(new BookingFile(), LocalDate.of(2018, 12, 31));
-        cs.addContent(new BookingFile(), LocalDate.of(2018, 12, 31));
-        cs.addContent(new BookingFile());
-        cs.addContent(new BookingFile());
-        cs.addContent(new BookingFile());
-        cs.addContent(new BookingFile());
-        cs.addContent(new BookingFile());
-        cs.addContent(new BookingFile());
-
-        // triggering UseCase: showStatistics
-
-//        statisticsService.showStatistics();
-        cs.showContent();
-    }
+//    public static void main(String[] args) {
+//        ContentService cs = new ContentService();
+//        StatisticsService statisticsService = new StatisticsService(cs.getRoot());
+//
+//        // Adding test content
+//        cs.addContent(new BookingFile(), LocalDate.of(2017, 1, 1));
+//        cs.addContent(new BookingFile(), LocalDate.of(2017, 5, 23));
+//        cs.addContent(new BookingFile(), LocalDate.of(2018, 12, 31));
+//        cs.addContent(new BookingFile(), LocalDate.of(2018, 12, 31));
+//        cs.addContent(new BookingFile());
+//        cs.addContent(new BookingFile());
+//        cs.addContent(new BookingFile());
+//        cs.addContent(new BookingFile());
+//        cs.addContent(new BookingFile());
+//        cs.addContent(new BookingFile());
+//
+//        // triggering UseCase: showStatistics
+//
+////        statisticsService.showStatistics();
+//        cs.showContent();
+//    }
 
     public void getGermanBookingsPaidByPayPal() {
         BookingStatisticVisitor germanPayPalVisitor = new BookingStatisticVisitor(Language.GERMAN, PaymentType.PAYPAL);
