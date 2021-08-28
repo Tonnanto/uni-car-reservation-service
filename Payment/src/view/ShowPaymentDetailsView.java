@@ -11,6 +11,7 @@ public class ShowPaymentDetailsView extends View {
 
     @Override
     protected String getMessage() {
+        // TODO: Localization
         String message = "Your Payment:\n";
 
         message += String.format("\namount: %s", paymentService.getCurrencyAmount());

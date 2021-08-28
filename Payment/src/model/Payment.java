@@ -36,6 +36,7 @@ public abstract class Payment {
     public abstract boolean payAmount();
 
     public String createConfirmation(boolean success) {
+        // TODO: Localization
         if (success) {
             String message = getPaymentType() + " Payment successful!";
             message += String.format("\n%s has been transferred from %s to %s.", currencyAmount, senderAccount.getEmail(), receiverAccount.getEmail());

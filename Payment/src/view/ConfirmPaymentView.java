@@ -25,6 +25,7 @@ public class ConfirmPaymentView extends SelectionView {
 
     @Override
     protected String getMessage() {
+        // TODO: Localization
         return "Confirm?";
     }
 }
