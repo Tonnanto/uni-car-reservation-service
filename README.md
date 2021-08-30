@@ -20,8 +20,8 @@ multiple modules, each one of them complying with a given design pattern.
 - ✔️ Bug: UseCase "showContent" funktioniert manchmal nicht.
 - Remove main methods / temporary constructor
 - Warnings fixen
-- Rename Main Method (Class) in CarReservationService
-- reserveCar abbrechen können?
+- ✔️ Rename Main Method (Class) in CarReservationService
+- ✔️ reserveCar abbrechen können?
 - Dependency between Booking and Person? (In Booking die Person hinterlegen, die gebucht hat)
 
 ### User interaction und messages

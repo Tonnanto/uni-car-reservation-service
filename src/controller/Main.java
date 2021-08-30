@@ -3,7 +3,7 @@ package controller;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class MainTest {
+public class Main {
 
     public static void main(String[] args) {
         // TODO: Prompt User to select language
