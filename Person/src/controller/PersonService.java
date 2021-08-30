@@ -66,6 +66,7 @@ public class PersonService {
 
     public void resetSelection() {
         person = null;
+        personCreated = false;
     }
 
     public void finishSelection() {

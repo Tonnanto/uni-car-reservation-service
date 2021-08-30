@@ -23,6 +23,7 @@ multiple modules, each one of them complying with a given design pattern.
 - ✔️ Rename Main Method (Class) in CarReservationService
 - ✔️ reserveCar abbrechen können?
 - Dependency between Booking and Person? (In Booking die Person hinterlegen, die gebucht hat)
+- DEMO Content
 
 ### User interaction und messages
 

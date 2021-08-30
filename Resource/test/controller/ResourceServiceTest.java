@@ -39,7 +39,7 @@ public class ResourceServiceTest {
     }
 
     protected void canCarBeSelected() {
-        Car car = new Car("Audi", new CurrencyAmount(35000, Currency.US_DOLLAR));
+        Car car = new Car("Audi", new CurrencyAmount(35000, Currency.EURO));
         new SelectCarCommand(resourceService, car).execute();
 
         Resource selectedResource = resourceService.getResource();
@@ -54,7 +54,7 @@ public class ResourceServiceTest {
 
         Resource selectedResource = resourceService.getResource();
         Assertions.assertNotNull(selectedResource);
-        Assertions.assertEquals(35140.0, selectedResource.getPrice());
+        Assertions.assertEquals(35035, selectedResource.getPrice().getAmount());
     }
 
     protected void canSelectionBeReset() {

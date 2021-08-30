@@ -1,25 +1,36 @@
 package controller;
 
-import model.PersonFactory;
-import model.PersonType;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class PersonServiceTest {
 
-    private static PersonFactory personFactory;
+    private static PersonService personService;
 
     @BeforeAll
     protected static void setUp() {
-        personFactory = new PersonFactory();
+        personService = new PersonService();
     }
 
     @Test
     protected void canPersonBeCreated() {
-        Assertions.assertNotNull(personFactory.createPerson(PersonType.NATURAL_PERSON));
-        Assertions.assertNotNull(personFactory.createPerson(PersonType.LEGAL_PERSON));
+        // For each Person Type:
 
-        Assertions.assertEquals(2, PersonFactory.getPersonCount());
+            // SelectPersonTypeCommand executen
+            // Prüfen ob die Person erstellt wurde
+            // ResetSelectionCommand executen
+            // Prüfen ob die Person entfernt wurde
+
+            // SelectPersonTypeCommand executen
+            // Prüfen ob die Person erstellt wurde
+            // SetNameCommand executen
+            // Prüfen ob die Person den richtigen name hat
+            // SetEmailCommand executen
+            // Prüfen ob die Person die richtigen email hat
+            // FinishSelectionCommand executen
+            // Prüfen ob isPersonCreated == true?
+
+        // Prüfen ob 2 Personen erstellt
+        // Assertions.assertEquals(2, PersonFactory.getPersonCount());
     }
 }

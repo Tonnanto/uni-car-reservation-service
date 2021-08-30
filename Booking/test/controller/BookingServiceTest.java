@@ -1,7 +1,6 @@
 package controller;
 
 import model.*;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -19,16 +18,27 @@ class BookingServiceTest {
         Resource resource = new Car("Benz", new CurrencyAmount(200, Currency.US_DOLLAR));
         Payment payment = new PayPalPayment(new CurrencyAmount(200, Currency.EURO));
 
-        Booking booking = bookingService.createBooking(resource, payment);
+        // For each BookingBuilder
+        // SetBookingBiulderCommand executen
+        // Prüfen ob der richtige booking builder ausgewählt wurde
+        // BookingDirector erstellen
+        // Booking builden (.createBooking(resource, payment);)
+        // Booking getten
+        // Prüfen ob Booking korrekt ist
 
-        Assertions.assertNotNull(booking);
-        Assertions.assertNotNull(booking.getHeader());
-        Assertions.assertNotNull(booking.getBody());
-        Assertions.assertNotNull(booking.getFooter());
 
-        System.out.println(booking.getHeader());
-        System.out.println(booking.getBody());
-        System.out.println(booking.getFooter());
+
+
+//        Booking booking = bookingService.createBooking(resource, payment);
+//
+//        Assertions.assertNotNull(booking);
+//        Assertions.assertNotNull(booking.getHeader());
+//        Assertions.assertNotNull(booking.getBody());
+//        Assertions.assertNotNull(booking.getFooter());
+//
+//        System.out.println(booking.getHeader());
+//        System.out.println(booking.getBody());
+//        System.out.println(booking.getFooter());
     }
 }
 
