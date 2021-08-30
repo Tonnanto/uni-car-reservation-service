@@ -21,6 +21,10 @@ public class CarReservationService {
         contentService = new ContentService();
         statisticsService = new StatisticsService(contentService.getRoot());
 
+        // Add some demo data
+        contentService.addDemoBookings(25);
+
+        // Prompt User to select language and currency
         promptConfig();
 
         while (true) {
@@ -41,6 +45,8 @@ public class CarReservationService {
         person = new PersonService().createPerson();
         if (person instanceof Subject)
             authenticationService = new AuthenticationService((Subject) person);
+        else
+            authenticationService = null;
     }
 
     // Authenticate Person

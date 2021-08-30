@@ -32,6 +32,8 @@ public class SelectCarView extends SelectionView {
             SelectCarCommand selectCarCommand = new SelectCarCommand(resourceService, car);
             commands.add(selectCarCommand);
         }
+
+        commands.add(null);
         commands.add(new AbortCommand(resourceService));
 
         return commands;

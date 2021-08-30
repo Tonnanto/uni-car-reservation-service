@@ -23,17 +23,22 @@ public class SelectUseCaseView extends SelectionView {
 
         if (carReservationService.getAuthenticationService() == null || !carReservationService.getAuthenticationService().isSubjectAuthenticated()) {
             commands.add(new ShowAllResources(carReservationService));
-            commands.add(new CreatePersonCommand(carReservationService));
             if (carReservationService.getPerson() != null && carReservationService.getAuthenticationService() != null)
                 commands.add(new AuthenticateSubjectCommand(carReservationService));
-        } else {
-            commands.add(new ReserveResourceCommand(carReservationService));
-            commands.add(new ShowStatisticsCommand(carReservationService));
-            commands.add(new ShowContentCommand(carReservationService));
-            commands.add(new LogOutCommand(carReservationService));
+
+            commands.add(null);
+            commands.add(new CreatePersonCommand(carReservationService));
+            commands.add(new PromptConfigCommand(carReservationService));
+            return commands;
+
         }
 
+        commands.add(new ReserveResourceCommand(carReservationService));
+        commands.add(new ShowStatisticsCommand(carReservationService));
+        commands.add(new ShowContentCommand(carReservationService));
+
         commands.add(null);
+        commands.add(new LogOutCommand(carReservationService));
         commands.add(new PromptConfigCommand(carReservationService));
 
         return commands;

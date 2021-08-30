@@ -31,17 +31,17 @@ public class SummaryFile extends File {
         StringBuilder sb = new StringBuilder(getName());
 
         sb.append("\n");
-        sb.append(String.format("┌───────────────────────────────────┬──────────┬──────────────┐%n"));
+        sb.append(String.format("┌───────────────────────────────────┬───────────┬──────────────┐%n"));
         sb.append(
                 String.format(
-                        "│ %-22s %-10s │ %8s │ %12s │%n",
+                        "│ %-22s %-10s │ %9s │ %12s │%n",
                         Config.resourceBundle.getString("content.model.SummaryFile.String1"),
                         Config.resourceBundle.getString("content.model.SummaryFile.String2"),
                         Config.resourceBundle.getString("content.model.SummaryFile.String3"),
                         Config.resourceBundle.getString("content.model.SummaryFile.String4")
                 )
         );
-        sb.append(String.format("├───────────────────────────────────┼──────────┼──────────────┤%n"));
+        sb.append(String.format("├───────────────────────────────────┼───────────┼──────────────┤%n"));
 
         for (PaymentType paymentType : PaymentType.values()) {
             // Prevents index out of bounds
@@ -55,7 +55,7 @@ public class SummaryFile extends File {
 
                 sb.append(
                         String.format(
-                                "│ %-22s %-10s │ %8d │ %12s │%n",
+                                "│ %-22s %-10s │ %9d │ %12s │%n",
                                 paymentType,
                                 "(" + language.name() + ")",
                                 bookingCounts[paymentType.ordinal()][language.ordinal()],
@@ -64,7 +64,7 @@ public class SummaryFile extends File {
                 );
             }
         }
-        sb.append(String.format("└───────────────────────────────────┴──────────┴──────────────┘%n"));
+        sb.append(String.format("└───────────────────────────────────┴───────────┴──────────────┘%n"));
 
         return sb.toString();
     }

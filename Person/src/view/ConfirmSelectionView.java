@@ -19,8 +19,8 @@ public class ConfirmSelectionView extends SelectionView {
     @Override
     protected List<Command> getCommands() {
         List<Command> commands = new ArrayList<>();
-        commands.add(new ResetSelectionCommand(personService));
         commands.add(new FinishSelectionCommand(personService));
+        commands.add(new ResetSelectionCommand(personService));
         return commands;
     }
 
