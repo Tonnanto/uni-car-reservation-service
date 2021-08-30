@@ -26,11 +26,11 @@ public enum CarDecoratorType {
 
     public CurrencyAmount getPrice() {
         return switch (this) {
-            case SET_TOP_BOX -> new CurrencyAmount(80, Currency.US_DOLLAR);
-            case CHILD_SEAT -> new CurrencyAmount(30, Currency.US_DOLLAR);
-            case AMBIENCE_LIGHTING -> new CurrencyAmount(790, Currency.US_DOLLAR);
-            case MAGIC_TREE -> new CurrencyAmount(2, Currency.US_DOLLAR);
-            case WINDOW_SHADE -> new CurrencyAmount(5, Currency.US_DOLLAR);
+            case SET_TOP_BOX -> new CurrencyAmount(25, Currency.EURO);
+            case CHILD_SEAT -> new CurrencyAmount(5, Currency.EURO);
+            case AMBIENCE_LIGHTING -> new CurrencyAmount(60, Currency.EURO);
+            case MAGIC_TREE -> new CurrencyAmount(1, Currency.EURO);
+            case WINDOW_SHADE -> new CurrencyAmount(15, Currency.EURO);
         };
     }
 

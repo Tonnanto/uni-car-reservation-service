@@ -24,10 +24,10 @@ public class ResourceService {
 
     public ResourceService() {
         this.availableCars = Arrays.asList(
-                new Car("BMW 530d Touring", new CurrencyAmount(49900, Currency.US_DOLLAR)),
-                new Car("Volkswagen Golf", new CurrencyAmount(24000, Currency.US_DOLLAR)),
-                new Car("Opel Corsa", new CurrencyAmount(14600, Currency.US_DOLLAR)),
-                new Car("Mercedes Benz C220", new CurrencyAmount(37440, Currency.US_DOLLAR))
+                new Car("BMW 530d Touring", new CurrencyAmount(499, Currency.EURO)),
+                new Car("Volkswagen Golf", new CurrencyAmount(240, Currency.EURO)),
+                new Car("Opel Corsa", new CurrencyAmount(146, Currency.EURO)),
+                new Car("Mercedes Benz C220", new CurrencyAmount(375, Currency.EURO))
         );
     }
 

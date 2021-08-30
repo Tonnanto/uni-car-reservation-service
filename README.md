@@ -31,9 +31,9 @@ multiple modules, each one of them complying with a given design pattern.
     - ✔️ Währungen berücksichtigen. (Einmal auswählen und überall diese Währung anzeigen)
 - Proof read (UX und Fehler / Typos) (English und deutsch)
     - ✔️ Bei show all resources Preise anzeigen (vielleicht als Tabelle)
-    - Bezeichnungen von dem ConfirmationView im Person Module
+    - ✔️ Bezeichnungen von dem ConfirmationView im Person Module
     - ✔️ Darstellung von Booking bzw. BookingFile
-- Preise von Autos Kaufpreise oder Mietpreise?
+- ✔️ Preise von Autos Kaufpreise oder Mietpreise?
 - ✔️ Ist SelectPersonTypeView überflüssig?
 
 ### JUnit Tests
