@@ -3,6 +3,7 @@ package view;
 import controller.Command;
 import controller.Config;
 import controller.ResourceService;
+import controller.commands.AbortCommand;
 import controller.commands.SelectCarCommand;
 import model.Car;
 
@@ -31,6 +32,7 @@ public class SelectCarView extends SelectionView {
             SelectCarCommand selectCarCommand = new SelectCarCommand(resourceService, car);
             commands.add(selectCarCommand);
         }
+        commands.add(new AbortCommand(resourceService));
 
         return commands;
     }

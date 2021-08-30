@@ -21,7 +21,7 @@ multiple modules, each one of them complying with a given design pattern.
 - Remove main methods / temporary constructor
 - Warnings fixen
 - Rename Main Method (Class) in CarReservationService
-- reserveCar abbrechen können?
+- ✔ reserveCar abbrechen können?
 - Dependency between Booking and Person? (In Booking die Person hinterlegen, die gebucht hat)
 
 ### User interaction und messages
