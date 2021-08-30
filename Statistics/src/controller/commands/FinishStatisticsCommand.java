@@ -1,5 +1,6 @@
 package controller.commands;
 
+import controller.Config;
 import controller.StatisticsService;
 
 public class FinishStatisticsCommand extends StatisticsServiceCommand {
@@ -15,6 +16,6 @@ public class FinishStatisticsCommand extends StatisticsServiceCommand {
 
     @Override
     public String getDescription() {
-        return "Done";
+        return Config.resourceBundle.getString("statistics.commands.FinishStatisticsCommand.Description");
     }
 }

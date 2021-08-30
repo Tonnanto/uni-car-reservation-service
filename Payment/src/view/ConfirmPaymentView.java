@@ -1,6 +1,7 @@
 package view;
 
 import controller.Command;
+import controller.Config;
 import controller.PaymentService;
 import controller.commands.CancelPaymentCommand;
 import controller.commands.ConfirmPaymentCommand;
@@ -25,7 +26,6 @@ public class ConfirmPaymentView extends SelectionView {
 
     @Override
     protected String getMessage() {
-        // TODO: Localization
-        return "Confirm?";
+        return Config.resourceBundle.getString("payment.view.ConfirmPaymentView.Message");
     }
 }

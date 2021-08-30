@@ -2,6 +2,7 @@ package view;
 
 import controller.CarReservationService;
 import controller.Command;
+import controller.Config;
 import controller.commands.*;
 
 import java.util.ArrayList;
@@ -41,10 +42,9 @@ public class SelectUseCaseView extends SelectionView {
     @Override
     protected String getMessage() {
         if (carReservationService.getPerson() != null) {
-            // TODO: Localization
             if (carReservationService.getAuthenticationService() != null && carReservationService.getAuthenticationService().isSubjectAuthenticated())
-                return "You are logged in as " + carReservationService.getPerson().getName();
-            else return "Hello " + carReservationService.getPerson().getName() + "\nPlease authenticate before reserving a car.";
+                return Config.resourceBundle.getString("src.view.SelectUseCaseView.Message1") + " " + carReservationService.getPerson().getName();
+            else return Config.resourceBundle.getString("src.view.SelectUseCaseView.Message2") + " " + carReservationService.getPerson().getName() + "\n" + Config.resourceBundle.getString("src.view.SelectUseCaseView.Message3");
         }
         return "";
     }

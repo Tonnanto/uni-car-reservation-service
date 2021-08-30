@@ -3,7 +3,7 @@ package model;
 public enum PersonType {
     NATURAL_PERSON,
     LEGAL_PERSON;
-
+    //TODO Localisation?
     @Override
     public String toString() {
         return switch (this) {

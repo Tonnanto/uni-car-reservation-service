@@ -1,6 +1,7 @@
 package view;
 
 import controller.Command;
+import controller.Config;
 import controller.StatisticsService;
 import controller.commands.ShowStatisticCommand;
 import model.Language;
@@ -32,6 +33,6 @@ public class SelectStatisticView extends SelectionView {
 
     @Override
     protected String getMessage() {
-        return "Select a Statistic";
+        return Config.resourceBundle.getString("statistics.view.SelectStatisticView.Message");
     }
 }

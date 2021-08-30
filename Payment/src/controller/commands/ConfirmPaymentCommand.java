@@ -15,6 +15,6 @@ public class ConfirmPaymentCommand extends PaymentServiceCommand {
 
     @Override
     public String getDescription() {
-        return Config.resourceBundle.getString("payment.controller.commands.ConfirmPaymentCommand.getDescription");
+        return Config.resourceBundle.getString("payment.controller.commands.ConfirmPaymentCommand.Description");
     }
 }

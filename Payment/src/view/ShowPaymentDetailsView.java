@@ -1,5 +1,6 @@
 package view;
 
+import controller.Config;
 import controller.PaymentService;
 
 public class ShowPaymentDetailsView extends View {
@@ -11,19 +12,19 @@ public class ShowPaymentDetailsView extends View {
 
     @Override
     protected String getMessage() {
-        // TODO: Localization
-        String message = "Your Payment:\n";
 
-        message += String.format("\namount: %s", paymentService.getCurrencyAmount());
+        String message = Config.resourceBundle.getString("payment.view.SelectPaymentDetailsView.Message1") + "\n";
+
+        message += String.format("\n" + Config.resourceBundle.getString("payment.view.SelectPaymentDetailsView.Message2") + " %s", paymentService.getCurrencyAmount());
 
         if (paymentService.getPayment() != null) {
-            message += String.format("\nmethod: %s", paymentService.getPayment().getPaymentType());
+            message += String.format("\n" + Config.resourceBundle.getString("payment.view.SelectPaymentDetailsView.Message3") + " %s", paymentService.getPayment().getPaymentType());
 
             if (paymentService.getPayment().getSender() != null)
-                message += String.format("\nsender: %s", paymentService.getPayment().getSender().getEmail());
+                message += String.format("\n" + Config.resourceBundle.getString("payment.view.SelectPaymentDetailsView.Message4") + " %s", paymentService.getPayment().getSender().getEmail());
 
             if (paymentService.getPayment().getReceiver() != null)
-                message += String.format("\nreceiver: %s", paymentService.getPayment().getReceiver().getEmail());
+                message += String.format("\n" + Config.resourceBundle.getString("payment.view.SelectPaymentDetailsView.Message5") + " %s", paymentService.getPayment().getReceiver().getEmail());
         }
 
         return message;

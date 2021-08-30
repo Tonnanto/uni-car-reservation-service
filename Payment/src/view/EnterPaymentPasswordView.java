@@ -25,6 +25,6 @@ public class EnterPaymentPasswordView extends StringInputView {
 
     @Override
     protected String getMessage() {
-        return Config.resourceBundle.getString("payment.view.EnterPasswordView.getMessage") + " " + paymentService.getPayment().getPaymentType();
+        return Config.resourceBundle.getString("payment.view.EnterPasswordView.Message") + " " + paymentService.getPayment().getPaymentType();
     }
 }

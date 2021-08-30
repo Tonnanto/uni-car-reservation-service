@@ -15,6 +15,6 @@ public class CancelPaymentCommand extends PaymentServiceCommand {
 
     @Override
     public String getDescription() {
-        return Config.resourceBundle.getString("payment.controller.commands.CancelPaymentCommand.getDescription");
+        return Config.resourceBundle.getString("payment.controller.commands.CancelPaymentCommand.Description");
     }
 }

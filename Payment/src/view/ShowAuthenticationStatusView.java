@@ -13,8 +13,8 @@ public class ShowAuthenticationStatusView extends View {
     @Override
     protected String getMessage() {
         if (paymentService.isUserAuthenticated()) {
-            return Config.resourceBundle.getString("payment.view.ShowAuthenticationStatusView.getMessage1");
+            return Config.resourceBundle.getString("payment.view.ShowAuthenticationStatusView.Message1");
         }
-        return Config.resourceBundle.getString("payment.view.SelectPaymentTypeView.getMessage2");
+        return Config.resourceBundle.getString("payment.view.ShowAuthenticationStatusView.Message2");
     }
 }

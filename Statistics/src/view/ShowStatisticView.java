@@ -1,6 +1,7 @@
 package view;
 
 import controller.Command;
+import controller.Config;
 import controller.StatisticsService;
 import controller.commands.ContinueStatisticsCommand;
 import controller.commands.FinishStatisticsCommand;
@@ -32,13 +33,13 @@ public class ShowStatisticView extends SelectionView {
         BookingStatisticVisitor statistic = statisticsService.getLastStatistic();
         StringBuilder sb = new StringBuilder();
 
-        sb.append(String.format("All %s Bookings paid with %s:", statistic.getLanguage(), statistic.getPaymentType())).append("\n");
+        sb.append(String.format(Config.resourceBundle.getString("statistics.view.ShowStatisticView.Message1") + " %s " + Config.resourceBundle.getString("statistics.view.ShowStatisticView.Message2") + " %s:", statistic.getLanguage(), statistic.getPaymentType())).append("\n");
 
         for (BookingFile bookingFile : statistic.getBookingFiles()) {
             sb.append("\n").append(bookingFile.getName()).append(" -> ").append(bookingFile.getBooking().getPayment().getCurrencyAmount().to(Currency.EURO));
         }
 
-        sb.append(String.format("\n\n%s Bookings made a total of %s.", statistic.getBookingsCount(), statistic.getBookingsValue(Currency.EURO))).append("\n");
+        sb.append(String.format("\n\n%s" + Config.resourceBundle.getString("statistics.view.ShowStatisticView.Message3") + " %s.", statistic.getBookingsCount(), statistic.getBookingsValue(Currency.EURO))).append("\n");
 
         return sb.toString();
     }

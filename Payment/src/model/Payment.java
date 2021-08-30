@@ -36,13 +36,12 @@ public abstract class Payment {
     public abstract boolean payAmount();
 
     public String createConfirmation(boolean success) {
-        // TODO: Localization
         if (success) {
-            String message = getPaymentType() + " Payment successful!";
-            message += String.format("\n%s has been transferred from %s to %s.", currencyAmount, senderAccount.getEmail(), receiverAccount.getEmail());
+            String message = getPaymentType() + " " + Config.resourceBundle.getString("payment.model.Payment.createConfirmation1");
+            message += String.format("\n%s " + Config.resourceBundle.getString("payment.model.Payment.createConfirmation2") + " %s " + Config.resourceBundle.getString("payment.model.Payment.createConfirmation3") + " %s.", currencyAmount, senderAccount.getEmail(), receiverAccount.getEmail());
             return message;
         } else
-            return getPaymentType() + " " + Config.resourceBundle.getString("payment.model.Payment.getPaymentType2");
+            return getPaymentType() + " " + Config.resourceBundle.getString("payment.model.Payment.createConfirmation4");
     }
 
     public abstract PaymentType getPaymentType();

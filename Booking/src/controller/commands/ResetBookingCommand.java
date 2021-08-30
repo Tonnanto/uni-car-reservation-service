@@ -16,6 +16,6 @@ public class ResetBookingCommand extends BookingServiceCommand {
 
     @Override
     public String getDescription() {
-        return Config.resourceBundle.getString("booking.controller.commands.ResetBookingCommand.getDescription");
+        return Config.resourceBundle.getString("booking.controller.commands.ResetBookingCommand.Description");
     }
 }

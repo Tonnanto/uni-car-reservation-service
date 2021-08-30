@@ -20,7 +20,7 @@ public class ShowPersonView extends View {
             return Config.resourceBundle.getString("person.view.ShowPersonView.Message1");
         }
 
-        String message = "Selected Person\s";
+        String message = Config.resourceBundle.getString("person.view.ShowPersonView.Message2") + "\s";
 
         PersonType personType = personService.getPerson() instanceof NaturalPerson ? PersonType.NATURAL_PERSON : PersonType.LEGAL_PERSON;
         String name = personService.getPerson().getName();

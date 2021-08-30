@@ -37,6 +37,6 @@ public class EnterEmailView extends StringInputView {
 
     @Override
     protected String getValidationMessage() {
-        return "Please enter a valid E-Mail address";
+        return Config.resourceBundle.getString("person.view.EnterEmailView.ValidationMessage");
     }
 }

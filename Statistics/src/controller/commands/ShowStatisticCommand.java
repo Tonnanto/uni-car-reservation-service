@@ -1,5 +1,6 @@
 package controller.commands;
 
+import controller.Config;
 import controller.StatisticsService;
 import model.PaymentType;
 import model.Language;
@@ -22,6 +23,6 @@ public class ShowStatisticCommand extends StatisticsServiceCommand {
 
     @Override
     public String getDescription() {
-        return String.format("%s Bookings paid by %s", language, paymentType);
+        return String.format("%s" + Config.resourceBundle.getString("statistics.commands.ShowStatisticsCommand.Description") + " %s", language, paymentType);
     }
 }
