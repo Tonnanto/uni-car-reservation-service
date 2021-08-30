@@ -1,5 +1,6 @@
 package controller.commands;
 
+import controller.Config;
 import controller.ResourceService;
 
 public class AbortCommand extends ResourceServiceCommand{
@@ -15,6 +16,6 @@ public class AbortCommand extends ResourceServiceCommand{
 
     @Override
     public String getDescription() {
-        return "Cancel";
+        return Config.resourceBundle.getString("resource.controller.commands.AbortCommand.Description");
     }
 }

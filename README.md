@@ -34,7 +34,7 @@ multiple modules, each one of them complying with a given design pattern.
     - Bezeichnungen von dem ConfirmationView im Person Module
     - ✔️ Darstellung von Booking bzw. BookingFile
 - Preise von Autos Kaufpreise oder Mietpreise?
-- Ist SelectPersonTypeView überflüssig?
+- ✔️ Ist SelectPersonTypeView überflüssig?
 
 ### JUnit Tests
 
