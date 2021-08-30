@@ -27,5 +27,6 @@
     <orderEntry type="module" module-name="Resource" />
     <orderEntry type="module" module-name="Payment" />
     <orderEntry type="module" module-name="Utilities" />
+    <orderEntry type="module" module-name="Person" />
   </component>
 </module>

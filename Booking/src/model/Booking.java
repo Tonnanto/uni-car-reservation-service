@@ -1,20 +1,26 @@
 package model;
 
 import java.text.BreakIterator;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Booking {
+    private final Resource resource;
+    private final Payment payment;
+    private final Person customer;
+
     private String header;
     private String body;
     private String footer;
-    private Resource resource;
-    private Payment payment;
     private Language language;
+    private LocalDate bookingDate;
 
-    public Booking(Resource resource, Payment payment) {
+    public Booking(Resource resource, Payment payment, Person customer, LocalDate date) {
         this.resource = resource;
         this.payment = payment;
+        this.customer = customer;
+        this.bookingDate = date;
     }
 
     public String getHeader() {
@@ -45,16 +51,8 @@ public class Booking {
         return resource;
     }
 
-    public void setResource(Resource resource) {
-        this.resource = resource;
-    }
-
     public Payment getPayment() {
         return payment;
-    }
-
-    public void setPayment(Payment payment) {
-        this.payment = payment;
     }
 
     public Language getLanguage() {
@@ -63,6 +61,14 @@ public class Booking {
 
     public void setLanguage(Language language) {
         this.language = language;
+    }
+
+    public Person getCustomer() {
+        return customer;
+    }
+
+    public LocalDate getBookingDate() {
+        return bookingDate;
     }
 
     @Override

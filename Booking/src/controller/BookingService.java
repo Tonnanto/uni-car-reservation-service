@@ -5,6 +5,8 @@ import view.ConfirmBookingView;
 import model.Language;
 import view.SelectBookingLanguageView;
 
+import java.time.LocalDate;
+
 public class BookingService {
 
     private BookingBuilder bookingBuilder;
@@ -17,14 +19,14 @@ public class BookingService {
      * @return new booking
      */
 
-    public Booking createBooking(Resource resource, Payment payment) {
+    public Booking createBooking(Resource resource, Payment payment, Person customer, LocalDate date) {
 
         BookingDirector bookingDirector = null;
         while (bookingBuilder == null) {        //for a the reset
             while (bookingBuilder == null)      //for a failed set
                 new SelectBookingLanguageView(this).display();
             bookingDirector = new BookingDirector(this.bookingBuilder);
-            bookingDirector.createBooking(resource, payment);
+            bookingDirector.createBooking(resource, payment, customer, date);
             new ConfirmBookingView(this, bookingDirector.getBooking()).display();
         }
         assert bookingDirector != null;

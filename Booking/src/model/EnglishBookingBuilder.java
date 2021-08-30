@@ -2,12 +2,18 @@ package model;
 
 import controller.Config;
 
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.Locale;
+
 public class EnglishBookingBuilder extends BookingBuilder {
 
 
     @Override
     public void buildHeader() {
-        booking.setHeader("Hello Costumer, Thank you for your reservation.");
+        String text = booking.getBookingDate().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL).withLocale(new Locale("en")));
+        text += String.format("\n\nHello %s, Thank you for your reservation.", booking.getCustomer().getName());
+        booking.setHeader(text);
     }
 
     @Override

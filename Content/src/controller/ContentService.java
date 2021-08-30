@@ -58,6 +58,9 @@ public class ContentService {
      * @return whether the operation was successful
      */
     public boolean addContent(Content content) {
+        if (content instanceof BookingFile)
+            return addContent(content, ((BookingFile) content).getBooking().getBookingDate());
+
         return addContent(content, LocalDate.now());
     }
 
@@ -159,30 +162,31 @@ public class ContentService {
      * @param bookingCount the amount of bookings to add
      */
     public void addDemoBookings(int bookingCount) {
-        Random r = new Random();
-
         for (int i = 0; i < bookingCount; i++) {
-            int randomYear = 2016 + r.nextInt(5);
-            int randomMonth = 1 + r.nextInt(11);
-            int randomDay = 1 + r.nextInt(28);
-
-            addContent(new BookingFile(getRandomBooking()), LocalDate.of(randomYear, randomMonth, randomDay));
+            addContent(new BookingFile(getRandomBooking()));
         }
     }
 
-    private Booking getRandomBooking() {
+    protected Booking getRandomBooking() {
         Random r = new Random();
         BookingBuilder bb = r.nextBoolean() ? new GermanBookingBuilder() : new EnglishBookingBuilder();
         BookingDirector bd = new BookingDirector(bb);
 
-        Resource randomResource = getRandomResource();
-        Payment randomPayment = getRandomPayment(randomResource);
+        Person randomCustomer = getRandomCustomer();
 
-        bd.createBooking(randomResource, randomPayment);
+        Resource randomResource = getRandomResource();
+        Payment randomPayment = getRandomPayment(randomResource, randomCustomer.getEmail());
+
+        int randomYear = 2016 + r.nextInt(5);
+        int randomMonth = 1 + r.nextInt(11);
+        int randomDay = 1 + r.nextInt(28);
+
+        bd.createBooking(randomResource, randomPayment, randomCustomer, LocalDate.of(randomYear, randomMonth, randomDay));
+
         return bd.getBooking();
     }
 
-    private Resource getRandomResource() {
+    protected Resource getRandomResource() {
         Random r = new Random();
         List<Car> availableCars = new ResourceService().getAvailableCars();
         Resource randomResource = availableCars.get(r.nextInt(availableCars.size()));
@@ -201,11 +205,8 @@ public class ContentService {
         return randomResource;
     }
 
-    private Payment getRandomPayment(Resource resource) {
+    protected Payment getRandomPayment(Resource resource, String senderEmail) {
         Random r = new Random();
-
-        String[] emails = {"anton@stamme.de", "jonas@harms.de", "ram@mo.de", "max.mustermann@gmail.com"};
-        String randomSender = emails[r.nextInt(emails.length)];
 
         Payment payment = null;
         PaymentType paymentType = PaymentType.values()[r.nextInt(PaymentType.values().length)];
@@ -215,8 +216,36 @@ public class ContentService {
             case GOOGLE_WALLET -> payment = new GoogleWalletPayment(resource.getPrice());
             case MONEY_WALLET -> payment = new MoneyWalletPayment(resource.getPrice());
         }
-        payment.authenticateCustomer(randomSender, "password420");
+        payment.authenticateCustomer(senderEmail, "password420");
 
         return payment;
+    }
+
+    Person[] demoCustomers;
+
+    protected Person getRandomCustomer() {
+        Random r = new Random();
+
+        if (demoCustomers == null) {
+            Person anton = PersonFactory.createPerson(PersonType.NATURAL_PERSON);
+            anton.setName("Anton Stamme");
+            anton.setEmail("anton@stamme.de");
+
+            Person jonas = PersonFactory.createPerson(PersonType.NATURAL_PERSON);
+            jonas.setName("Jonas Harms");
+            jonas.setEmail("jonas@harms.de");
+
+            Person rammo = PersonFactory.createPerson(PersonType.NATURAL_PERSON);
+            rammo.setName("Ramazan Kaymaz");
+            rammo.setEmail("ram@mo.de");
+
+            Person max = PersonFactory.createPerson(PersonType.NATURAL_PERSON);
+            max.setName("Max Mustermann");
+            max.setEmail("max.mustermann@gmail.com");
+
+            demoCustomers = new Person[]{anton, jonas, rammo, max};
+        }
+
+        return demoCustomers[r.nextInt(demoCustomers.length)];
     }
 }

@@ -1,6 +1,7 @@
 package controller;
 
-import org.junit.jupiter.api.AfterAll;
+import model.BookingFile;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -13,14 +14,13 @@ public class ContentServiceTest {
         contentService = new ContentService();
     }
 
-    @AfterAll
-    protected static void tearDown() {
-        // Outputting hierarchy to console
-        System.out.println(contentService.getRoot());
-    }
-
     @Test
     protected void canContentBeAdded() {
+
+
+        for (int i = 0; i < 50; i++) {
+            Assertions.assertTrue(contentService.addContent(new BookingFile(contentService.getRandomBooking())));
+        }
 
 //        BookingDirector bookingDirector = new BookingDirector(new EnglishBookingBuilder());
 //        bookingDirector.createBooking(new Car(""), payment);
@@ -37,6 +37,12 @@ public class ContentServiceTest {
 //        Assertions.assertTrue(contentService.addContent(new BookingFile()));
 //        Assertions.assertTrue(contentService.addContent(new BookingFile()));
 //        Assertions.assertTrue(contentService.addContent(new BookingFile()));
+    }
+
+
+    @Test
+    protected void canContentBeShown() {
+
     }
 
     @Test

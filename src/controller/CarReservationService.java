@@ -6,6 +6,7 @@ import view.SelectCurrencyView;
 import view.SelectLanguageView;
 import view.SelectUseCaseView;
 
+import java.time.LocalDate;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -36,7 +37,7 @@ public class CarReservationService {
         Resource selectedResource = new ResourceService().getSelectedResource();
         if(selectedResource == null) return;
         Payment payment = new PaymentService().payAmount(selectedResource.getPrice());
-        Booking booking = new BookingService().createBooking(selectedResource, payment);
+        Booking booking = new BookingService().createBooking(selectedResource, payment, person, LocalDate.now());
         contentService.addContent(new BookingFile(booking));
     }
 

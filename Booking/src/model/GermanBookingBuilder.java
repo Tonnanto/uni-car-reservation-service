@@ -1,10 +1,16 @@
 package model;
 
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.Locale;
+
 public class GermanBookingBuilder extends BookingBuilder {
 
     @Override
     public void buildHeader() {
-        booking.setHeader("Lieber Kunde, Vielen Dank für ihre Reservierung.");
+        String text = booking.getBookingDate().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL).withLocale(new Locale("de")));
+        text += String.format("\n\nSehr geehrter %s, Vielen Dank für ihre Reservierung.", booking.getCustomer().getName());
+        booking.setHeader(text);
     }
 
     @Override
