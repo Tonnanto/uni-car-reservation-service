@@ -1,12 +1,13 @@
 package controller;
 
-import model.Content;
-import model.File;
-import model.Folder;
+import model.*;
+import model.decorator.*;
 import view.*;
 
 import java.text.DateFormatSymbols;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Random;
 import java.util.Stack;
 
 /**
@@ -29,8 +30,8 @@ public class ContentService {
     // TODO: temp method
 //    public static void main(String[] args) {
 //        ContentService cs = new ContentService();
-//
-//        // Adding test content
+
+        // Adding test content
 //        cs.addContent(new BookingFile(), LocalDate.of(2017, 1, 1));
 //        cs.addContent(new BookingFile(), LocalDate.of(2017, 5, 23));
 //        cs.addContent(new BookingFile(), LocalDate.of(2018, 12, 31));
@@ -41,9 +42,11 @@ public class ContentService {
 //        cs.addContent(new BookingFile());
 //        cs.addContent(new BookingFile());
 //        cs.addContent(new BookingFile());
-//
-//        // triggering UseCase: showContent
-//
+
+//        cs.addDemoBookings(100);
+
+        // triggering UseCase: showContent
+
 //        cs.showContent();
 //    }
 
@@ -142,5 +145,78 @@ public class ContentService {
     public void cancel() {
         navigatingContent = false;
         showingContent = false;
+    }
+
+
+    //================================================================================
+    // DEMO Data
+    //================================================================================
+
+    /**
+     * Adds demo BookingFiles to this content hierarchy.
+     * The Data added is randomly generated and will be different each time this method gets called.
+     * It is only used for demonstration and testing purposes
+     * @param bookingCount the amount of bookings to add
+     */
+    public void addDemoBookings(int bookingCount) {
+        Random r = new Random();
+
+        for (int i = 0; i < bookingCount; i++) {
+            int randomYear = 2016 + r.nextInt(5);
+            int randomMonth = 1 + r.nextInt(11);
+            int randomDay = 1 + r.nextInt(28);
+
+            addContent(new BookingFile(getRandomBooking()), LocalDate.of(randomYear, randomMonth, randomDay));
+        }
+    }
+
+    private Booking getRandomBooking() {
+        Random r = new Random();
+        BookingBuilder bb = r.nextBoolean() ? new GermanBookingBuilder() : new EnglishBookingBuilder();
+        BookingDirector bd = new BookingDirector(bb);
+
+        Resource randomResource = getRandomResource();
+        Payment randomPayment = getRandomPayment(randomResource);
+
+        bd.createBooking(randomResource, randomPayment);
+        return bd.getBooking();
+    }
+
+    private Resource getRandomResource() {
+        Random r = new Random();
+        List<Car> availableCars = new ResourceService().getAvailableCars();
+        Resource randomResource = availableCars.get(r.nextInt(availableCars.size()));
+
+        for (int i = 0; i < r.nextInt(10); i++) {
+            CarDecoratorType cdt = CarDecoratorType.values()[r.nextInt(CarDecoratorType.values().length)];
+            switch (cdt) {
+                case SET_TOP_BOX -> randomResource = new SetTopBox(randomResource);
+                case CHILD_SEAT -> randomResource = new ChildSeat(randomResource);
+                case AMBIENCE_LIGHTING -> randomResource = new AmbienceLighting(randomResource);
+                case MAGIC_TREE -> randomResource = new MagicTree(randomResource);
+                case WINDOW_SHADE -> randomResource = new WindowShade(randomResource);
+            }
+        }
+
+        return randomResource;
+    }
+
+    private Payment getRandomPayment(Resource resource) {
+        Random r = new Random();
+
+        String[] emails = {"anton@stamme.de", "jonas@harms.de", "ram@mo.de", "max.mustermann@gmail.com"};
+        String randomSender = emails[r.nextInt(emails.length)];
+
+        Payment payment = null;
+        PaymentType paymentType = PaymentType.values()[r.nextInt(PaymentType.values().length)];
+
+        switch (paymentType) {
+            case PAYPAL -> payment = new PayPalPayment(resource.getPrice());
+            case GOOGLE_WALLET -> payment = new GoogleWalletPayment(resource.getPrice());
+            case MONEY_WALLET -> payment = new MoneyWalletPayment(resource.getPrice());
+        }
+        payment.authenticateCustomer(randomSender, "password420");
+
+        return payment;
     }
 }
