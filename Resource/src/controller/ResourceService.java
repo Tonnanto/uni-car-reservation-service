@@ -104,4 +104,9 @@ public class ResourceService {
         if (resource == null) return;
         resourceSelected = true;
     }
+
+    public void abort() {
+        resetSelection();
+        resourceSelected = true;
+    }
 }

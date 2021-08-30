@@ -30,6 +30,7 @@ public class CarReservationService {
 
     public void reserveResource() {
         Resource selectedResource = new ResourceService().getSelectedResource();
+        if(selectedResource == null) return;
         Payment payment = new PaymentService().payAmount(selectedResource.getPrice());
         Booking booking = new BookingService().createBooking(selectedResource, payment);
         contentService.addContent(new BookingFile(booking));
