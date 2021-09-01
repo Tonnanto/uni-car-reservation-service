@@ -31,9 +31,9 @@ public class PaymentServiceTest {
             Assertions.assertNull(paymentService.getPayment());
 
             // Simulate: payment type selection and credentials entering
-            new SelectPaymentTypeCommand(paymentService, paymentType).execute();
+            new SetPaymentTypeCommand(paymentService, paymentType).execute();
             new SetPaymentEmailCommand(paymentService, "anton@stamme.de").execute();
-            new SetPasswordCommand(paymentService, "password420").execute();
+            new SetPaymentPasswordCommand(paymentService, "password420").execute();
             Assertions.assertTrue(paymentService.isUserAuthenticated());
 
             // Simulate: payment confirmation

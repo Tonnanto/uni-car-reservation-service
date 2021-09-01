@@ -3,7 +3,7 @@ package view;
 import controller.Command;
 import controller.Config;
 import controller.PaymentService;
-import controller.commands.SelectPaymentTypeCommand;
+import controller.commands.SetPaymentTypeCommand;
 import model.PaymentType;
 
 import java.util.ArrayList;
@@ -19,9 +19,9 @@ public class SelectPaymentTypeView extends SelectionView {
     @Override
     protected List<Command> getCommands() {
         List<Command> commands = new ArrayList<>();
-        commands.add(new SelectPaymentTypeCommand(paymentService, PaymentType.PAYPAL));
-        commands.add(new SelectPaymentTypeCommand(paymentService, PaymentType.GOOGLE_WALLET));
-        commands.add(new SelectPaymentTypeCommand(paymentService, PaymentType.MONEY_WALLET));
+        commands.add(new SetPaymentTypeCommand(paymentService, PaymentType.PAYPAL));
+        commands.add(new SetPaymentTypeCommand(paymentService, PaymentType.GOOGLE_WALLET));
+        commands.add(new SetPaymentTypeCommand(paymentService, PaymentType.MONEY_WALLET));
         return commands;
     }
 

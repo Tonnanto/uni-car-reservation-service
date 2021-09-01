@@ -57,7 +57,7 @@ public class PaymentService {
             new ConfirmPaymentView(this).display();
         }
 
-        new ShowConfirmationView(this).display();
+        new ShowPaymentConfirmationView(this).display();
 
         return payment;
     }

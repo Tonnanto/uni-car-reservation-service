@@ -25,6 +25,9 @@ multiple modules, each one of them complying with a given design pattern.
 - ✔️ Dependency between Booking and Person? (In Booking die Person hinterlegen, die gebucht hat)
 - ✔️ DEMO Content
 
+- Was macht ein SelectUseCaseView im AuthenticationService??
+
+
 ### User interaction und messages
 
 - Übersetzung von messages

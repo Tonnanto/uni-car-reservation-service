@@ -14,9 +14,4 @@ public class SetPaymentEmailCommand extends PaymentServiceCommand {
     public void execute() {
         receiver.setEmail(email);
     }
-
-    @Override
-    public String getDescription() {
-        return null;
-    }
 }

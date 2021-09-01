@@ -4,7 +4,7 @@ import controller.Command;
 import controller.Config;
 import controller.PaymentService;
 import controller.commands.CancelPaymentCommand;
-import controller.commands.SetPasswordCommand;
+import controller.commands.SetPaymentPasswordCommand;
 
 public class EnterPaymentPasswordView extends StringInputView {
     private final PaymentService paymentService;
@@ -15,7 +15,7 @@ public class EnterPaymentPasswordView extends StringInputView {
 
     @Override
     protected Command getCommand(String inputString) {
-        return new SetPasswordCommand(paymentService, inputString);
+        return new SetPaymentPasswordCommand(paymentService, inputString);
     }
 
     @Override

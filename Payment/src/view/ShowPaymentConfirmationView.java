@@ -4,10 +4,10 @@ import controller.PaymentService;
 
 import java.util.concurrent.TimeUnit;
 
-public class ShowConfirmationView extends View {
+public class ShowPaymentConfirmationView extends View {
     private final PaymentService paymentService;
 
-    public ShowConfirmationView(PaymentService paymentService) {
+    public ShowPaymentConfirmationView(PaymentService paymentService) {
         this.paymentService = paymentService;
     }
 

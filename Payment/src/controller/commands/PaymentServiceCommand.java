@@ -9,4 +9,9 @@ public abstract class PaymentServiceCommand implements Command {
     public PaymentServiceCommand(PaymentService receiver) {
         this.receiver = receiver;
     }
+
+    @Override
+    public String getDescription() {
+        return "";
+    }
 }

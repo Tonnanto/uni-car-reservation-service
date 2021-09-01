@@ -3,10 +3,10 @@ package controller.commands;
 import controller.PaymentService;
 import model.PaymentType;
 
-public class SelectPaymentTypeCommand extends PaymentServiceCommand {
+public class SetPaymentTypeCommand extends PaymentServiceCommand {
     private final PaymentType paymentType;
 
-    public SelectPaymentTypeCommand(PaymentService receiver, PaymentType paymentType) {
+    public SetPaymentTypeCommand(PaymentService receiver, PaymentType paymentType) {
         super(receiver);
         this.paymentType = paymentType;
     }

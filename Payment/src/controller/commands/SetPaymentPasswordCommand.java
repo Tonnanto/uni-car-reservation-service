@@ -2,10 +2,10 @@ package controller.commands;
 
 import controller.PaymentService;
 
-public class SetPasswordCommand extends PaymentServiceCommand {
+public class SetPaymentPasswordCommand extends PaymentServiceCommand {
     private final String password;
 
-    public SetPasswordCommand(PaymentService receiver, String password) {
+    public SetPaymentPasswordCommand(PaymentService receiver, String password) {
         super(receiver);
         this.password = password;
     }
@@ -13,10 +13,5 @@ public class SetPasswordCommand extends PaymentServiceCommand {
     @Override
     public void execute() {
         receiver.setPassword(password);
-    }
-
-    @Override
-    public String getDescription() {
-        return null;
     }
 }
