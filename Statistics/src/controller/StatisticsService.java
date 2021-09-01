@@ -19,29 +19,7 @@ public class StatisticsService implements Observer {
         updateAll(contentRootFolder);
     }
 
-    // TODO: temporary method
-//    public static void main(String[] args) {
-//        ContentService cs = new ContentService();
-//        StatisticsService statisticsService = new StatisticsService(cs.getRoot());
-//
-//        // Adding test content
-//        cs.addContent(new BookingFile(), LocalDate.of(2017, 1, 1));
-//        cs.addContent(new BookingFile(), LocalDate.of(2017, 5, 23));
-//        cs.addContent(new BookingFile(), LocalDate.of(2018, 12, 31));
-//        cs.addContent(new BookingFile(), LocalDate.of(2018, 12, 31));
-//        cs.addContent(new BookingFile());
-//        cs.addContent(new BookingFile());
-//        cs.addContent(new BookingFile());
-//        cs.addContent(new BookingFile());
-//        cs.addContent(new BookingFile());
-//        cs.addContent(new BookingFile());
-//
-//        // triggering UseCase: showStatistics
-//
-////        statisticsService.showStatistics();
-//        cs.showContent();
-//    }
-
+    // The following 6 methods are only separated because of a requirement in the task
     public void getGermanBookingsPaidByPayPal() {
         BookingStatisticVisitor germanPayPalVisitor = new BookingStatisticVisitor(Language.GERMAN, PaymentType.PAYPAL);
         this.contentRootFolder.accept(germanPayPalVisitor);
