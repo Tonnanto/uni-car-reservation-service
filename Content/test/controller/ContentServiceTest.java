@@ -1,5 +1,8 @@
 package controller;
 
+import controller.commands.CloseContentCommand;
+import controller.commands.NavigateContentCommand;
+import controller.commands.OpenContentCommand;
 import model.BookingFile;
 import model.Content;
 import model.Folder;
@@ -33,18 +36,18 @@ public class ContentServiceTest {
     @Order(2)
     protected void canContentBeShown() {
         // Test if the whole content hierarchy can be navigated
-        contentService.navigateContent();
+        new NavigateContentCommand(contentService).execute();
         Assertions.assertTrue(contentService.isNavigatingContent());
 
         navigateContent(contentService.getRoot());
 
-        contentService.closeContent();
+        new CloseContentCommand(contentService).execute();
         Assertions.assertFalse(contentService.isNavigatingContent());
     }
 
     private void navigateContent(Content content) {
         // Navigate into content
-        contentService.openContent(content);
+        new OpenContentCommand(contentService, content).execute();
         Assertions.assertEquals(contentService.getNavigationPath().peek(), content.getName());
 
         // Navigate into all child contents of folder
@@ -55,6 +58,6 @@ public class ContentServiceTest {
         }
 
         // Navigate back
-        contentService.closeContent();
+        new CloseContentCommand(contentService).execute();
     }
 }
