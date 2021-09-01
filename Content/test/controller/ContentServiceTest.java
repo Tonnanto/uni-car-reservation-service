@@ -1,9 +1,14 @@
 package controller;
 
 import model.BookingFile;
+import model.Content;
+import model.Folder;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+
+import java.util.Map;
 
 public class ContentServiceTest {
 
@@ -15,40 +20,41 @@ public class ContentServiceTest {
     }
 
     @Test
+    @Order(1)
     protected void canContentBeAdded() {
-
-
+        // Add some random bookings
         for (int i = 0; i < 50; i++) {
             Assertions.assertTrue(contentService.addContent(new BookingFile(contentService.getRandomBooking())));
         }
-
-//        BookingDirector bookingDirector = new BookingDirector(new EnglishBookingBuilder());
-//        bookingDirector.createBooking(new Car(""), payment);
-//
-//        // Adding test files to hierarchy
-//        Assertions.assertTrue(contentService.addContent(new BookingFile(), LocalDate.of(2017, 1, 1)));
-//        Assertions.assertTrue(contentService.addContent(new BookingFile(), LocalDate.of(2017, 5, 23)));
-//        Assertions.assertTrue(contentService.addContent(new BookingFile(), LocalDate.of(2018, 12, 31)));
-//        Assertions.assertTrue(contentService.addContent(new BookingFile(), LocalDate.of(2018, 12, 31)));
-//
-//        Assertions.assertTrue(contentService.addContent(new BookingFile()));
-//        Assertions.assertTrue(contentService.addContent(new BookingFile()));
-//        Assertions.assertTrue(contentService.addContent(new BookingFile()));
-//        Assertions.assertTrue(contentService.addContent(new BookingFile()));
-//        Assertions.assertTrue(contentService.addContent(new BookingFile()));
-//        Assertions.assertTrue(contentService.addContent(new BookingFile()));
     }
 
 
     @Test
+    @Order(2)
     protected void canContentBeShown() {
+        // Test if the whole content hierarchy can be navigated
+        contentService.navigateContent();
+        Assertions.assertTrue(contentService.isNavigatingContent());
 
+        navigateContent(contentService.getRoot());
+
+        contentService.closeContent();
+        Assertions.assertFalse(contentService.isNavigatingContent());
     }
 
-    @Test
-    protected void cantSameFilesBeAdded() {
-//        Assertions.assertTrue(contentService.addContent(new BookingFile("Booking_abc")));
-//        // Files with same name can't be added to the same Folder
-//        Assertions.assertFalse(contentService.addContent(new BookingFile("Booking_abc")));
+    private void navigateContent(Content content) {
+        // Navigate into content
+        contentService.openContent(content);
+        Assertions.assertEquals(contentService.getNavigationPath().peek(), content.getName());
+
+        // Navigate into all child contents of folder
+        if (content instanceof Folder) {
+            for (Map.Entry<String, Content> contentEntry : ((Folder) content).getContents().entrySet()) {
+                navigateContent(contentEntry.getValue());
+            }
+        }
+
+        // Navigate back
+        contentService.closeContent();
     }
 }

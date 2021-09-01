@@ -121,6 +121,10 @@ public class ContentService {
         return navigationPath;
     }
 
+    public boolean isNavigatingContent() {
+        return navigatingContent;
+    }
+
     //================================================================================
     // The following methods are being called by their corresponding commands.
     //================================================================================
