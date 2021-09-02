@@ -25,13 +25,11 @@ multiple modules, each one of them complying with a given design pattern.
 - ✔️ Dependency between Booking and Person? (In Booking die Person hinterlegen, die gebucht hat)
 - ✔️ DEMO Content
 
-- Was macht ein SelectUseCaseView im AuthenticationService??
-
 
 ### User interaction und messages
 
 - Übersetzung von messages
-- Localization vervollständigen
+- ✔️ Localization vervollständigen
     - ✔️ Währungen berücksichtigen. (Einmal auswählen und überall diese Währung anzeigen)
 - Proof read (UX und Fehler / Typos) (English und deutsch)
     - ✔️ Bei show all resources Preise anzeigen (vielleicht als Tabelle)
@@ -42,7 +40,7 @@ multiple modules, each one of them complying with a given design pattern.
 
 ### JUnit Tests
 
-- Für jedes Package sinnvolle Tests für jeden UseCase
+- ✔️ Für jedes Package sinnvolle Tests für jeden UseCase
 
 ### UML Diagramme
 
