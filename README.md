@@ -13,36 +13,15 @@ multiple modules, each one of them complying with a given design pattern.
 
 ### TODO und Warnings im Code
 
-- ✔️ model.CurrencyAmount als price von Resource
-- ✔️ getDecription for Commands zu StringInoutViews?
-- ✔️ Visual String representation of Booking
-- ✔️ Different Currencies in Summary File
-- ✔️ Bug: UseCase "showContent" funktioniert manchmal nicht.
 - Remove main methods / temporary constructor
 - Warnings fixen
-- ✔️ Rename Main Method (Class) in CarReservationService
-- ✔️ reserveCar abbrechen können?
-- ✔️ Dependency between Booking and Person? (In Booking die Person hinterlegen, die gebucht hat)
-- ✔️ DEMO Content
 
 
 ### User interaction und messages
 
 - Übersetzung von messages
-- ✔️ Localization vervollständigen
-    - ✔️ Währungen berücksichtigen. (Einmal auswählen und überall diese Währung anzeigen)
-- Proof read (UX und Fehler / Typos) (English und deutsch)
-    - ✔️ Bei show all resources Preise anzeigen (vielleicht als Tabelle)
-    - ✔️ Bezeichnungen von dem ConfirmationView im Person Module
-    - ✔️ Darstellung von Booking bzw. BookingFile
-- ✔️ Preise von Autos Kaufpreise oder Mietpreise?
-- ✔️ Ist SelectPersonTypeView überflüssig?
-
-### JUnit Tests
-
-- ✔️ Für jedes Package sinnvolle Tests für jeden UseCase
+- Proof read
 
 ### UML Diagramme
 
-- Klassen Diagramme überarbeiten
-- Package Diagramm
+- Klassen Diagramme double checken
