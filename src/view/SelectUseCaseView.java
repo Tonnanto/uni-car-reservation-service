@@ -29,6 +29,9 @@ public class SelectUseCaseView extends SelectionView {
             commands.add(null);
             commands.add(new CreatePersonCommand(carReservationService));
             commands.add(new PromptConfigCommand(carReservationService));
+
+            commands.add(null);
+            commands.add(new CloseProgrammCommand(carReservationService));
             return commands;
 
         }
@@ -40,6 +43,9 @@ public class SelectUseCaseView extends SelectionView {
         commands.add(null);
         commands.add(new LogOutCommand(carReservationService));
         commands.add(new PromptConfigCommand(carReservationService));
+
+        commands.add(null);
+        commands.add(new CloseProgrammCommand(carReservationService));
 
         return commands;
     }

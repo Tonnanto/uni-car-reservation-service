@@ -17,6 +17,7 @@ public class CarReservationService {
     private AuthenticationService authenticationService;
     private ContentService contentService;
     private StatisticsService statisticsService;
+    private boolean closeProgramm;
 
     public void selectUseCase() {
         contentService = new ContentService();
@@ -28,7 +29,7 @@ public class CarReservationService {
         // Prompt User to select language and currency
         promptConfig();
 
-        while (true) {
+        while (!closeProgramm) {
             new SelectUseCaseView(this).display();
         }
     }
@@ -93,5 +94,9 @@ public class CarReservationService {
     public void promptConfig() {
         new SelectLanguageView(this).display();
         new SelectCurrencyView(this).display();
+    }
+
+    public void closeProgramm() {
+        this.closeProgramm = true;
     }
 }
