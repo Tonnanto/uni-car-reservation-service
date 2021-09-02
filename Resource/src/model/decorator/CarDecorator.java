@@ -21,6 +21,7 @@ public abstract class CarDecorator extends Resource {
         return this.resource.getDescription() + "\n+ " + getDecoratorType().getDescription();
     }
 
+    @SuppressWarnings("unused")
     public abstract String getName();
 
     public Resource getResource() {

@@ -20,6 +20,7 @@ public class NaturalPerson implements Person, Subject {
         this.name = name;
     }
 
+    @SuppressWarnings("unused")
     @Override
     public int getId() {
         return this.id;

@@ -20,6 +20,7 @@ public class LegalPerson implements Person {
         this.name = name;
     }
 
+    @SuppressWarnings("unused")
     @Override
     public int getId() {
         return this.id;

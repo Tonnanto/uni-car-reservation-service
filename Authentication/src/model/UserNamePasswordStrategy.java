@@ -17,6 +17,7 @@ public class UserNamePasswordStrategy extends Credential {
         return Config.resourceBundle.getString("authentication.model.UserNamePasswordStrategy.Description");
     }
 
+    @SuppressWarnings("unused")
     public String getUsername() {
         return username;
     }
@@ -25,6 +26,7 @@ public class UserNamePasswordStrategy extends Credential {
         this.username = username;
     }
 
+    @SuppressWarnings("unused")
     public String getPassword() {
         return password;
     }

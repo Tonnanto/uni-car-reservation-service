@@ -27,29 +27,6 @@ public class ContentService {
         this.root = new Folder("Bookings");
     }
 
-    // TODO: temp method
-//    public static void main(String[] args) {
-//        ContentService cs = new ContentService();
-
-        // Adding test content
-//        cs.addContent(new BookingFile(), LocalDate.of(2017, 1, 1));
-//        cs.addContent(new BookingFile(), LocalDate.of(2017, 5, 23));
-//        cs.addContent(new BookingFile(), LocalDate.of(2018, 12, 31));
-//        cs.addContent(new BookingFile(), LocalDate.of(2018, 12, 31));
-//        cs.addContent(new BookingFile());
-//        cs.addContent(new BookingFile());
-//        cs.addContent(new BookingFile());
-//        cs.addContent(new BookingFile());
-//        cs.addContent(new BookingFile());
-//        cs.addContent(new BookingFile());
-
-//        cs.addDemoBookings(100);
-
-        // triggering UseCase: showContent
-
-//        cs.showContent();
-//    }
-
     /**
      * Adds Content to the hierarchy. Uses the current date to determine the correct location.
      * Represents the UseCase "addContent"

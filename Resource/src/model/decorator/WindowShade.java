@@ -7,6 +7,7 @@ public class WindowShade extends CarDecorator {
         super(resource);
     }
 
+    @SuppressWarnings("unused")
     @Override
     public String getName() {
         return CarDecoratorType.WINDOW_SHADE.getName();

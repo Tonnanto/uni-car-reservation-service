@@ -11,7 +11,7 @@ import java.util.List;
 
 public class SelectLanguageView extends SelectionView {
 
-    CarReservationService carReservationService;
+    private final CarReservationService carReservationService;
 
     public SelectLanguageView(CarReservationService carReservationService) {
         this.carReservationService = carReservationService;

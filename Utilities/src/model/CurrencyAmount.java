@@ -15,6 +15,7 @@ public class CurrencyAmount {
         return amount;
     }
 
+    @SuppressWarnings("unused")
     public Currency getCurrency() {
         return currency;
     }

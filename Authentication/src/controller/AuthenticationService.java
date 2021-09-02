@@ -21,7 +21,6 @@ public class AuthenticationService {
     /**
      * Authenticate a person or system with the credential they choose
      */
-
     public void authenticateSubject() {
         while (!isSubjectAuthenticated) {
             if (credential == null) {

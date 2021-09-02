@@ -7,6 +7,7 @@ public class MagicTree extends CarDecorator {
         super(resource);
     }
 
+    @SuppressWarnings("unused")
     @Override
     public String getName() {
         return CarDecoratorType.MAGIC_TREE.getName();

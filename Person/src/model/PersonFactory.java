@@ -11,6 +11,7 @@ public class PersonFactory {
         };
     }
 
+    @SuppressWarnings("unused")
     public static int getPersonCount() {
         return personCount;
     }

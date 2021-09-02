@@ -7,6 +7,7 @@ public class SetTopBox extends CarDecorator {
         super(resource);
     }
 
+    @SuppressWarnings("unused")
     @Override
     public String getName() {
         return CarDecoratorType.SET_TOP_BOX.getName();

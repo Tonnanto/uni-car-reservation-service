@@ -2,7 +2,6 @@ package controller;
 
 import model.*;
 import view.ConfirmBookingView;
-import model.Language;
 import view.SelectBookingLanguageView;
 
 import java.time.LocalDate;
@@ -18,7 +17,6 @@ public class BookingService {
      * @param payment  The Payment, that is payed
      * @return new booking
      */
-
     public Booking createBooking(Resource resource, Payment payment, Person customer, LocalDate date) {
 
         BookingDirector bookingDirector = null;

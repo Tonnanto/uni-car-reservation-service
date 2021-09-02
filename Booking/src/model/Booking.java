@@ -9,12 +9,12 @@ public class Booking {
     private final Resource resource;
     private final Payment payment;
     private final Person customer;
+    private final LocalDate bookingDate;
 
     private String header;
     private String body;
     private String footer;
     private Language language;
-    private LocalDate bookingDate;
 
     public Booking(Resource resource, Payment payment, Person customer, LocalDate date) {
         this.resource = resource;
@@ -23,24 +23,12 @@ public class Booking {
         this.bookingDate = date;
     }
 
-    public String getHeader() {
-        return header;
-    }
-
     public void setHeader(String buildHeader) {
         this.header = buildHeader;
     }
 
-    public String getBody() {
-        return body;
-    }
-
     public void setBody(String body) {
         this.body = body;
-    }
-
-    public String getFooter() {
-        return footer;
     }
 
     public void setFooter(String footer) {
@@ -119,7 +107,7 @@ public class Booking {
 //            if (word.contains("\n")) continue;
 
             if (!word.contains("\n") && line.length() + word.length() + 1 < maxCharacters) {
-                line.append("").append(word);
+                line.append(word);
             } else {
                 lines.add(line.toString());
                 line = new StringBuilder(word.contains("\n") ? "" : word);

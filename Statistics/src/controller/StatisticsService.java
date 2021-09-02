@@ -66,7 +66,7 @@ public class StatisticsService implements Observer {
     }
 
     /**
-     * Updates the given folder and all of it's subfolders
+     * Updates the given folder and all of it's sub folders
      *
      * @param folder the folder to update
      */

@@ -5,6 +5,7 @@ public interface Person {
 
     void setName(String name);
 
+    @SuppressWarnings("unused")
     int getId();
 
     String getEmail();

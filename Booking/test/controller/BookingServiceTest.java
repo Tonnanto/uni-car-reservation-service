@@ -16,16 +16,10 @@ class BookingServiceTest {
         payment.authenticateCustomer("Jonas@Harms.de", "123456");
         BookingService bookingService = new BookingService();
 
-        // SetBookingBiulderCommand executen
         new SetBookingBuilderCommand(bookingService, Language.ENGLISH).execute();
-        // Prüfen ob der richtige booking builder ausgewählt wurde
         Assertions.assertTrue(bookingService.getBookingBuilder() instanceof EnglishBookingBuilder);
-        // BookingDirector erstellen
         BookingDirector bookingDirector = new BookingDirector(bookingService.getBookingBuilder());
-        // Booking builden (.createBooking(resource, payment);)
         bookingDirector.createBooking(resource, payment, new NaturalPerson(86), LocalDate.now());
-        // Booking getten
-        // Prüfen ob Booking korrekt ist
         Assertions.assertEquals(Language.ENGLISH, bookingDirector.getBooking().getLanguage());
     }
 
@@ -36,16 +30,10 @@ class BookingServiceTest {
         payment.authenticateCustomer("Anton@Stamme.de", "654321");
         BookingService bookingService = new BookingService();
 
-        // SetBookingBiulderCommand executen
         new SetBookingBuilderCommand(bookingService, Language.GERMAN).execute();
-        // Prüfen ob der richtige booking builder ausgewählt wurde
         Assertions.assertTrue(bookingService.getBookingBuilder() instanceof GermanBookingBuilder);
-        // BookingDirector erstellen
         BookingDirector bookingDirector = new BookingDirector(bookingService.getBookingBuilder());
-        // Booking builden (.createBooking(resource, payment);)
         bookingDirector.createBooking(resource, payment, new NaturalPerson(86), LocalDate.now());
-        // Booking getten
-        // Prüfen ob Booking korrekt ist
         Assertions.assertEquals(Language.GERMAN, bookingDirector.getBooking().getLanguage());
     }
 }

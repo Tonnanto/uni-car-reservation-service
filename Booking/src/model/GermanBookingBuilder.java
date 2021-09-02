@@ -1,5 +1,7 @@
 package model;
 
+import controller.Config;
+
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.Locale;
@@ -15,10 +17,9 @@ public class GermanBookingBuilder extends BookingBuilder {
 
     @Override
     public void buildBody() {
-        // TODO: Adjust model.Currency to user settings
         String sb = "Sie haben die folgende Ressource gebucht:" +
                 "\n\n" + booking.getResource().getDescription() +
-                "\n" + "= Insgesamt: " + String.format("%32s", booking.getResource().getPrice()) +
+                "\n" + "= Insgesamt: " + String.format("%32s", booking.getResource().getPrice().to(Config.currency)) +
                 "\n\n" + String.format("Bezahlt mit %s (%s)", booking.getPayment().getPaymentType(), booking.getPayment().getSender().getEmail());
         booking.setBody(sb);
     }

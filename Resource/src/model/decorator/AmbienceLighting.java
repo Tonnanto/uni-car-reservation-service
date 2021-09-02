@@ -7,6 +7,7 @@ public class AmbienceLighting extends CarDecorator {
         super(resource);
     }
 
+    @SuppressWarnings("unused")
     @Override
     public String getName() {
         return CarDecoratorType.AMBIENCE_LIGHTING.getName();

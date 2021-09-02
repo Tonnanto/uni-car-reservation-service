@@ -37,7 +37,7 @@ public class BookingStatisticVisitor implements ContentVisitor {
 
         for (Map.Entry<String, Content> contentEntry : folder.getContents().entrySet()) {
             // 1. Look for BookingFiles within this folder
-            // 2. Look for BookingFiles within subfolders
+            // 2. Look for BookingFiles within sub folders
 
             if (contentEntry.getValue() instanceof BookingFile) {
                 BookingFile bookingFile = (BookingFile) contentEntry.getValue();

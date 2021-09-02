@@ -7,6 +7,7 @@ public class ChildSeat extends CarDecorator {
         super(resource);
     }
 
+    @SuppressWarnings("unused")
     @Override
     public String getName() {
         return CarDecoratorType.CHILD_SEAT.getName();

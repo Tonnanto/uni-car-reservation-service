@@ -11,7 +11,7 @@ import java.util.List;
 
 public class SelectCurrencyView extends SelectionView {
 
-    CarReservationService carReservationService;
+    final private CarReservationService carReservationService;
 
     public SelectCurrencyView(CarReservationService carReservationService) {
         this.carReservationService = carReservationService;
