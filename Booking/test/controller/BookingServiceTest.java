@@ -1,44 +1,53 @@
 package controller;
 
+import controller.commands.SetBookingBuilderCommand;
 import model.*;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class BookingServiceTest {
-    static private BookingService bookingService;
+import java.time.LocalDate;
 
-    @BeforeAll
-    static void setUp() {
-        bookingService = new BookingService();
+class BookingServiceTest {
+
+    @Test
+    void canBookingBeCreatedInEnglish() {
+        Resource resource = new Car("Benz", new CurrencyAmount(200, Currency.US_DOLLAR));
+        Payment payment = new PayPalPayment(new CurrencyAmount(200, Currency.EURO));
+        payment.authenticateCustomer("Jonas@Harms.de", "123456");
+        BookingService bookingService = new BookingService();
+
+        // SetBookingBiulderCommand executen
+        new SetBookingBuilderCommand(bookingService, Language.ENGLISH).execute();
+        // Prüfen ob der richtige booking builder ausgewählt wurde
+        Assertions.assertTrue(bookingService.getBookingBuilder() instanceof EnglishBookingBuilder);
+        // BookingDirector erstellen
+        BookingDirector bookingDirector = new BookingDirector(bookingService.getBookingBuilder());
+        // Booking builden (.createBooking(resource, payment);)
+        bookingDirector.createBooking(resource, payment, new NaturalPerson(86), LocalDate.now());
+        // Booking getten
+        // Prüfen ob Booking korrekt ist
+        Assertions.assertEquals(Language.ENGLISH, bookingDirector.getBooking().getLanguage());
     }
 
     @Test
-    void canBookingBeCreated() {
+    void canBookingBeCreatedInGerman() {
+        Resource resource = new Car("VW", new CurrencyAmount(300, Currency.EURO));
+        Payment payment = new PayPalPayment(new CurrencyAmount(300, Currency.EURO));
+        payment.authenticateCustomer("Anton@Stamme.de", "654321");
+        BookingService bookingService = new BookingService();
 
-        Resource resource = new Car("Benz", new CurrencyAmount(200, Currency.US_DOLLAR));
-        Payment payment = new PayPalPayment(new CurrencyAmount(200, Currency.EURO));
-
-        // For each BookingBuilder
         // SetBookingBiulderCommand executen
+        new SetBookingBuilderCommand(bookingService, Language.GERMAN).execute();
         // Prüfen ob der richtige booking builder ausgewählt wurde
+        Assertions.assertTrue(bookingService.getBookingBuilder() instanceof GermanBookingBuilder);
         // BookingDirector erstellen
+        BookingDirector bookingDirector = new BookingDirector(bookingService.getBookingBuilder());
         // Booking builden (.createBooking(resource, payment);)
+        bookingDirector.createBooking(resource, payment, new NaturalPerson(86), LocalDate.now());
         // Booking getten
         // Prüfen ob Booking korrekt ist
-
-
-
-
-//        Booking booking = bookingService.createBooking(resource, payment);
-//
-//        Assertions.assertNotNull(booking);
-//        Assertions.assertNotNull(booking.getHeader());
-//        Assertions.assertNotNull(booking.getBody());
-//        Assertions.assertNotNull(booking.getFooter());
-//
-//        System.out.println(booking.getHeader());
-//        System.out.println(booking.getBody());
-//        System.out.println(booking.getFooter());
+        Assertions.assertEquals(Language.GERMAN, bookingDirector.getBooking().getLanguage());
     }
 }
+
 
