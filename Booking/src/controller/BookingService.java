@@ -43,4 +43,8 @@ public class BookingService {
     public void resetBooking() {
         bookingBuilder = null;
     }
+
+    public BookingBuilder getBookingBuilder() {
+        return bookingBuilder;
+    }
 }
