@@ -26,7 +26,7 @@ public class ShowPersonView extends View {
         String name = personService.getPerson().getName();
         String email = personService.getPerson().getEmail();
 
-        message += String.format("\nPersonType: %s", personType);
+        message += String.format("\n" + Config.resourceBundle.getString("person.view.ShowPersonView.Message3") + " %s", personType);
 
         if (name != null)
             message += String.format("\nName: %s", name);
