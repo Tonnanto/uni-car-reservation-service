@@ -83,4 +83,8 @@ public class AuthenticationService {
     public void showAuthenticationStatus() {
         new ShowLoginStatusView(this).display();
     }
+
+    public Credential getCredential() {
+        return credential;
+    }
 }
