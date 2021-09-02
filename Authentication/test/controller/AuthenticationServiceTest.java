@@ -12,8 +12,8 @@ public class AuthenticationServiceTest {
 
     @Test
     void canSubjectBeAuthenticatedWithFinger() {
-        Subject subject = new NaturalPerson(86);
-        AuthenticationService authenticationService = new AuthenticationService(subject);
+        Person person = PersonFactory.createPerson(PersonType.NATURAL_PERSON);
+        AuthenticationService authenticationService = new AuthenticationService((Subject) person);
 
         new SelectCredentialsCommand(authenticationService, new FingerPrintStrategy()).execute();
         Assertions.assertTrue(authenticationService.getCredential() instanceof FingerPrintStrategy);
@@ -25,8 +25,8 @@ public class AuthenticationServiceTest {
 
     @Test
     void canSubjectBeAuthenticatedWithEye() {
-        Subject subject = new NaturalPerson(99);
-        AuthenticationService authenticationService = new AuthenticationService(subject);
+        Person person = PersonFactory.createPerson(PersonType.NATURAL_PERSON);
+        AuthenticationService authenticationService = new AuthenticationService((Subject) person);
 
         new SelectCredentialsCommand(authenticationService, new EyeScanStrategy()).execute();
         Assertions.assertTrue(authenticationService.getCredential() instanceof EyeScanStrategy);
@@ -39,8 +39,8 @@ public class AuthenticationServiceTest {
 
     @Test
     void canSubjectBeAuthenticatedWithPassword() {
-        Subject subject = new NaturalPerson(27);
-        AuthenticationService authenticationService = new AuthenticationService(subject);
+        Person person = PersonFactory.createPerson(PersonType.NATURAL_PERSON);
+        AuthenticationService authenticationService = new AuthenticationService((Subject) person);
 
         new SelectCredentialsCommand(authenticationService, new UserNamePasswordStrategy()).execute();
         Assertions.assertTrue(authenticationService.getCredential() instanceof UserNamePasswordStrategy);
