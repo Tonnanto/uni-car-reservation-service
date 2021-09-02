@@ -48,6 +48,8 @@ public class PersonService {
         return person;
     }
 
+    public boolean isPersonCreated() {return personCreated;}
+
     //================================================================================
     // The following methods are being called by their corresponding commands.
     //================================================================================

@@ -1,5 +1,7 @@
 package model;
 
+import controller.Config;
+
 public enum PersonType {
     NATURAL_PERSON,
     LEGAL_PERSON;
@@ -7,8 +9,8 @@ public enum PersonType {
     @Override
     public String toString() {
         return switch (this) {
-            case NATURAL_PERSON -> "Natural Person";
-            case LEGAL_PERSON -> "Legal Person";
+            case NATURAL_PERSON -> Config.resourceBundle.getString("person.model.PersonType.String1");
+            case LEGAL_PERSON -> Config.resourceBundle.getString("person.model.PersonType.String2");
         };
     }
 }

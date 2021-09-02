@@ -9,7 +9,7 @@ import model.PersonType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SelectPersonTypeView extends SelectionView {
+public class    SelectPersonTypeView extends SelectionView {
     private final PersonService personService;
 
     public SelectPersonTypeView(PersonService personService) {
