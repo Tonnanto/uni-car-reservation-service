@@ -1,14 +1,12 @@
 package controller;
 
 
-import controller.commands.LogOutCommand;
 import controller.commands.SelectCredentialsCommand;
 import model.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class AuthenticationServiceTest {
-
 
     @Test
     void canSubjectBeAuthenticatedWithFinger() {
@@ -19,7 +17,7 @@ public class AuthenticationServiceTest {
         Assertions.assertTrue(authenticationService.getCredential() instanceof FingerPrintStrategy);
         authenticationService.updateSubjectAuthenticated();
         Assertions.assertTrue(authenticationService.isSubjectAuthenticated());
-        new LogOutCommand(authenticationService).execute();
+        authenticationService.logout();
         Assertions.assertFalse(authenticationService.isSubjectAuthenticated());
     }
 
@@ -32,7 +30,7 @@ public class AuthenticationServiceTest {
         Assertions.assertTrue(authenticationService.getCredential() instanceof EyeScanStrategy);
         authenticationService.updateSubjectAuthenticated();
         Assertions.assertTrue(authenticationService.isSubjectAuthenticated());
-        new LogOutCommand(authenticationService).execute();
+        authenticationService.logout();
         Assertions.assertFalse(authenticationService.isSubjectAuthenticated());
     }
 
@@ -53,7 +51,7 @@ public class AuthenticationServiceTest {
         usernamePassword.setPassword("test");
         authenticationService.updateSubjectAuthenticated();
         Assertions.assertTrue(authenticationService.isSubjectAuthenticated());
-        new LogOutCommand(authenticationService).execute();
+        authenticationService.logout();
         Assertions.assertFalse(authenticationService.isSubjectAuthenticated());
     }
 }

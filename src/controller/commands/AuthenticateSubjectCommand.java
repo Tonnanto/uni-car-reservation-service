@@ -16,7 +16,6 @@ public class AuthenticateSubjectCommand extends CarReservationCommand {
 
     @Override
     public String getDescription() {
-        return Config.resourceBundle.getString("src.controller.commands.AuthenticateSubjectCommand.Description")
-                ;
+        return Config.resourceBundle.getString("src.controller.commands.AuthenticateSubjectCommand.Description");
     }
 }
