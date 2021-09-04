@@ -11,16 +11,10 @@ multiple modules, each one of them complying with a given design pattern.
 
 ## Todos
 
-### TODO und Warnings im Code
-
-- Remove main methods / temporary constructor
-- Warnings fixen
-
-
 ### User interaction und messages
 
 - Übersetzung von messages
-- Proof read
+- Proofread
 
 ### UML Diagramme
 
