@@ -28,42 +28,42 @@ The `controller` package contains a service class and multiple command classes.
 The service class has methods that represent the use cases of this module and methods that are being called by the corresponding commands to manipulate its state.
 The service class also manages the user interaction (displays the correct view) determined by its current state.  
 
-###Modules:
-####Person
+### Modules:
+#### Person
 - Creates new Person Objects that represent a single customer within the application.
 - Complies with the ***Factory Method*** design pattern.
     
-####Authentication
+#### Authentication
 - Authenticates a customer using a selected authentication method.
 - Complies with the ***Strategy*** design pattern.
     
-####Resource
+#### Resource
 - Lets the customer select a resource that consists of one car and optionally multiple add-ons.
 - Complies with the ***Decorator*** design pattern.
     
-####Payment
+#### Payment
 - Once a resource has been selected this module lets the user select a payment provider and handles the payment process.
 - Complies with the ***Template Method*** design pattern.
     
-####Booking
+#### Booking
 - The Booking module creates booking objects that can be stored and reviewed later.
 - Booking objects contain information about the customer, the booked resource and the payment.
 - Bookings can be created in different languages.
 - Complies with the ***Builder*** design pattern.
   
-####Content
+#### Content
 - Content creates and manages a hierarchy with folders and files.
 - For each booking a booking file is created and stored in a folder representing the date of the booking.
 - The hierarchy can be navigated to view every single file.
 - Complies with the ***Composites*** design pattern.
     
-####Statistics
+#### Statistics
 - Allows insight into statistics about bookings for given payment types and languages.
 - Automatically creates summary files to each folder in the content hierarchy of Content.
 - In order to create summary files this module uses the ***Observer*** Pattern to observe changes in a content hierarchy from the Content module.
 - Complies with the ***Visitor*** design pattern.
     
-####Utilities
+#### Utilities
 - This is the only module that does not serve a domain related use case.
 - Contains helper classes that are relevant for each of the other modules.
 - Contains domain specific classes that are used in multiple other modules (language, currency, ...)
