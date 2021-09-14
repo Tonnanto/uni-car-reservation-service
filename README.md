@@ -72,9 +72,8 @@ The service class also manages the user interaction (displays the correct view) 
 
 ___
 ## Run
-
+Note: Use Java 15  
 Note: For demo purposes the system is being populated with 25 randomly generated bookings, so that `show content` and `show statistics`can easily be tested.
-
 
 In order to run this project you can either
 1. Open the project in your editor of choice.
@@ -83,5 +82,5 @@ In order to run this project you can either
 
 or 
 
-1. run the attached jar file `CarReservationService.jar`
-    - Note: Some characters might not be displayed correctly in the console.
+1. run the attached jar file `java -jar CarReservationService.jar`
+   - Note: Some characters might not be displayed correctly in the console.
